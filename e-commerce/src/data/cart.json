@@ -1,0 +1,16 @@
+[
+    {
+        "id": "1",
+        "name": "iPhone 15 Pro",
+        "price": 1299,
+        "image": "/iphone15.jpg",
+        "quantity": 1
+    },
+    {
+        "id": "2",
+        "name": "MacBook Air M2",
+        "price": 1499,
+        "image": "/macbook.jpg",
+        "quantity": 1
+    }
+]
