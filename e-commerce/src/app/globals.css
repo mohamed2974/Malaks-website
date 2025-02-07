@@ -3,19 +3,39 @@
 @import "tailwindcss/utilities";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background-primery: #FDFDFD;
+  --Text-primery: #1D1D1F;
+  
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+.dark {
+  --background-primery: #1D1D1F;
+  --Text-primery: #FDFDFD;
+}
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--Text-primery);
+  background: var(--background-primery);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+/* 
+Hintergrund: #F5F5F7 (Apple-Light-Grau)
+Text: #1D1D1F (Fast-Schwarz, sehr edel)
+Primärfarbe: #0071E3 (Apple Blau)
+Sekundärfarbe: #A1A1A6 (Dezentes Grau)
+Akzentfarbe: #FF9500 (Sanftes Orange für Call-to-Action) 
+
+
+Hintergrund: #FDFDFD (Fast-Weiß, clean)
+Text: #222222 (Dunkles Grau, lesbar)
+Primärfarbe: #FF3B30 (Apple Rot, sehr auffällig)
+Sekundärfarbe: #FFD60A (Neongelb für ein cooles Design)
+Akzentfarbe: #00C853 (Frisches Grün, als Kontrast)
+
+
+
+
+*/
