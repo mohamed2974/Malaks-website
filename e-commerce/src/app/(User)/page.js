@@ -1,6 +1,4 @@
-import CheckoutButton from "@/components/CheckoutButton";
-import Cart from '@/components/Cart';
-import productsCart from '@/data/cart.json'; // Falls du eine JSON-Datei nutzt
+
 
 export default function Home() {
   return (

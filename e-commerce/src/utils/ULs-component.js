@@ -1,4 +1,3 @@
-// ######################### ULS COMPONENT ######################### //
 
 export default function Uls({array, row, style, listItemStyle}){
     if(row === true){
