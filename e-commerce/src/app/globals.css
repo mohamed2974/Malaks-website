@@ -3,37 +3,44 @@
 @import "tailwindcss/utilities";
 
 :root {
-  --background-primery: #FDFDFD;
-  --Text-primery: #1D1D1F;
-  
+  --background-primary: #FDFDFD;
+  --text-primary: #1D1D1F;
+  --text-scondary: #475569;
+  --apple-blue: #0071E3;
+  --apple-orange: #FF9500;
+  --apple-red: #FF3B30;
+  --fresh-green: #00C853;
+  --neon-yellow: #FFD60A;
 }
 
 .dark {
-  --background-primery: #1D1D1F;
-  --Text-primery: #FDFDFD;
-}
+  --background-primary: #1D1D1F;
+  --text-primary: #FDFDFD;
+  --text-scondary: #94a3b8;
+  --apple-blue: #0071E3;
+  --apple-orange: #FF9500;
+  --apple-red: #FF3B30;
+  --fresh-green: #00C853;
+  --neon-yellow: #FFD60A;}
 
 body {
-  color: var(--Text-primery);
-  background: var(--background-primery);
+  color: var(--text-primary);
+  background: var(--background-primary);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 
 
-/* 
-Hintergrund: #F5F5F7 (Apple-Light-Grau)
+/* #
 Text: #1D1D1F (Fast-Schwarz, sehr edel)
 Primärfarbe: #0071E3 (Apple Blau)
-Sekundärfarbe: #A1A1A6 (Dezentes Grau)
-Akzentfarbe: #FF9500 (Sanftes Orange für Call-to-Action) 
-
-
 Hintergrund: #FDFDFD (Fast-Weiß, clean)
-Text: #222222 (Dunkles Grau, lesbar)
+Akzentfarbe: #FF9500 (Sanftes Orange für Call-to-Action) 
 Primärfarbe: #FF3B30 (Apple Rot, sehr auffällig)
-Sekundärfarbe: #FFD60A (Neongelb für ein cooles Design)
 Akzentfarbe: #00C853 (Frisches Grün, als Kontrast)
+
+Sekundärfarbe: #FFD60A (Neongelb für ein cooles Design)
+
 
 
 

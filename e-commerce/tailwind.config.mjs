@@ -2,15 +2,19 @@
 const config = {
   darkMode: "class",
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}", // Erfasst ALLE Dateien im src-Ordner, egal in welchem Unterordner sie liegen
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        backgroundPrim: "var(--background-primary)",
+        TextPrim: "var(--text-primary)",
+        TextSec: 'var(--text-scondary)',
+        AppleBlue: 'var(--apple-blue)',
+        AppleOrange: 'var(--apple-orange)',
+        AppleRed: 'var(--apple-red)',
+        FreshGreen: 'var(--fresh-green)',
+        NeonYellow: 'var(--neon-yellow)',
       },
     },
   },
