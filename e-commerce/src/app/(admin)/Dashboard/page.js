@@ -1,76 +1,143 @@
-// 'use client'
+'use client'
 
-// import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-// export default function AdminDashboard() {
-//     const [name, setName] = useState('');
-//     const [description, setDescription] = useState('');
-//     const [price, setPrice] = useState('');
-//     const [image, setImage] = useState(null);
-//     const [quantities, setQuantities] = useState('');  // Hinzugefügt
+export default function Page() {
+  const [name, setName] = useState('');
+  const [beschreibung, setBeschreibung] = useState('');
+  const [preis, setPreis] = useState('');
+  const [menge, setMenge] = useState('');
+  const [kategorie, setKategorie] = useState('');
+  const [lagerort, setLagerort] = useState('');
+  const [status, setStatus] = useState('');
+  const [hersteller, setHersteller] = useState('');
+  const [gewicht, setGewicht] = useState('');
+  const [rabatt_prozent, setRabatt_prozent] = useState('');
+  const [produkte, setProdukte] = useState([]);
 
-//     // Funktion für das Hochladen des Bildes
-//     async function handleUpload(image) {
-//         const formData = new FormData();
-//         formData.append('file', image);
-    
-//         // Füge den BLOB_READ_WRITE_TOKEN im Header hinzu
-//         const res = await fetch('/api/blob/upload', {
-//             method: 'POST',
-//             headers: {
-//                 'Authorization': `Bearer ${process.env.NEXT_PUBLIC_BLOB_READ_WRITE_TOKEN}`,
-//             },
-//             body: formData,
-//         });
-    
-//         if (!res.ok) {
-//             alert('Fehler beim Hochladen der Datei');
-//             return null;
-//         }
-    
-//         const data = await res.json();
-//         return data.url;
-//     }
-    
+  useEffect(() => {
+    // Daten abrufen
+    fetch('/api/products')
+      .then((res) => res.json())
+      .then((data) => setProdukte(data))
+      .catch((error) => {
+        console.error('Fehler beim Abrufen der Daten:', error);
+      });
+  }, []);
 
-//     // Funktion für das Speichern des Produkts
-//     async function saveProduct({ name, description, price, quantities, imageUrl }) {
-//         const res = await fetch('/api/products', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({ name, description, price, quantities, imageUrl }),
-//         });
+  // Handler für die Eingabefelder
+  const handleChange = (setter) => (event) => setter(event.target.value);
 
-//         if (!res.ok) {
-//             alert('Fehler beim Speichern des Produkts');
-//         } else {
-//             alert('Produkt gespeichert!');
-//         }
-//     }
+  async function handleSubmit(event) {
+    event.preventDefault();
 
-//     // `handleSubmit` ruft die anderen Funktionen auf
-//     async function handleSubmit(e) {
-//         e.preventDefault();
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('beschreibung', beschreibung);
+    formData.append('preis', preis);
+    formData.append('menge', menge);
+    formData.append('kategorie', kategorie); 
+    formData.append('lagerort', lagerort); 
+    formData.append('status', status);
+    formData.append('hersteller', hersteller);
+    formData.append('gewicht', gewicht);
+    formData.append('rabatt_prozent', rabatt_prozent);
 
-//         // Schritt 1: Datei hochladen und URL erhalten
-//         const imageUrl = await handleUpload(image);
-//         // if (!imageUrl) return;  // Falls der Upload fehlschlägt, stoppen
+    try {
+      const response = await fetch('/api/products', {
+        method: 'POST',
+        body: formData,
+      });
 
-//         // Schritt 2: Produkt speichern
-//         saveProduct({ name, description, price, quantities, imageUrl });
-//     }
+      if (response.ok) {
+        alert('Produkt erfolgreich hinzugefügt!');
+      } else {
+        alert('Fehler beim Hinzufügen des Produkts!');
+      }
+    } catch (error) {
+      console.error('Fehler beim Senden des Formulars:', error);
+    }
+  }
 
-//     return (
-//         <div>
-//             <h1>Produkt hinzufügen</h1>
-//             <form onSubmit={handleSubmit}>
-//                 <input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} />
-//                 <input type="text" placeholder="Beschreibung" onChange={(e) => setDescription(e.target.value)} />
-//                 <input type="number" placeholder="Preis" onChange={(e) => setPrice(e.target.value)} />
-//                 <input type="number" placeholder="Menge" onChange={(e) => setQuantities(e.target.value)} />  {/* Menge Eingabefeld */}
-//                 <input type="file" onChange={(e) => setImage(e.target.files[0])} />
-//                 <button type="submit">Speichern</button>
-//             </form>
-//         </div>
-//     );
-// }
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Produktname"
+          value={name}
+          onChange={handleChange(setName)} // onChange Handler hinzugefügt
+          required
+        />
+        <input
+          type="text"
+          placeholder="Beschreibung"
+          value={beschreibung}
+          onChange={handleChange(setBeschreibung)} // onChange Handler hinzugefügt
+        />
+        <input
+          type="number"
+          step="0.01"
+          placeholder="Preis"
+          value={preis}
+          onChange={handleChange(setPreis)} // onChange Handler hinzugefügt
+          required
+        />
+        <input
+          type="number"
+          placeholder="Menge"
+          value={menge}
+          onChange={handleChange(setMenge)} // onChange Handler hinzugefügt
+          required
+        />
+        <input
+          type="text"
+          placeholder="Kategorie"
+          value={kategorie}
+          onChange={handleChange(setKategorie)} // onChange Handler hinzugefügt
+          required
+        />
+        <input
+          type="text"
+          placeholder="Lagerort"
+          value={lagerort}
+          onChange={handleChange(setLagerort)} // onChange Handler hinzugefügt
+        />
+        <input
+          type="text"
+          placeholder="Status (z.B. verfügbar, ausverkauft)"
+          value={status}
+          onChange={handleChange(setStatus)} // onChange Handler hinzugefügt
+        />
+        <input
+          type="text"
+          placeholder="Hersteller"
+          value={hersteller}
+          onChange={handleChange(setHersteller)} // onChange Handler hinzugefügt
+        />
+        <input
+          type="number"
+          step="0.01"
+          placeholder="Gewicht (kg)"
+          value={gewicht}
+          onChange={handleChange(setGewicht)} // onChange Handler hinzugefügt
+        />
+        <input
+          type="number"
+          step="0.01"
+          placeholder="Rabatt (%)"
+          value={rabatt_prozent}
+          onChange={handleChange(setRabatt_prozent)} // onChange Handler hinzugefügt
+        />
+        <button type="submit">Produkt hinzufügen</button>
+      </form>
+
+      <h2>Produkte:</h2>
+      <ul>
+        {produkte.map((produkt, index) => (
+          <li key={index}>{JSON.stringify(produkt)}</li>
+        ))}
+      </ul>
+    </>
+  );
+}
