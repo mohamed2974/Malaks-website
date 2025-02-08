@@ -6,12 +6,12 @@ export default function Footer() {
     const hoverEffectFooterLists = 'relative after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-slate-400 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-300'
     const lists = [
         ["Hilfe & Support", "Problem melden", 'Technischer Support', "FAQ",],
-        ["Über mich", "Meine Geschichte", 'Zusammenarbeit', 'Dienstleistungen'],
+        ["Über uns", "Unsere Geschichte", 'Zusammenarbeit', 'Dienstleistungen'],
         ["Rechtliches", "Impressum", "Datenschutzerklärung", "Nutzungsbedingungen",]
     ]
 
     return(
-    <footer className='px-6 lg:px-11 py-14'>
+    <footer className='px-GlobalXPad md:px-MdXPad lg:px-LgXPad py-14'>
         {/* navigation */}
         <Uls listItemStyle={`text-TextSec mt-2 w-fit ${hoverEffectFooterLists}`} style={'flex justify-between md:justify-around flex-wrap gap-7 mb-11'} array={lists}/>
 
