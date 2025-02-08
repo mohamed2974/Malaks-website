@@ -53,9 +53,9 @@ export default function Header() {
                 {/* theme switcher */}
                 <ThemeSwitch setTheme={setTheme} theme={theme}/>
                 {/* warenkorb */}
-                <div className="flex items-center">
+                <Link href='/' className="flex items-center">
                     <FiShoppingBag className="text-3xl" /> 
-                </div>
+                </Link>
             </div>
 
             {/*######### Mobile #########*/}
