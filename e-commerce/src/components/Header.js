@@ -28,15 +28,16 @@ export default function Header() {
     ]
 
     useEffect(() => {
+        // Verhindert, dass der Hook auf dem Server ausgeführt wird (SSR-Probleme)
         setMounted(true);
-    }, []);
+    }, []); 
 
     // Verhindert das Rendern, bevor die Komponente auf dem Client gemountet wurde
     if (!mounted) return null;
 
     // Nur wenn mounted, dann rendern
     return (
-        <header className={`flex flex-row justify-between items-center px-5 lg:px-16 py-3 text-lg`}>
+        <header className={`flex flex-row justify-between items-center px-GlobalXPad md:px-MdXPad lg:px-LgXPad py-3 text-lg`}>
             {/* Logo */}
             <div className="w-1/6">
                 <h1>Logo</h1>
