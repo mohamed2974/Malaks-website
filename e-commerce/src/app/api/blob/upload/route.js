@@ -9,7 +9,7 @@ export const config = {
     },
 };
 
-export async function POST(request) {
+export async function POST(request) { 
     return new Promise((resolve) => {
         const form = new formidable.IncomingForm();
         form.parse(request, async (err, fields, files) => {
