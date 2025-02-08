@@ -11,6 +11,10 @@
   --apple-red: #FF3B30;
   --fresh-green: #00C853;
   --neon-yellow: #FFD60A;
+
+  --global-x-padding: 20px;
+  --md-x-padding: 44px;
+  --lg-x-padding: 64px
 }
 
 .dark {
@@ -30,7 +34,6 @@ body {
 }
 
 
-
 /* #
 Text: #1D1D1F (Fast-Schwarz, sehr edel)
 Primärfarbe: #0071E3 (Apple Blau)
@@ -38,11 +41,5 @@ Hintergrund: #FDFDFD (Fast-Weiß, clean)
 Akzentfarbe: #FF9500 (Sanftes Orange für Call-to-Action) 
 Primärfarbe: #FF3B30 (Apple Rot, sehr auffällig)
 Akzentfarbe: #00C853 (Frisches Grün, als Kontrast)
-
 Sekundärfarbe: #FFD60A (Neongelb für ein cooles Design)
-
-
-
-
-
 */

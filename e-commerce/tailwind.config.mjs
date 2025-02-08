@@ -16,6 +16,11 @@ const config = {
         FreshGreen: 'var(--fresh-green)',
         NeonYellow: 'var(--neon-yellow)',
       },
+      padding: {
+        GlobalXPad: 'var(--global-x-padding)',
+        MdXPad: 'var(--md-x-padding)',
+        LgXPad: 'var(--lg-x-padding)'
+      }
     },
   },
   plugins: [],
