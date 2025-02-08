@@ -1,8 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef  } from 'react';
 
 export default function Page() {
+    //* produkt Bild ##########
+  const inputFileRef = useRef(null);
+  const [blob, setBlob] = useState(null)
+
+  //* produkt daten ##########
   const [name, setName] = useState('');
   const [beschreibung, setBeschreibung] = useState('');
   const [preis, setPreis] = useState('');
@@ -13,10 +18,10 @@ export default function Page() {
   const [hersteller, setHersteller] = useState('');
   const [gewicht, setGewicht] = useState('');
   const [rabatt_prozent, setRabatt_prozent] = useState('');
+  
+  //* Daten abrufen ####################################################
   const [produkte, setProdukte] = useState([]);
-
   useEffect(() => {
-    // Daten abrufen
     fetch('/api/products')
       .then((res) => res.json())
       .then((data) => setProdukte(data))
@@ -25,7 +30,7 @@ export default function Page() {
       });
   }, []);
 
-  // Handler für die Eingabefelder
+  //* Handler für die Eingabefelder ####################################################
   const handleChange = (setter) => (event) => setter(event.target.value);
 
   async function handleSubmit(event) {
