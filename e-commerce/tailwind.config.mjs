@@ -7,7 +7,8 @@ const config = {
   theme: {
     extend: {
       colors: {
-        backgroundPrim: "var(--background-primary)",
+        BgPrim: "var(--background-primary)",
+        BrandWhite: 'var(--brandwhite)',
         TextPrim: "var(--text-primary)",
         TextSec: 'var(--text-scondary)',
         AppleBlue: 'var(--apple-blue)',

@@ -3,6 +3,7 @@
 @import "tailwindcss/utilities";
 
 :root {
+  --brandwhite: #FDFDFD;
   --background-primary: #FDFDFD;
   --text-primary: #1D1D1F;
   --text-scondary: #475569;
