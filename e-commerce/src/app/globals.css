@@ -5,8 +5,9 @@
 :root {
   --brandwhite: #FDFDFD;
   --background-primary: #FDFDFD;
+  --background-secondary: #d1d5db;
   --text-primary: #1D1D1F;
-  --text-scondary: #475569;
+  --text-secondary: #475569;
   --apple-blue: #0071E3;
   --apple-orange: #FF9500;
   --apple-red: #FF3B30;
@@ -20,8 +21,9 @@
 
 .dark {
   --background-primary: #1D1D1F;
+  --background-secondary: #4b5563;
   --text-primary: #FDFDFD;
-  --text-scondary: #94a3b8;
+  --text-secondary: #94a3b8;
   --apple-blue: #0071E3;
   --apple-orange: #FF9500;
   --apple-red: #FF3B30;
@@ -36,6 +38,15 @@ body {
   /* user-select: none; */
 }
 
+th {
+  border-bottom: 2px solid var(--text-primary);
+  padding: .65rem 0;
+}
+td {
+  text-align: center;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--text-primary);
+}
 
 /* #
 Text: #1D1D1F (Fast-Schwarz, sehr edel)

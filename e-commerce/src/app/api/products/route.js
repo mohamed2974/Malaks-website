@@ -27,8 +27,16 @@ export async function POST(request) {
   const gewicht = formData.get('gewicht') ? parseFloat(formData.get('gewicht')) : null;
   const rabatt_prozent = formData.get('rabatt_prozent') ? parseFloat(formData.get('rabatt_prozent')) : 0;
 
-  console.log('Formulardaten:', { name, beschreibung, preis, menge, kategorie, lagerort, status, hersteller, gewicht, rabatt_prozent });
+  // Mehrere Bild-URLs als JSON-Array empfangen
+  let bildUrls = formData.get('bildUrls');
+  bildUrls = bildUrls ? JSON.parse(bildUrls) : [];
 
+  console.log('Formulardaten:', { name, beschreibung, preis, menge, kategorie, lagerort, status, hersteller, gewicht, rabatt_prozent, bildUrls });
+
+  if (!bildUrls.length) {
+    return new Response('Keine Bilder hochgeladen', { status: 400 });
+  }
+  
   // Validierung der numerischen Werte
   if (isNaN(preis)) {
     return new Response('Ungültiger Preis', { status: 400 });
@@ -50,9 +58,9 @@ export async function POST(request) {
     const sql = neon(process.env.DATABASE_URL); // Verbindung zur Neon-Datenbank mit Umgebungsvariable
     await sql`
       INSERT INTO produkte 
-        (name, beschreibung, preis, menge, kategorie, lagerort, status, hersteller, gewicht, rabatt_prozent) 
+        (name, beschreibung, preis, menge, kategorie, lagerort, status, hersteller, gewicht, rabatt_prozent, bild_urls) 
       VALUES 
-        (${name}, ${beschreibung}, ${preis}, ${menge}, ${kategorie}, ${lagerort}, ${status}, ${hersteller}, ${gewicht}, ${rabatt_prozent})
+        (${name}, ${beschreibung}, ${preis}, ${menge}, ${kategorie}, ${lagerort}, ${status}, ${hersteller}, ${gewicht}, ${rabatt_prozent}, ${JSON.stringify(bildUrls)})
     `;
 
     return new Response('Produkt hinzugefügt', { status: 200 });

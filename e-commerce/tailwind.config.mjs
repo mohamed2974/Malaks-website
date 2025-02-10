@@ -8,9 +8,10 @@ const config = {
     extend: {
       colors: {
         BgPrim: "var(--background-primary)",
+        BgSec: 'var( --background-secondary)',
         BrandWhite: 'var(--brandwhite)',
         TextPrim: "var(--text-primary)",
-        TextSec: 'var(--text-scondary)',
+        TextSec: 'var(--text-secondary)',
         AppleBlue: 'var(--apple-blue)',
         AppleOrange: 'var(--apple-orange)',
         AppleRed: 'var(--apple-red)',
