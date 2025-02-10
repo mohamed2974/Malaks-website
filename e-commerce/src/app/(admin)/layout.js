@@ -1,7 +1,10 @@
+'use client'
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import { Providers } from "@/utils/providers";
-import Header from "./Header";
+import { SessionProvider } from "next-auth/react"; // Importieren des SessionProviders
+import Header from "./dashboard/Header";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -13,20 +16,17 @@ const geistMono = Geist_Mono({
     subsets: ["latin"],
 });
 
-//wichtig für SEO 
-export const metadata = {
-    title: "Dashboard",                                    //* titel im browser
-};
-
 export default function RootLayout({ children }) {
     return (
         <html lang="de">
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                 <Providers>
-                    <Header />
-                    <main className="py-20">
-                    {children}
-                    </main>
+                    <SessionProvider>
+                        <Header />
+                        <main>
+                        {children}
+                        </main>
+                    </SessionProvider>
                 </Providers>
             </body>
         </html>

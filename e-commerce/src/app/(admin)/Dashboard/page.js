@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef  } from 'react';
 import { LuPackageOpen } from "react-icons/lu";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
   //* produkt Bild ##########
@@ -31,7 +33,7 @@ export default function Page() {
         console.error('Fehler beim Abrufen der Daten:', error);
       });
   }, []);
-
+  
   //* Handler für die Eingabefelder ####################################################
   const handleChange = (setter) => (event) => setter(event.target.value);
 
@@ -104,7 +106,7 @@ export default function Page() {
   }
 
   return (
-    <div className='py-20 px-GlobalXPad md:px-MdXPad lg:px-LgXPad'>
+    <div className='py-40 px-GlobalXPad md:px-MdXPad lg:px-LgXPad'>
       <div>
         <h2 className='text-3xl pb-8 underline underline-offset-8'>Produkte Hochladen</h2>
         <form onSubmit={handleSubmit} className='grid grid-cols-4 gap-4'>
@@ -173,7 +175,7 @@ export default function Page() {
 function Tabelle({produkte = []}){
   if (produkte.length == 0) {
     return (
-      <div className="py-20 flex flex-col justify-center items-center text-center">
+      <div className="py-20 flex flex-col justify-center items-center text-center border border-TextSec border-dashed rounded-2xl">
         <LuPackageOpen className="w-16 h-16 text-AppleBlue mb-4"/>
         <h3 className="text-AppleBlue text-2xl font-semibold">Noch keine Produkte</h3>
         <p className="text-TextSec mt-2">Füge jetzt Produkte hinzu, um sie hier anzuzeigen.</p>
