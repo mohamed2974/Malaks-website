@@ -1,6 +1,6 @@
 'use client';
 
-import { FiShoppingBag } from "react-icons/fi";
+import { CgShoppingBag } from "react-icons/cg";
 import { BsBrightnessHighFill } from "react-icons/bs";
 import { MdNightlight } from "react-icons/md";
 import { useEffect, useState } from "react";
@@ -11,20 +11,19 @@ import Uls from "@/utils/ULs-component";
 import MobileNav from '@/utils/MobileNav-component'
 
 const nav = [
-    <Link href='/' key='link1'>Link 1</Link>,
-    <Link href='/' key='link2'>Link 2</Link>,
+    <Link href='/' key='link1'>Startseite</Link>,
+    <Link href='/shop' key='link2'>Shop</Link>,
     <Link href='/' key='link3'>Link 3</Link>,
     <Link href='/' key='link4'>Link 4</Link>,
 ];
 
-
-export default function Header() {
+export default function Header({className}) {
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
     const buttons = [
         <ThemeSwitch key={1} setTheme={setTheme} theme={theme}/>,
-        <FiShoppingBag key={2} className="text-3xl" /> 
+        <CgShoppingBag key={2} className="text-3xl" /> 
     ]
 
     useEffect(() => {
@@ -37,14 +36,14 @@ export default function Header() {
 
     // Nur wenn mounted, dann rendern
     return (
-        <header className={`flex flex-row justify-between items-center px-GlobalXPad md:px-MdXPad lg:px-LgXPad py-3 text-lg`}>
+        <header className={`flex flex-row justify-between items-center w-full z-50 transition-all duration-300 ease-in-out py-5 text-xl ${className}`}>
             {/* Logo */}
             <div className="w-1/6">
                 <h1>Logo</h1>
             </div>
 
             {/* nav bar */}
-            <div className="w-4/6 text-center hidden md:inline-block">
+            <div className="w-4/6 text-center text-lg hidden md:inline-block">
                 <Uls array={nav} row={true} style='justify-center' listItemStyle='mx-6 py-2'/>
             </div>
 
@@ -54,7 +53,7 @@ export default function Header() {
                 <ThemeSwitch setTheme={setTheme} theme={theme}/>
                 {/* warenkorb */}
                 <Link href='/' className="flex items-center">
-                    <FiShoppingBag className="text-3xl" /> 
+                    <CgShoppingBag className="text-3xl" /> 
                 </Link>
             </div>
 

@@ -24,11 +24,12 @@
   --background-secondary: #4b5563;
   --text-primary: #FDFDFD;
   --text-secondary: #94a3b8;
-  --apple-blue: #0071E3;
-  --apple-orange: #FF9500;
-  --apple-red: #FF3B30;
-  --fresh-green: #00C853;
-  --neon-yellow: #FFD60A;}
+  --apple-blue: #3A86FF;
+  --apple-orange: #FF7B22;
+  --apple-red: #FF4D4D;
+  --fresh-green: #00E676;
+  --neon-yellow: #FFCC00;
+}
 
 body {
   color: var(--text-primary);
@@ -38,15 +39,37 @@ body {
   /* user-select: none; */
 }
 
+aside {
+  height: calc(100vh - 70px);
+}
+
+section {
+  padding: 0 var(--global-x-padding);
+}
+
 th {
-  border-bottom: 2px solid var(--text-primary);
   padding: .65rem 0;
 }
 td {
   text-align: center;
-  padding: 1.25rem 0;
-  border-bottom: 1px solid var(--text-primary);
+  padding: .6rem 0;
 }
+
+@media (width >= 48rem) {
+  section {
+    padding: 0 var(--md-x-padding);
+  }
+}
+
+@media (width >= 64rem) {
+  section {
+    padding: 0 var(--lg-x-padding);
+  }
+}
+
+
+
+
 
 /* #
 Text: #1D1D1F (Fast-Schwarz, sehr edel)

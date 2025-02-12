@@ -2,12 +2,11 @@
 
 import { useState, useEffect, useRef  } from 'react';
 import { LuPackageOpen } from "react-icons/lu";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 export default function Page() {
   //* produkt Bild ##########
   const inputFileRef = useRef(null);
+  const inputFileRefTitelbild = useRef(null); // Ref für Titelbild
   const [blobUrls, setBlobUrls] = useState([]); // Speichert mehrere Bild-URLs
   const [bildUrl, setBildUrl] = useState(''); // Speichert die Bild-URL nach Upload
 
@@ -39,15 +38,26 @@ export default function Page() {
 
   // * Datei-Upload-Handler ####################################################
   async function handleFileUpload() {
+    let uploadedUrls = [];
+
+     //Titelbild zuerst hochladen
+    if (inputFileRefTitelbild.current && inputFileRefTitelbild.current.files.length > 0) {
+      const file = inputFileRefTitelbild.current.files[0]; // Nur das erste Bild als Titelbild nehmen
+      const response = await fetch(`/api/upload?filename=${file.name}`, {
+        method: 'POST',
+        body: file,
+      });
+      const newBlob = await response.json();
+      uploadedUrls.push(newBlob.url); // Titelbild an Position 0
+    }
+
+    // **Weitere Bilder hochladen**
     if (!inputFileRef.current || !inputFileRef.current.files.length) {
       console.error('Keine Datei ausgewählt!');
       return;
     }
     const files = Array.from(inputFileRef.current.files); // Sicherstellen, dass es ein Array ist
     if (!files) return;
-
-    const uploadedUrls = [];
-
     for (let file of files) {
         const response = await fetch(`/api/upload?filename=${file.name}`, {
             method: 'POST',
@@ -57,6 +67,7 @@ export default function Page() {
         const newBlob = await response.json();
         uploadedUrls.push(newBlob.url);
     } 
+
     setBlobUrls(uploadedUrls); // Speichert alle Bild-URLs
     console.log("Hochgeladene Bilder:", uploadedUrls);
     return uploadedUrls;   
@@ -106,7 +117,7 @@ export default function Page() {
   }
 
   return (
-    <div className='py-40 px-GlobalXPad md:px-MdXPad lg:px-LgXPad'>
+    <div className='pb-40 px-GlobalXPad md:px-MdXPad lg:px-LgXPad'>
       <div>
         <h2 className='text-3xl pb-8 underline underline-offset-8'>Produkte Hochladen</h2>
         <form onSubmit={handleSubmit} className='grid grid-cols-4 gap-4'>
@@ -136,7 +147,12 @@ export default function Page() {
           </div>
           <div className='flex flex-col'>
             <label htmlFor='status' className='mb-2'>Status</label>
-            <input className="p-3 rounded-md bg-BgSec" id='status' type="text" value={status} onChange={handleChange(setStatus)} required />
+            <select id='status' value={status} name="options" onChange={handleChange(setStatus)} className="p-3 rounded-md bg-BgSec" required >
+              <option value="Verfügbar">Verfügbar</option>
+              <option value="Nicht Verfügbar">Nicht Verfügbar</option>
+              <option value="Neu">Neu</option>
+              <option value="Exklusiv">Exklusiv</option>
+            </select>
           </div>
           <div className='flex flex-col'>
             <label htmlFor='hersteller' className='mb-2'>Hersteller</label>
@@ -150,20 +166,24 @@ export default function Page() {
             <label htmlFor='rabatt_prozent' className='mb-2'>Rabatt (%)</label>
             <input className="p-3 rounded-md bg-BgSec" id='rabatt_prozent' type="number" step="0.01" value={rabatt_prozent} onChange={handleChange(setRabatt_prozent)} />         
           </div>
-          {/* submit button */}
+          {/* bilder */}
           <div className='flex flex-col'>
-            <label htmlFor='bilder' className='mb-2'>Bilder</label>
-            <input className="p-3 rounded-md w-full" id='bilder' type="file" ref={inputFileRef} multiple required accept="image/*" onChange={handleChange(setBildUrl)} />
+            <label htmlFor='bilder' className='mb-2'>Titelbild </label>
+            <input className="p-3 rounded-md w-full" id='titelbild' type="file" ref={inputFileRefTitelbild}  required accept="image/*" onChange={handleChange(setBildUrl)} />
+          </div>
+          <div className='flex flex-col'>
+            <label htmlFor='bilder' className='mb-2'>Weitere Bilder</label>
+            <input className="p-3 rounded-md w-full" id='bilder' type="file" ref={inputFileRef} required multiple accept="image/*" onChange={handleChange(setBildUrl)} />
           </div>
 
           {/* produkt hochladen */}
-          <div className='flex justify-center items-center'>
-            <button className='bg-AppleBlue transition-all hover:bg-blue-700 active:bg-blue-900 text-BrandWhite font-bold py-2 px-2 rounded-md' type="submit">Produkt hinzufügen</button>
+          <div className='flex col-span-4 justify-center items-center mt-5'>
+            <button className=' bg-AppleBlue transition-all hover:bg-blue-700 active:bg-blue-900 text-BrandWhite font-bold py-2 px-2 rounded-md' type="submit">Produkt hinzufügen</button>
           </div>
         </form>         
       </div>
 
-      <div className='py-20'>
+      <div className='py-20 overflow-auto'>
         <h2 className='text-3xl pb-8 underline underline-offset-8'>Produkte</h2>
         <Tabelle produkte={produkte}/>
       </div>
@@ -183,45 +203,45 @@ function Tabelle({produkte = []}){
     )
   }
   return (
-    <div className='overflow-x-scroll'>
-      <table className='bg-BgPrim text-TextPrim w-[150%] border-collapse table-fixed'>
-        <thead >
-          <tr>
-            <th className='w-1/6'>Produkt Name</th>
-            <th>Beschreibung</th>
-            <th>Preis</th>
-            <th>Menge</th>
-            <th>Kategorie</th>
-            <th>Lagerort</th>
-            <th>Status</th>
-            <th>Hersteller</th>
-            <th>Gewicht (kg)</th>
-            <th>Rabatt (%)</th>
-            <th  className='w-1/6'>Bilder</th>
+    <table className='bg-BgPrim text-TextPrim w-full border-collapse table-fixed '>
+      <thead className='bg-BgSec'>
+        <tr>
+          <th className='w-[5vw]'>ID</th>
+          <th className='w-[20vw]'>Produkt Name</th>
+          <th className='w-[10vw]'>Beschreibung</th>
+          <th className='w-[10vw]'>Preis (€)</th>
+          <th className='w-[10vw]'>Menge</th>
+          <th className='w-[10vw]'>Kategorie</th>
+          <th className='w-[5vw]'>Lagerort</th>
+          <th className='w-[10vw]'>Status</th>
+          <th className='w-[10vw]'>Hersteller</th>
+          <th className='w-[10vw]'>Gewicht (kg)</th>
+          <th className='w-[10vw]'>Rabatt (%)</th>
+          <th className='w-[10vw]'>Bilder</th>
+        </tr>
+      </thead>
+      <tbody className='bg-BgPrim text-TextPrim divide-y-[1px] divide-black'>
+        {produkte.map((produkt, index) => (
+          <tr key={index}>
+            <td>{produkt.id}</td>
+            <td>{produkt.name}</td>
+            <td>{produkt.beschreibung.substring(0, 100)}...</td>
+            <td>{produkt.preis}</td>
+            <td>{produkt.menge}</td>
+            <td>{produkt.kategorie}</td>
+            <td>{produkt.lagerort}</td>
+            <td>{produkt.status}</td>
+            <td>{produkt.hersteller}</td>
+            <td>{produkt.gewicht}</td>
+            <td>{produkt.rabatt_prozent}</td>
+            <td>{produkt.bild_urls.map((url, index) => (
+              <div className=' overflow-hidden' key={index}>
+                <a href={url} className="block w-full truncate">{url}</a>
+              </div>
+            ))}</td>
           </tr>
-        </thead>
-        <tbody className='bg-BgPrim text-TextPrim'>
-          {produkte.map((produkt, index) => (
-            <tr key={index}>
-              <td>{produkt.name}</td>
-              <td>{produkt.beschreibung}</td>
-              <td>{produkt.preis}</td>
-              <td>{produkt.menge}</td>
-              <td>{produkt.kategorie}</td>
-              <td>{produkt.lagerort}</td>
-              <td>{produkt.status}</td>
-              <td>{produkt.hersteller}</td>
-              <td>{produkt.gewicht}</td>
-              <td>{produkt.rabatt_prozent}</td>
-              <td>{produkt.bild_urls.map((url, index) => (
-                <div className=' overflow-hidden' key={index}>
-                  <a href={url} className="block w-full truncate">{url}</a>
-                </div>
-              ))}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        )).reverse()}
+      </tbody>
+    </table>
   )
 }

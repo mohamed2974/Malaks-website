@@ -10,8 +10,8 @@ export default function Header(){
     const { theme, setTheme } = useTheme();
 
     return (
-        <header className="px-GlobalXPad md:px-MdXPad lg:px-LgXPad py-4 border-b border-TextPrim fixed z-50 w-full bg-BgPrim flex justify-between flex-row">
-            <h1 className="font-bold text-3xl">Dashboard</h1>
+        <header className={`px-GlobalXPad md:px-MdXPad lg:px-LgXPad py-4 border-b border-TextPrim fixed z-50 bg-BgPrim flex justify-between flex-row w-full`}>
+            <h1 className="font-bold text-xl xl:text-3xl ">Dashboard</h1>
             <div className="flex flex-row ">
                 <ThemeSwitch className='mr-6' setTheme={setTheme} theme={theme} />
                 <LogoutButton />
@@ -23,7 +23,7 @@ export default function Header(){
 
 function ThemeSwitch({setTheme, theme, className}){
     return(
-        <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className={`mr-4 p-2 text-2xl rounded-full bg-TextPrim ${className}`}>
+        <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className={`mr-4 xl:p-2 p-1.5 xl:text-2xl text-xl rounded-full bg-TextPrim ${className}`}>
             {theme === "dark" ? (
                 <BsBrightnessHighFill className="text-yellow-500" />
             ) : (
