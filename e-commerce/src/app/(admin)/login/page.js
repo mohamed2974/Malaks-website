@@ -20,7 +20,7 @@ export default function LoginPage() {
     if (result.error) {
       setError("Falsche Anmeldedaten!");
     } else {
-      window.location.href = "/dashboard"; // Weiterleitung nach erfolgreichem Login
+      window.location.href = "/dashboard/produkte-seite"; // Weiterleitung nach erfolgreichem Login
     }
   };
 

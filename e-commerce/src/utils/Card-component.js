@@ -2,11 +2,9 @@ import Image from "next/image";
 
 export default function ProductCard({
     name = "",
-    beschreibung = "",
     preis,
     rabatt_prozent = 0,
     bildUrls = [],
-    menge,
     status = "",
     className = "",
     }) {
@@ -32,13 +30,13 @@ export default function ProductCard({
     }
 
     return (
-        <div className={`rounded-lg transition-all ease-in-out hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-white/20 will-change-transform overflow-hidden bg-BrandWhite ${className} h-fit md:h-[50vh] lg:h-[80vh] `}>
-            <div className="h-2/3 overflow-hidden">
+        <div className={`rounded-lg transition-all ease-in-out hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-white/20 will-change-transform overflow-hidden bg-BrandWhite shadow-md dark:shadow-white/15 h-[50vw] md:h-[30vw] ${className}`}>
+            <div className="h-3/5 overflow-hidden flex items-center">
                 {/* Produktbild */}
                 {bildUrls.length > 0 ? (
                     <Image
                     src={bildUrls[0]}
-                    className="w-full object-cover"
+                    className="w-full object-contain"
                     alt={name}
                     width={300}
                     height={200}
@@ -51,44 +49,35 @@ export default function ProductCard({
             </div>
 
             {/* Produktinformationen */}
-            <div className="px-4 py-3 flex flex-col justify-between h-1/3 relative">
+            <div className="px-4 py-1.5 md:py-3 flex flex-col justify-between h-2/5 relative">
                 <div>
-                    <h3 className="text-AppleBlue text-xl font-semibold mt-3">{name}</h3>
-                    {rabatt_prozent === 0 && 
-                    <p className="text-sm text-TextSec py-2">{beschreibung.substring(0, 60)}...</p>
-                    }
+                    <h3 className="text-AppleBlue text-[12px] md:text-lg font-semibold mt-0.5">{name}</h3>
                 </div>
                 {/* Preis & Rabatt */}
-                    {rabattiert && 
-                    <div className="my-4">
-                            <div className="flex items-center space-x-2">
-                                <span className="text-AppleRed font-bold text-lg">
-                                    {neuerPreis.toFixed(2)} €
-                                </span>
-                                <span className="text-gray-500 line-through">{preis.toFixed(2)} €</span>
-                                <span className="text-sm bg-red-100 text-AppleRed px-2 py-1 rounded">
-                                    -{rabatt_prozent.toFixed(0)}%
-                                </span>
-                            </div>
+                {rabattiert && 
+                <div className="space-x-1.5 md:space-x-2 md:pt-4 ">
+                    <span className="text-AppleRed font-bold text-[12px] md:text-lg">
+                        {neuerPreis.toFixed(2)} €
+                    </span>
+                    <span className="text-gray-500 text-[12px] line-through">{preis.toFixed(2)} €</span>
+                    <span className="hidden md:inline text-[12px] bg-red-100 text-AppleRed px-2 py-1 rounded">
+                        -{rabatt_prozent.toFixed(0)}%
+                    </span>
+                </div>
+                }
 
-                    </div>
-                    }
-
-                {/* Menge */}
-                <div className=" flex justify-between items-center text-sm">
+                {/* preis ohne rabatt */}
+                <div className=" flex justify-between items-center">
                     {!rabattiert &&
-                        <span className="text-black">{preis.toFixed(2)} €</span>
+                        <span className="text-black text-[12px]">{preis.toFixed(2)} €</span>
                     }
-                    {menge !== undefined && (
-                        <span className="text-gray-500">Menge: {menge}</span>
-                    )}
                 </div>
 
                 {/* Status */}
                 {status !== 'Verfügbar' &&
                     <div className="absolute ml-1 left-0 top-0 -translate-y-[110%] ">
                         <span
-                            className={`px-2 py-1 rounded-full text-sm text-nowrap  ${statusStyle}`}>
+                            className={`px-1 md:px-2 py-0.5 md:py-1 rounded-full text-[11px] text-nowrap  ${statusStyle}`}>
                             {status}
                         </span>
                     </div>

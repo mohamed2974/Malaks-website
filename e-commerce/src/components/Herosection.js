@@ -2,12 +2,33 @@
 
 import Header from '@/app/(User)/Header';
 import { TypeAnimation } from 'react-type-animation';
+import { useState, useEffect } from 'react';
 
 export default function HeroSec() {
+    const [isSticky, setIsSticky] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const heroSection = document.getElementById('stickyheader');
+            if (!heroSection) return;
+    
+            const heroTop = heroSection.getBoundingClientRect().top;
+            setIsSticky(heroTop <= 0);
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+    
+
     return (
         <>
-        <section className="pb-[10vh] md:pb-[13vh] lg:pb-[10vh] relative overflow-clip flex flex-col h-screen bg-gradient-to-tl from-NeonYellow to-yellow-700">
-            <Header className='mb-5' />
+        <section className="pb-[5vh] flex flex-col h-[70vh] md:h-[60vh] lg:h-[90vh] bg-gradient-to-tl from-NeonYellow to-yellow-700">
+            <Header className='mb-5 py-5'/>
+            <Header className={isSticky ? 'fixed left-0 top-0 px-GlobalXPad md:px-MdXPad lg:px-LgXPad bg-BgSec py-2' : 'fixed left-0 -top-[100px]'} />
             {/* <div className="mx-auto md:mx-0 text-center md:text-start z-10 md:w-3/5">
                 <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight text-TextPrim">Dein Style. Dein Case. Dein Statement.</h1>
                 <p className="text-TextSec text-lg my-8 min-h-24 md:min-h-16"><Typing /></p>
@@ -20,9 +41,10 @@ export default function HeroSec() {
                     </button>
                 </div>
             </div> */}
-            <div className='hidden md:inline-block h-3/4 w-full z-10 bg-slate-200 rounded-2xl'>
-
+            <div className='flex items-center justify-center h-full w-full z-10 bg-slate-200 rounded-2xl'>
+                bild
             </div>
+            <span id='stickyheader'></span>
         </section>
         </>
     );

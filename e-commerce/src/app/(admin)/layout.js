@@ -5,7 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import { Providers } from "@/utils/providers";
 import { SessionProvider } from "next-auth/react"; // Importieren des SessionProviders
-import Header from "./(admin)/Header";
+import Header from "@/app/(admin)/Header";
 import Aside from "./dashboard/Aside";
 import { TbFaceIdError } from "react-icons/tb";
 

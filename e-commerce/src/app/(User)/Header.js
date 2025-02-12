@@ -11,9 +11,9 @@ import Uls from "@/utils/ULs-component";
 import MobileNav from '@/utils/MobileNav-component'
 
 const nav = [
-    <Link href='/' key='link1'>Startseite</Link>,
+    <Link href='/home' key='link1'>Startseite</Link>,
     <Link href='/shop' key='link2'>Shop</Link>,
-    <Link href='/' key='link3'>Link 3</Link>,
+    <Link href='/' key='link3'>Kontakt</Link>,
     <Link href='/' key='link4'>Link 4</Link>,
 ];
 
@@ -36,7 +36,7 @@ export default function Header({className}) {
 
     // Nur wenn mounted, dann rendern
     return (
-        <header className={`flex flex-row justify-between items-center w-full z-50 transition-all duration-300 ease-in-out py-5 text-xl ${className}`}>
+        <header className={`flex flex-row justify-between items-center w-full z-50 transition-all duration-300 ease-in-out text-xl ${className}`}>
             {/* Logo */}
             <div className="w-1/6">
                 <h1>Logo</h1>

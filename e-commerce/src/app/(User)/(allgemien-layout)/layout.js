@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
             <body className={`${geistSans.variable} ${geistMono.variable} transition-all antialiased`}>
                 <Providers>
                     <AnnouncementBar />
-                    <Header className='px-GlobalXPad md:px-MdXPad lg:px-LgXPad bg-BgSec sticky top-0'/>
+                    <Header className='px-GlobalXPad md:px-MdXPad lg:px-LgXPad bg-BgSec sticky top-0 py-2'/>
                     <main>
                         {children}
                     </main>
