@@ -12,10 +12,16 @@ export async function POST(req) {
 
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
+            shipping_address_collection: {
+                allowed_countries: ['DE'], // passe die Länder nach Bedarf an
+            },
             line_items: items.map((item) => ({
                 price_data: {
                     currency: 'eur',
-                    product_data: { name: item.name },
+                    product_data: { 
+                        name: item.name,
+                        // Falls du weitere Produktdetails hast:
+                    },
                     unit_amount: item.price * 100, // Preis in Cent
                 },
                 quantity: item.quantity,
