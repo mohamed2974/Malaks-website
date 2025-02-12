@@ -1,6 +1,6 @@
 'use client'
 
-import AlleProdukte from "./AlleProdukte"
+import AlleProdukte from "@/components/AlleProdukte"
 
 export default function Shop() {
     return (

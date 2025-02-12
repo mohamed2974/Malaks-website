@@ -10,8 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="de">
-            <body className={`${geistSans.variable} ${geistMono.variable} transition-all antialiased`}>
-                <SpeedInsights/>
+            <body className={` transition-all antialiased`}>
             </body>
         </html>
     );
