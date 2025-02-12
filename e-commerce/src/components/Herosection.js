@@ -28,7 +28,7 @@ export default function HeroSec() {
         <>
         <section className="pb-[5vh] flex flex-col h-[70vh] md:h-[60vh] lg:h-[90vh] bg-gradient-to-tl from-NeonYellow to-yellow-700">
             <Header className='mb-5 py-5'/>
-            <Header className={isSticky ? 'fixed left-0 top-0 px-GlobalXPad md:px-MdXPad lg:px-LgXPad bg-BgSec py-2' : 'fixed left-0 -top-[100px]'} />
+            <Header className={`${isSticky ? 'fixed left-0 top-0 px-GlobalXPad md:px-MdXPad lg:px-LgXPad bg-BgSec py-2' : 'fixed left-0 -top-[100px]'}`} />
             {/* <div className="mx-auto md:mx-0 text-center md:text-start z-10 md:w-3/5">
                 <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight text-TextPrim">Dein Style. Dein Case. Dein Statement.</h1>
                 <p className="text-TextSec text-lg my-8 min-h-24 md:min-h-16"><Typing /></p>
