@@ -3,7 +3,7 @@
 import { BsBrightnessHighFill } from "react-icons/bs";
 import { MdNightlight } from "react-icons/md";
 import { useTheme } from "next-themes";
-import LogoutButton from "@/app/(admin)/dashboard/Logout";
+import LogoutButton from "./dashboard/Logout";
 
 
 export default function Header(){
