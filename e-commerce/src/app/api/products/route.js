@@ -1,12 +1,15 @@
-import { neon } from '@neondatabase/serverless';
+import sql from '@/lib/neon-DB';
 
 export async function GET() {
   try {
-    const sql = neon(process.env.DATABASE_URL); // Verbindung zur Neon-Datenbank mit Umgebungsvariable
     const result = await sql`SELECT * FROM produkte LIMIT 10`; // Abfrage
+    
     return new Response(JSON.stringify(result), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 's-maxage=600, stale-while-revalidate', // Cache für 10 Minuten
+      },
     });
   } catch (error) {
     console.error('Fehler bei der GET-Anfrage:', error);

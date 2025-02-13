@@ -4,11 +4,13 @@ import { useState, useEffect, useRef  } from 'react';
 import { LuPackageOpen } from "react-icons/lu";
 
 export default function Page() {
+  
   //* produkt Bild ##########
   const inputFileRef = useRef(null);
   const inputFileRefTitelbild = useRef(null); // Ref für Titelbild
   const [blobUrls, setBlobUrls] = useState([]); // Speichert mehrere Bild-URLs
-  const [bildUrl, setBildUrl] = useState(''); // Speichert die Bild-URL nach Upload
+
+  const [bildUrl, setBildUrl] = useState(''); //? nur wichtig wenn man bild zeigen will ansonsten überflüssig
 
   //* produkt daten ##########
   const [name, setName] = useState('');
