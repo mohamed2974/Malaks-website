@@ -2,6 +2,8 @@
 
 import { ThemeProvider } from "next-themes";
 import { useEffect, useState } from "react";
+import { SessionProvider } from "next-auth/react"; // Importieren des SessionProviders
+
 
 export function Providers({ children }) {
     const [mounted, setMounted] = useState(false);
@@ -16,7 +18,9 @@ export function Providers({ children }) {
 
     return (
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
+            <SessionProvider>
+                {children}
+            </SessionProvider>
         </ThemeProvider>
     );
 }
