@@ -1,18 +1,14 @@
 import Image from "next/image";
+import finalpreis from "./functions/finalpreis";
 
-export default function ProductCard({
-    name = "",
-    preis,
-    rabatt_prozent = 0,
-    bildUrls = [],
-    status = "",
-    className = "",
-    }) {
+export default function ProductCard({produkt}) {
+    let { name, preis = 0, rabatt_prozent, status, bild_urls } = produkt 
+
     preis = parseFloat(preis)
-    rabatt_prozent = parseFloat(rabatt_prozent)
+    rabatt_prozent = parseFloat(rabatt_prozent || 0)
 
     const rabattiert = rabatt_prozent > 0;
-    const neuerPreis = rabattiert ? preis * (1 - rabatt_prozent / 100) : preis;
+    const neuerPreis = rabattiert ? finalpreis(produkt) : preis;
 
     let statusStyle
     switch (status) {
@@ -30,12 +26,12 @@ export default function ProductCard({
     }
 
     return (
-        <div className={`rounded-lg transition-all ease-in-out hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-white/20 will-change-transform overflow-hidden bg-BrandWhite shadow-md dark:shadow-white/15 h-[50vw] md:h-[30vw] ${className}`}>
+        <div className={`rounded-lg transition-all ease-in-out hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-white/20 will-change-transform overflow-hidden bg-BrandWhite shadow-md dark:shadow-white/15 h-[50vw] md:h-[30vw] lg:h-[25vw]`}>
             <div className="h-3/5 overflow-hidden flex items-center">
                 {/* Produktbild */}
-                {bildUrls.length > 0 ? (
+                {bild_urls.length > 0 ? (
                     <Image
-                    src={bildUrls[0]}
+                    src={bild_urls[0]}
                     className="w-full object-contain"
                     alt={name}
                     width={300}

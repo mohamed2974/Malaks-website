@@ -37,14 +37,7 @@ export default function Produktekarten({sliceparam = ''}) {
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
                 {produkte.slice(...sliceparam).reverse().map((produkt, index) => (
                     <Link href={`/shop/${produkt.id}`} passHref key={index}>
-                        <Card 
-                            name={produkt.name}
-                            preis={produkt.preis}
-                            rabatt_prozent={produkt.rabatt_prozent}
-                            bildUrls={produkt.bild_urls}
-                            status={produkt.status} 
-                            className=""
-                        />
+                        <Card produkt={produkt}/>
                     </Link>
                 ))}
             </div>
