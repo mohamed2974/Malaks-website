@@ -25,17 +25,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="de">
-            <body className={`${geistSans.variable} ${geistMono.variable} transition-all antialiased`}>
-                <Providers>
-                    <AnnouncementBar />
-                    <Header className='px-GlobalXPad md:px-MdXPad lg:px-LgXPad bg-BgSec sticky top-0 py-2'/>
-                    <main>
-                        {children}
-                    </main>
-                    <Footer />
-                </Providers>
-            </body>
-        </html>
+        <Providers>
+            <AnnouncementBar />
+            <Header className='px-GlobalXPad md:px-MdXPad lg:px-LgXPad bg-BgSec sticky top-0 py-2'/>
+            <main>
+                {children}
+            </main>
+            <Footer />
+        </Providers>
     );
 }

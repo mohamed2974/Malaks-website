@@ -3,10 +3,10 @@ import finalpreis from "./functions/finalpreis";
 
 export default function ProductCard({produkt}) {
     let { name, preis = 0, rabatt_prozent, status, bild_urls } = produkt 
-
+    
     preis = parseFloat(preis)
     rabatt_prozent = parseFloat(rabatt_prozent || 0)
-
+    
     const rabattiert = rabatt_prozent > 0;
     const neuerPreis = rabattiert ? finalpreis(produkt) : preis;
 
