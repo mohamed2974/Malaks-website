@@ -8,7 +8,7 @@ export async function GET() {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': 's-maxage=600, stale-while-revalidate', // Cache für 10 Minuten
+        'Cache-Control': 's-maxage=600, stale-while-revalidate', // Cache für 10 Minuten => 1800
       },
     });
   } catch (error) {
