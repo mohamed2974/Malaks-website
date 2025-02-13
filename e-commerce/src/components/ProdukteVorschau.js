@@ -1,5 +1,6 @@
 'use client';
 import Card from "@/utils/Card-component";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { LinearGradient } from 'react-text-gradients'
 
@@ -44,17 +45,18 @@ export default function Produkte() {
                 </div>
                 ) : (
                 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {produkte.slice(0,8).map((produkt, index) => (
-                        <Card 
-                            key={index}
-                            name={produkt.name}
-                            preis={produkt.preis}
-                            rabatt_prozent={produkt.rabatt_prozent}
-                            bildUrls={produkt.bild_urls}
-                            status={produkt.status} 
-                            className=""
-                        />
-                    )).reverse()}
+                    {produkte.slice(0,8).reverse().map((produkt, index) => (
+                        <Link href={`/shop/${produkt.id}`} passHref key={index}>
+                            <Card 
+                                name={produkt.name}
+                                preis={produkt.preis}
+                                rabatt_prozent={produkt.rabatt_prozent}
+                                bildUrls={produkt.bild_urls}
+                                status={produkt.status} 
+                                className=""
+                            />
+                        </Link>
+                    ))}
                 </div>
             )}
         </section>
