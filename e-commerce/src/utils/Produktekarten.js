@@ -44,7 +44,7 @@ export default function Produktekarten({sliceparam = '', behave = 'normal'}) {
     let displayStyle
     switch (behave) {
         case 'normal':
-            displayStyle = 'grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6'
+            displayStyle = 'grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 lg:gap-6'
             break;
         case 'scrollbar':
             displayStyle = 'keen-slider h-fit'
