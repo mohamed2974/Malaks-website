@@ -8,7 +8,7 @@ export default function Beforafterimg() {
     const SECOND_IMAGE = 'https://smeleshkin.github.io/react-before-after-slider-component//assets/image1.jpg';
 
     return (
-        <section className='mx-auto w-5/6 '>
+        <section className='mx-auto xl:w-5/6 '>
             <div className='rounded-3xl overflow-hidden'>
                 <ReactCompareImage leftImage={FIRST_IMAGE} rightImage={SECOND_IMAGE} />
             </div>
