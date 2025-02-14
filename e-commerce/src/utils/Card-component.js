@@ -13,7 +13,7 @@ export default function ProductCard({produkt}) {
     let statusStyle
     switch (status) {
         case 'Nicht Verfügbar':
-            statusStyle = 'bg-gray-100 text-gray-600'
+            statusStyle = 'bg-gray-100 text-gray-600 capitalize'
             break;
         case 'Neu':
             statusStyle = 'bg-green-100 text-FreshGreen uppercase'
@@ -27,7 +27,7 @@ export default function ProductCard({produkt}) {
 
     return (
         <div className={`rounded-lg transition-all ease-in-out hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-white/20 will-change-transform overflow-hidden bg-BrandWhite shadow-md dark:shadow-white/15 h-[50vw] md:h-[30vw] lg:h-[25vw]`}>
-            <div className="h-3/5 overflow-hidden flex items-center">
+            <div className="h-2/3 md:h-3/5 lg:h-2/3 overflow-hidden flex items-center">
                 {/* Produktbild */}
                 {bild_urls.length > 0 ? (
                     <Image
@@ -45,32 +45,35 @@ export default function ProductCard({produkt}) {
             </div>
 
             {/* Produktinformationen */}
-            <div className="px-4 py-1.5 md:py-3 flex flex-col justify-between h-2/5 relative">
+            <div className="h-fit md:h-2/5 lg:h-1/3 px-4 py-1.5 md:py-3 flex flex-col justify-between relative">
                 <div>
-                    <h3 className="text-AppleBlue text-[12px] md:text-lg font-semibold mt-0.5">{name}</h3>
+                    <h3 className="text-AppleBlue text-[12px] md:text-lg font-semibold mt-0.5 truncate">
+                        {name}
+                    </h3>
                 </div>
+
                 {/* Preis & Rabatt */}
-                {rabattiert && 
-                <div className="space-x-1.5 md:space-x-2 md:pt-4 ">
+                {rabattiert ?
+                <div className="space-x-1.5 md:space-x-2 truncate">
                     <span className="text-AppleRed font-bold text-[12px] md:text-lg">
-                        {neuerPreis.toFixed(2)} €
+                        {neuerPreis} €
                     </span>
                     <span className="text-gray-500 text-[12px] line-through">{preis.toFixed(2)} €</span>
                     <span className="hidden md:inline text-[12px] bg-red-100 text-AppleRed px-2 py-1 rounded">
                         -{rabatt_prozent.toFixed(0)}%
                     </span>
-                </div>
-                }
-
-                {/* preis ohne rabatt */}
-                <div className=" flex justify-between items-center">
+                </div> :
+                // preis ohne rabatt
+                <div>
                     {!rabattiert &&
                         <span className="text-black text-[12px]">{preis.toFixed(2)} €</span>
                     }
                 </div>
+                }
+
 
                 {/* Status */}
-                {status !== 'Verfügbar' &&
+                {status.toLowerCase() !== 'verfügbar'  &&
                     <div className="absolute ml-1 left-0 top-0 -translate-y-[110%] ">
                         <span
                             className={`px-1 md:px-2 py-0.5 md:py-1 rounded-full text-[11px] text-nowrap  ${statusStyle}`}>

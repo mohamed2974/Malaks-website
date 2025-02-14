@@ -58,7 +58,6 @@ export async function POST(request) {
   }
 
   try {
-    const sql = neon(process.env.DATABASE_URL); // Verbindung zur Neon-Datenbank mit Umgebungsvariable
     await sql`
       INSERT INTO produkte 
         (name, beschreibung, preis, menge, kategorie, lagerort, status, hersteller, gewicht, rabatt_prozent, bild_urls) 

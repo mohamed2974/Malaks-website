@@ -13,7 +13,9 @@ export default function Produkte() {
                 </h1>
                 <p className="text-gray-600 dark:text-gray-400 mt-2">Entdecke unsere neuesten Angebote</p>
             </div>
-            <Produktekarten sliceparam={[0,8]} />
+            <div>
+                <Produktekarten sliceparam={[0,8]} behave='scrollbar' />
+            </div>
         </section>
     );
 }

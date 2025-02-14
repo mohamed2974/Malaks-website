@@ -6,5 +6,5 @@ export default function finalpreis(produkt) {
 
     const finalPrice = preis * (1 - rabatt_prozent / 100);
 
-    return finalPrice;
+    return finalPrice.toFixed(2);
 }
