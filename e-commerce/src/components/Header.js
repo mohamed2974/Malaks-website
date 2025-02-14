@@ -11,10 +11,10 @@ import Uls from "@/utils/ULs-component";
 import MobileNav from '@/utils/MobileNav-component'
 
 const nav = [
-    <Link href='/home' key='link1'>Startseite</Link>,
-    <Link href='/shop' key='link2'>Shop</Link>,
-    <Link href='/' key='link3'>Kontakt</Link>,
-    <Link href='/' key='link4'>Link 4</Link>,
+    <Link href='/home' key='link1' className="w-full text-center">Startseite</Link>,
+    <Link href='/shop' key='link2' className="w-full text-center">Shop</Link>,
+    <Link href='/' key='link3' className="w-full text-center">Kontakt</Link>,
+    <Link href='/' key='link4' className="w-full text-center">Link 4</Link>,
 ];
 
 export default function Header({className}) {

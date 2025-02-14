@@ -83,7 +83,7 @@ export default function DrawerMobileNavigation({array = [], boxes = []}) {
                 component="nav"
                 sx={{
                     flex: 'none',
-                    fontSize: 'xl',
+                    fontSize: 'lg',
                     '& > div': { justifyContent: 'center' },
                 }}
                 >
@@ -93,7 +93,7 @@ export default function DrawerMobileNavigation({array = [], boxes = []}) {
             </List>
             {boxes.length > 0 && (
                     <Box sx={{ padding: 2, marginTop: 1}}>
-                        <Typography variant="h6" sx={{ mb: 1 }}>Additional Options</Typography>
+                        <Typography variant="h6" sx={{ mb: 1 }}>weitere links</Typography>
                         <div className='flex flex-row justify-start'>
                             {boxes.map((item, index) => (
                                 <ListItemButton onClick={handleClose} key={index} sx={{ fontWeight: 'lg'}}>

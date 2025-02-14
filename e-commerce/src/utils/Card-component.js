@@ -26,13 +26,13 @@ export default function ProductCard({produkt}) {
     }
 
     return (
-        <div className={`rounded-lg transition-all ease-in-out hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-white/20 will-change-transform overflow-hidden bg-BrandWhite shadow-md dark:shadow-white/15 h-[60vw] md:h-[40vw] lg:h-[25vw]`}>
-            <div className="h-2/3 md:h-3/5 lg:h-2/3 overflow-hidden flex items-center">
+        <div className={`rounded-lg transition-all ease-in-out hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-white/20 will-change-transform overflow-hidden bg-BrandWhite shadow-md dark:shadow-white/15 h-[70vw] md:h-[42vw] lg:h-[31vw]`}>
+            <div className="h-3/4 md:h-3/5 lg:h-2/3 overflow-hidden flex items-center">
                 {/* Produktbild */}
                 {bild_urls.length > 0 ? (
                     <Image
                     src={bild_urls[0]}
-                    className="w-full object-contain"
+                    className="w-full h-full object-cover"
                     alt={name}
                     width={300}
                     height={200}
@@ -45,9 +45,9 @@ export default function ProductCard({produkt}) {
             </div>
 
             {/* Produktinformationen */}
-            <div className="h-1/3 md:h-2/5 lg:h-1/3 px-4 py-1.5 md:py-3 flex flex-col justify-between relative">
+            <div className="h-1/4 md:h-2/5 lg:h-1/3 px-4 py-1.5 md:py-2 flex flex-col justify-between relative">
                 <div>
-                    <h3 className="text-AppleBlue text-sm md:text-lg font-semibold mt-0.5 truncate md:whitespace-normal">
+                    <h3 className="text-AppleBlue text-sm md:text-lg font-semibold truncate md:whitespace-normal">
                         {name}
                     </h3>
                 </div>
