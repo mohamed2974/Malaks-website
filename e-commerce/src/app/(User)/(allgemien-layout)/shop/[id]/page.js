@@ -46,20 +46,26 @@ export default function ProduktDetail() {
         </div>
         {/* Detailbereich */}
         <div className="flex flex-col justify-center">
-          <h1 className="text-4xl font-bold mb-4">{name}</h1>
-          <p className="text-gray-700 mb-6">{beschreibung}</p>
+          {/* name & beschreibung */}
+          <div>
+            <h1 className="text-4xl font-bold mb-4">{name}</h1>
+            <p className="text-gray-500 mb-6">{beschreibung}</p>
+          </div>
+          {/* preis */}
           <div className="mb-6 flex items-center space-x-4">
-            <span className="text-2xl font-semibold text-AppleRed">{endpreis}€</span>
-            {rabatt_prozent > 0 && (
+            {rabatt_prozent > 0 ? (
               <>
+              <span className="text-2xl font-semibold text-AppleRed">{endpreis}€</span>
               <span className="text-sm ml-3 line-through text-gray-500">{preis}€</span>
               <span className="hidden md:inline text-[12px] bg-red-100 text-AppleRed px-2 py-1 rounded">
                 -{rabatt_prozent.toFixed(0)}%
               </span>
               </>
+            ) : (
+              <span className="text-lg font-semibold text-TextSec">{endpreis}€</span>
             )}
           </div>
-          <button className="bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700 transition">
+          <button className="bg-blue-600 text-white py-2 px-3 w-fit rounded hover:bg-blue-700 transition">
             In den Warenkorb
           </button>
         </div>
