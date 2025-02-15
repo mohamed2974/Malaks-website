@@ -25,7 +25,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-[50vh] flex justify-center items-center">
       <div className="rounded-xl border border-TextSec flex flex-col text-center py-5 px-10 bg-BgSec">
         <h1 className="mb-8 text-xl">Login</h1>
         <form onSubmit={handleLogin} className="flex flex-col justify-center text-start">

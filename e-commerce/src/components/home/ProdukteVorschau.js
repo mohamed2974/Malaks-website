@@ -1,5 +1,5 @@
 import { LinearGradient } from 'react-text-gradients'
-import Produktekarten from '../utils/Produktekarten';
+import Produktekarten from '../../utils/Produktekarten';
 
 export default function Produkte() {
     return (

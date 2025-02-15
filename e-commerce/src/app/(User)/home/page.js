@@ -1,9 +1,9 @@
-import HeroSec from "@/components/Herosection";
-import Produkte from "@/components/ProdukteVorschau";
+import HeroSec from "@/components/home/Herosection";
+import Produkte from "@/components/home/ProdukteVorschau";
 import FAQ from "@/components/Fragen";
-import Beforafterimg from "@/components/Beforafterimg";
+import Beforafterimg from "@/components/home/Beforafterimg";
 import Vorteile from "@/components/Vorteile";
-import Qualitaet from "@/components/Qualitaet";
+import Qualitaet from "@/components/home/Qualitaet";
 import Kategorien from "@/components/Kategorien";
 
 export default function Home() {

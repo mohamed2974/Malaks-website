@@ -2,8 +2,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import { Providers } from "@/utils/providers";
-import Header from "@/components/AdminHeader";
-import Aside from "../../components/Aside";
+import Header from "@/components/layout/admin/AdminHeader";
+import Aside from "../../components/layout/admin/Aside";
 import { TbFaceIdError } from "react-icons/tb";
 
 const geistSans = Geist({

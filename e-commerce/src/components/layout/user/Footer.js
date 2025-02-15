@@ -1,5 +1,5 @@
-import Uls from '../utils/ULs-component'
-import SocialMedia from '../utils/Social-component'
+import Uls from '@/utils/ULs-component'
+import SocialMedia from '@/utils/Social-component'
 import owner from '@/data/owner'
 
 export default function Footer() {

@@ -1,6 +1,6 @@
 'use client'
 
-import Header from '@/components/Header';
+import Header from '@/components/layout/user/Header';
 import { TypeAnimation } from 'react-type-animation';
 import { useState, useEffect } from 'react';
 
