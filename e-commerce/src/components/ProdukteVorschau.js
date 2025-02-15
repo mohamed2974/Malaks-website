@@ -3,7 +3,7 @@ import Produktekarten from '../utils/Produktekarten';
 
 export default function Produkte() {
     return (
-        <section className="py-20">
+        <section>
             {/* Header */}
             <div className="text-center mb-10">
                 <h1 className="text-4xl font-bold">

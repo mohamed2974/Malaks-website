@@ -25,8 +25,7 @@ export default function HeroSec() {
     
 
     return (
-        <>
-        <section className="pb-[5vh] flex flex-col h-[70vh] md:h-[60vh] lg:h-[90vh] bg-gradient-to-tl from-NeonYellow to-yellow-700">
+        <div className="px-GlobalXPad md:px-MdXPad lg:px-LgXPad pb-[5vh] flex flex-col h-[70vh] md:h-[60vh] lg:h-[90vh] bg-gradient-to-tl from-NeonYellow to-yellow-700">
             <Header className='mb-5 py-5'/>
             <Header className={`${isSticky ? 'fixed left-0 top-0 px-GlobalXPad md:px-MdXPad lg:px-LgXPad bg-BgSec py-2' : 'fixed left-0 -top-[100px]'}`} />
             {/* <div className="mx-auto md:mx-0 text-center md:text-start z-10 md:w-3/5">
@@ -45,8 +44,7 @@ export default function HeroSec() {
                 bild
             </div>
             <span id='stickyheader'></span>
-        </section>
-        </>
+        </div>
     );
 };
 

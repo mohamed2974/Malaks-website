@@ -45,6 +45,8 @@ aside {
 
 section {
   padding: 0 var(--global-x-padding);
+  padding-bottom: 2.5rem;
+  padding-top: 3rem;
 }
 
 th {
@@ -58,12 +60,16 @@ td {
 @media (width >= 48rem) {
   section {
     padding: 0 var(--md-x-padding);
+    padding-bottom: 2.5rem;
+    padding-top: 5rem;
   }
 }
 
 @media (width >= 64rem) {
   section {
     padding: 0 var(--lg-x-padding);
+    padding-bottom: 2.5rem;
+    padding-top: 5rem;
   }
 }
 
