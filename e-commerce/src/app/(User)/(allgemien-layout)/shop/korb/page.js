@@ -3,17 +3,18 @@ import { useCartStore } from '@/lib/store/cartStore';
 import CheckoutButton from '@/utils/CheckoutButton-component';
 import finalpreis from '@/utils/functions/finalpreis';
 import Image from 'next/image';
+import { BsEmojiAstonished } from "react-icons/bs";
 
 export default function CartPage() {
     const { cart, removeFromCart, clearCart } = useCartStore();
 
     return (
-        <section className='min-h-screen'>
-            <div className='text-center'>
-                <h1 className="text-2xl font-bold my-6">🛒 Warenkorb</h1>
-                {cart.length === 0 && <p>Dein Warenkorb ist leer.</p>}
+        <section className=''>
+            <div className="flex items-center gap-2 my-6">
+                <span className="text-5xl">🛒</span>
+                <h1 className="text-4xl font-bold">Warenkorb</h1>
             </div>
-            {cart.length !== 0 && (
+            {cart.length !== 0 ? (
                 <>
                     <ul className="bg-white shadow-md rounded-lg p-4">
                         {cart.map((item, index) => (
@@ -53,6 +54,21 @@ export default function CartPage() {
                         </button>
                     </div>
                 </>
+            ) : (
+                <div className="h-[50vh] flex flex-col justify-center items-center text-gray-600">
+                    {cart.length === 0 && (
+                        <div className="text-center space-y-4">
+                            <span className="flex justify-center text-7xl text-gray-500"><BsEmojiAstonished /></span>
+                            <p className="text-lg font-medium">Dein Warenkorb ist leer.</p>
+                            <button 
+                                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md transition duration-200 shadow-md"
+                                onClick={() => window.location.href = '/shop'} // Beispiel-Link zur Shop-Seite
+                            >
+                                Produkte ansehen
+                            </button>
+                        </div>
+                    )}
+                </div>
             )}
         </section>
     );

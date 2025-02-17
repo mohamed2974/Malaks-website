@@ -30,7 +30,7 @@ const AddToCart = ({ product, gekaufteMenge }) => {
                 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}
             `}
         >
-            {isLoading ? '⏳...' : isAdded ? '✅ Hinzugefügt!' : '🛒 In den Warenkorb'}
+            {isLoading ? '⏳...' : isAdded ? 'Hinzugefügt!' : '🛒 In den Warenkorb'}
         </button>
     );
 };

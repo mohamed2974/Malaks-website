@@ -23,7 +23,7 @@ export default function CategoryGrid() {
             </h1>
             <p className="text-gray-600 dark:text-gray-400 mt-2">Finde dein perfektes AirPods Case in unseren vielfältigen Kategorien.</p>
         </div>
-        <div  className="grid grid-cols-3 gap-4">
+        <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-4 gap-y-4">
             {categories.map((category) => (
                 <div
                 key={category.name}
