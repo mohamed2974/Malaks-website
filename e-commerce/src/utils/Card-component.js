@@ -10,6 +10,10 @@ export default function ProductCard({produkt}) {
     const rabattiert = rabatt_prozent > 0;
     const neuerPreis = rabattiert ? finalpreis(produkt) : preis;
 
+    if (parseFloat(produkt.menge) === 0){
+        status = 'Nicht Verfügbar'
+    }
+
     let statusStyle
     switch (status) {
         case 'Nicht Verfügbar':

@@ -23,7 +23,10 @@ export default function Header({className}) {
 
     const buttons = [
         <ThemeSwitch key={1} setTheme={setTheme} theme={theme}/>,
-        <CgShoppingBag key={2} className="text-3xl" /> 
+        <Link href='/shop/korb' key={2} className="flex items-center">
+            <CgShoppingBag className="text-3xl" /> 
+        </Link>
+
     ]
 
     useEffect(() => {
@@ -52,7 +55,7 @@ export default function Header({className}) {
                 {/* theme switcher */}
                 <ThemeSwitch setTheme={setTheme} theme={theme}/>
                 {/* warenkorb */}
-                <Link href='/' className="flex items-center">
+                <Link href='/shop/korb' className="flex items-center">
                     <CgShoppingBag className="text-3xl" /> 
                 </Link>
             </div>

@@ -1,8 +1,9 @@
 // app/api/products/[id]/route.js
 import sql from '@/lib/neon-DB';  // Importiere die Neon-Verbindung
 
-export async function GET(request, { params }) {
-  const { id } = params; // Holen der Produkt-ID aus der URL
+export async function GET(request, context) {
+    const { params } = context; // ✅ context verwenden
+    const { id } = await params;
 
     try {
         // Führe eine SQL-Abfrage aus, um das Produkt anhand der ID zu finden

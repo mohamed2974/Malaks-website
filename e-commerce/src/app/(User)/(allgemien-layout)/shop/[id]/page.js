@@ -1,14 +1,17 @@
 // app/shop/[id]/page.js
 'use client'
 
+import AddToCart from '@/components/store/AddToCart';
 import finalpreis from '@/utils/functions/finalpreis';
 import Image from 'next/image';
 import { useParams } from 'next/navigation'; // Verwende useParams statt useRouter
 import { useEffect, useState } from 'react';
+import { FaPlus, FaMinus } from "react-icons/fa6";
 
 export default function ProduktDetail() {
   const { id } = useParams(); // Hole die dynamische ID aus den Routenparametern
   const [produkt, setProdukt] = useState(null);
+  const [gekaufteMenge, setGekaufteMenge] = useState(1)
   const [schaubild, setSchaubild] = useState()
 
   useEffect(() => {
@@ -30,6 +33,17 @@ export default function ProduktDetail() {
   preis = parseFloat(preis)
   rabatt_prozent = parseFloat(rabatt_prozent || 0)
   const endpreis = finalpreis(produkt);
+  
+  const handleadd = () => {
+    setGekaufteMenge(gekaufteMenge + 1)
+  }
+  const handlesub = () => {
+    if (1 >= gekaufteMenge){
+      setGekaufteMenge(1)
+      return
+    }
+    setGekaufteMenge(gekaufteMenge - 1)
+  }
   
   return (
     <section className="container mx-auto py-20">
@@ -65,9 +79,23 @@ export default function ProduktDetail() {
               <span className="text-lg font-semibold text-TextSec">{endpreis}€</span>
             )}
           </div>
-          <button className="bg-blue-600 text-white py-2 px-3 w-fit rounded hover:bg-blue-700 transition">
-            In den Warenkorb
-          </button>
+          {/* menge wählen */}
+          <div className='flex flex-row mb-10'>
+            <button className='p-1 bg-slate-300 rounded-full' onClick={handleadd}><FaPlus /></button>
+            <p className='mx-4'>{gekaufteMenge}</p>
+            <button className='p-1 bg-slate-300 rounded-full' onClick={handlesub}><FaMinus /></button>
+          </div>
+          {parseFloat(produkt.menge) === 0 && (
+          <div className="bg-red-100 border-l-4 border-red-500 p-4 rounded-lg mb-5">
+            <p className="text-red-800 font-semibold">
+              <span className="mr-2">🚨</span> Nicht auf Lager
+            </p>
+            <p className="text-red-700 text-sm">
+              Dieses Produkt ist derzeit nicht verfügbar. Deine Bestellung wird angenommen, aber der Versand verzögert sich. Wir benachrichtigen dich, sobald es wieder auf Lager ist.
+            </p>
+          </div>
+          )}
+          <AddToCart product={produkt} gekaufteMenge={gekaufteMenge} />
         </div>
       </div>
     </section>
