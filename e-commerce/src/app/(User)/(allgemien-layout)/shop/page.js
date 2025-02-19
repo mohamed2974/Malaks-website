@@ -15,7 +15,7 @@ export default function Shop() {
                 <p className="text-gray-600 dark:text-gray-400 mt-2">Hier findest du alle produkte</p>
             </div>
             <Filter selectedFilters={selectedFilters} reslength={reslength} setSelectedFilters={setSelectedFilters} />
-            <Produktekarten filter={selectedFilters} reslength={reslength} setReslength={setReslength} />
+            <Produktekarten filter={selectedFilters} setReslength={setReslength} />
             </section>
     )
 }

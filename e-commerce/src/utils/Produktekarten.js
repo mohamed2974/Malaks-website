@@ -2,17 +2,16 @@
 
 import Card from "@/utils/Card-component";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { FaArrowRight } from "react-icons/fa6";
 import { FaArrowLeft } from "react-icons/fa6";
 
-export default function Produktekarten({sliceparam = '', behave = 'normal', filter = [], setReslength}) {
+export default function Produktekarten({sliceparam = '', behave = 'normal', filter = [], setReslength }) {
     //* Produkte abrufen ####################################################
     const [produkte, setProdukte] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [filtrierteProdukte, setFiltrierteProdukte] = useState([]);  // Hier für gefilterte Produkte
 
     useEffect(() => {
         fetch('/api/products')
@@ -27,20 +26,21 @@ export default function Produktekarten({sliceparam = '', behave = 'normal', filt
             });
     }, []);
 
+    const filtrierteProdukte = useMemo(() => {
+        if (produkte.length === 0) return [];
+    
+        return [...produkte] // Kopie des Arrays erstellen, um `reverse()` sicher zu nutzen
+            .slice(...sliceparam)
+            .reverse()
+            .filter(produkt =>
+                filter.length === 0 || filter.some(f => produkt.kategorie.includes(f))
+            );
+    }, [produkte, sliceparam, filter]);
+    
     useEffect(() => {
-        if (produkte.length > 0) {
-            const filtered = produkte
-                .slice(...sliceparam)  // Hier wird das slice angewendet
-                .reverse()
-                .filter(produkt =>
-                    filter.length === 0 || filter.some(f => produkt.kategorie.includes(f))
-                );
-
-            setFiltrierteProdukte(filtered); // Hier wird der Zustand aktualisiert
-            setReslength(filtered.length);  // Update der Länge
-        }
-    }, [produkte, sliceparam, filter, setReslength]);  // Abhängig von den Filter- und Sliceparam
-
+        if (setReslength) setReslength(filtrierteProdukte.length);
+    }, [filtrierteProdukte, setReslength]);
+    
 
     const [sliderRef] = useKeenSlider({
         loop: true,
