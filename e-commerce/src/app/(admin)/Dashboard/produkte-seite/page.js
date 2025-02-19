@@ -2,9 +2,12 @@
 
 import { useState, useEffect, useRef  } from 'react';
 import { LuPackageOpen } from "react-icons/lu";
+import Select from "react-select";
+import {kategorieOptionen} from '@/data/kategorieOptionen'
 
 export default function Page() {
-  
+
+
   //* produkt Bild ##########
   const inputFileRef = useRef(null);
   const inputFileRefTitelbild = useRef(null); // Ref für Titelbild
@@ -141,7 +144,15 @@ export default function Page() {
           </div>
           <div className='flex flex-col'>
             <label htmlFor='kategorie' className='mb-2'>Kategorie</label>
-            <input className="p-3 rounded-md bg-BgSec" id='kategorie' type="text" value={kategorie} onChange={handleChange(setKategorie)} required/>
+            <Select
+              isMulti
+              options={kategorieOptionen}
+              className="basic-multi-select p-1.5 rounded-md bg-BgSec" 
+              id='kategorie'
+              classNamePrefix="select"
+              value={kategorieOptionen.filter(option => kategorie.includes(option.value))}
+              onChange={(selectedOptions) => setKategorie(selectedOptions.map(option => option.value))}
+            />
           </div>
           <div className='flex flex-col'>
             <label htmlFor='lagerort' className='mb-2'>Lagerort</label>

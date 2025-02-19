@@ -3,12 +3,11 @@
 import { useState } from "react";
 import { FaFilter } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import { kategorieOptionenArray } from "@/data/kategorieOptionen";
 
-export default function Filter({ selectedFilters, setSelectedFilters }) {
+export default function Filter({ selectedFilters, setSelectedFilters, reslength }) {
     const [checkedItems, setCheckedItems] = useState({});
     const [open, setOpen] = useState(false)
-
-    const filtermoglichkeiten = ['Produktxy', '3', 'Teste', 'andere']
 
     const handleCheckboxChange = (event) => {
         const { name, checked } = event.target;
@@ -43,6 +42,13 @@ export default function Filter({ selectedFilters, setSelectedFilters }) {
             >
                 <FaFilter className="text-gray-600" />
                 <span className="text-sm font-medium">{selectedFilters.length > 0 ? `(${selectedFilters.length}) Filter` : "Alle"}</span>
+                
+                {/* reslength */}
+                <span 
+                className="ml-2 text-xs font-semibold text-blue-500 bg-blue-100 px-2 py-1 rounded-full shadow-sm transition-all hover:bg-blue-200"
+                >
+                {reslength}
+                </span>            
             </button>
             
             {/* Filter Dropdown */}
@@ -57,7 +63,7 @@ export default function Filter({ selectedFilters, setSelectedFilters }) {
 
                     {/* Filter Optionen */}
                     <div className="space-y-2">
-                        {filtermoglichkeiten.map((kategorie, index) => (
+                        {kategorieOptionenArray.map((kategorie, index) => (
                             <label key={index} className="flex items-center gap-2 cursor-pointer text-gray-700 text-sm">
                                 <input
                                     type="checkbox"

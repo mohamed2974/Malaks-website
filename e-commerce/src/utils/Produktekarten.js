@@ -8,10 +8,11 @@ import "keen-slider/keen-slider.min.css"
 import { FaArrowRight } from "react-icons/fa6";
 import { FaArrowLeft } from "react-icons/fa6";
 
-export default function Produktekarten({sliceparam = '', behave = 'normal', filter = []}) {
+export default function Produktekarten({sliceparam = '', behave = 'normal', filter = [], setReslength}) {
     //* Produkte abrufen ####################################################
     const [produkte, setProdukte] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [filtrierteProdukte, setFiltrierteProdukte] = useState([]);  // Hier für gefilterte Produkte
 
     useEffect(() => {
         fetch('/api/products')
@@ -25,6 +26,21 @@ export default function Produktekarten({sliceparam = '', behave = 'normal', filt
                 setLoading(false);
             });
     }, []);
+
+    useEffect(() => {
+        if (produkte.length > 0) {
+            const filtered = produkte
+                .slice(...sliceparam)  // Hier wird das slice angewendet
+                .reverse()
+                .filter(produkt =>
+                    filter.length === 0 || filter.some(f => produkt.kategorie.includes(f))
+                );
+
+            setFiltrierteProdukte(filtered); // Hier wird der Zustand aktualisiert
+            setReslength(filtered.length);  // Update der Länge
+        }
+    }, [produkte, sliceparam, filter, setReslength]);  // Abhängig von den Filter- und Sliceparam
+
 
     const [sliderRef] = useKeenSlider({
         loop: true,
@@ -74,20 +90,14 @@ export default function Produktekarten({sliceparam = '', behave = 'normal', filt
                         </div>
                     )}
                 <div ref={sliderRef} className={displayStyle}>
-                    {produkte
-                        .slice(...sliceparam)
-                        .reverse()
-                        .filter(produkt => 
-                            filter.length === 0 || filter.some(f => produkt.kategorie.includes(f))
-                        )
+                    {filtrierteProdukte
                         .map((produkt, index) => (
                             <div key={index} className={behave === 'scrollbar' ? 'keen-slider__slide pb-8 pt-4 px-1 md:px-2 lg:px-4 h-fit' : ''}>
                                 <Link href={`/shop/${produkt.id}`} passHref>
                                     <Card produkt={produkt} />
                                 </Link>
                             </div>
-                        ))
-                    }
+                        ))}
                 </div>
             </div>
         )}  
