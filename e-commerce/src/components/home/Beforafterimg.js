@@ -3,11 +3,11 @@
 import React from 'react';
 import ReactCompareImage from 'react-compare-image';
 import { LinearGradient } from 'react-text-gradients';
+import { vergleichsbilder } from '@/data/componente/vergleichsbilder';
 
 export default function Beforafterimg() {
-    const FIRST_IMAGE = 'https://ungrxmlu9usc52eq.public.blob.vercel-storage.com/wichtig/airpods2-2GtFAIszASaBtmRI1ISRX7Ht0Ph0eW.jpg';
-    const SECOND_IMAGE = 'https://ungrxmlu9usc52eq.public.blob.vercel-storage.com/wichtig/aripods1-c8YpGeXIldHwKiBh9zj3KJLVPn0Cig.jpg';
-
+    const {FIRST_IMAGE, SECOND_IMAGE} = vergleichsbilder
+    
     return (
         <section className='mx-auto w-full xl:w-5/6'>
             <div className="text-center mb-10">

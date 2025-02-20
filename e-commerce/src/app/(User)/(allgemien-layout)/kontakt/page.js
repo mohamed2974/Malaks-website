@@ -53,77 +53,79 @@ export default function Kontakt() {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100 py-6">
-            <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
-                <h1 className="text-2xl font-bold text-center mb-6">Kontaktformular</h1>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label htmlFor='name' className="block text-sm font-medium text-gray-700">Name:</label>
-                        <input
-                            id='name'
-                            type="text"
-                            value={name}
-                            placeholder="Dein Vor- und Nachname"
-                            onChange={(e) => setName(e.target.value)}
-                            required
-                            className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
+        <section className="flex justify-center flex-col items-center min-h-[50vh] bg-gray-100">
+            <h1 className="text-2xl w-full font-bold text-center mb-6">Kontaktformular</h1>
+            <div className="bg-white p-8 rounded-lg shadow-md w-full">
+                <form onSubmit={handleSubmit} className="flex flex-wrap">
+                    <div className='w-full lg:w-1/2 space-y-4 lg:pr-6'>
+                        <div>
+                            <label htmlFor='name' className="block text-sm font-medium text-gray-700">Name:</label>
+                            <input
+                                id='name'
+                                type="text"
+                                value={name}
+                                placeholder="Dein Vor- und Nachname"
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                                className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor='email' className="block text-sm font-medium text-gray-700">E-Mail-Adresse:</label>
+                            <input
+                                id='email'
+                                type="email"
+                                value={email}
+                                placeholder="deinname@email.de"
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor='titel' className="block text-sm font-medium text-gray-700">Wie kann ich dir helfen?:</label>
+                            <input
+                                id='titel'
+                                type="text"
+                                value={titel}
+                                placeholder="Beschreibe dein Anliegen in wenigen Worten."
+                                onChange={(e) => setTitel(e.target.value)}
+                                required
+                                className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor='nummer' className="block text-sm font-medium text-gray-700">Handynummer:</label>
+                            <input
+                                id='nummer'
+                                type="tel"
+                                pattern="^\+?[0-9\s\-]{7,20}$"
+                                placeholder="+49 170 1234567"
+                                value={tel}
+                                onChange={(e) => setTel(e.target.value)}
+                                className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor='email' className="block text-sm font-medium text-gray-700">E-Mail-Adresse:</label>
-                        <input
-                            id='email'
-                            type="email"
-                            value={email}
-                            placeholder="deinname@email.de"
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor='titel' className="block text-sm font-medium text-gray-700">Wie kann ich dir helfen?:</label>
-                        <input
-                            id='titel'
-                            type="text"
-                            value={titel}
-                            placeholder="Beschreibe dein Anliegen in wenigen Worten."
-                            onChange={(e) => setTitel(e.target.value)}
-                            required
-                            className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor='nummer' className="block text-sm font-medium text-gray-700">Handynummer:</label>
-                        <input
-                            id='nummer'
-                            type="tel"
-                            pattern="^\+?[0-9\s\-]{7,20}$"
-                            placeholder="+49 170 1234567"
-                            value={tel}
-                            onChange={(e) => setTel(e.target.value)}
-                            className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
-                    <div>
+                    <div className='w-full lg:w-1/2 mt-5 lg:mt-0'>
                         <label htmlFor='message' className="block text-sm font-medium text-gray-700">Nachricht:</label>
                         <textarea
-                            rows="10"
+                            rows="11"
                             placeholder="Deine Nachricht..."
                             id='message'
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
                             required
                             minLength={20}
-                            className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="max-h-screen mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
-                    <div className="flex justify-center">
+                    <div className="flex justify-center w-full mt-6">
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 disabled:bg-gray-400 transition"
+                            className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 disabled:bg-gray-400 transition"
                         >
                             {isSubmitting ? 'Sende...' : 'Absenden'}
                         </button>
@@ -136,6 +138,6 @@ export default function Kontakt() {
                     </p>
                 )}
             </div>
-        </div>
+        </section>
     );
 }
