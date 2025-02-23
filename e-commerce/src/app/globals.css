@@ -3,33 +3,50 @@
 @import "tailwindcss/utilities";
 
 :root {
-  --brandwhite: #FDFDFD;
-  --background-primary: #FDFDFD;
-  --background-secondary: #d1d5db;
-  --text-primary: #1D1D1F;
-  --text-secondary: #475569;
-  --apple-blue: #0071E3;
-  --apple-orange: #FF9500;
-  --apple-red: #FF3B30;
-  --fresh-green: #00C853;
-  --neon-yellow: #FFD60A;
+  /* Light Mode */
+  --brand-white: #FFFFFF;
+  --background-primary: #F9FAFB;  /* sehr helles Grau/Weiß */
+  --background-secondary: #E2E8F0;  /* kühles, helles Blau-Grau */
+  --text-primary: #1F2937;        /* dunkel, aber nicht rein schwarz */
+  --text-secondary: #4B5563;      /* mittleres Grau mit Blaustich */
+  
+  /* Markenfarben (Blautöne) */
+  --brand-blue: #4169E1;          /* Royal Blue als Hauptakzent */
+  --brand-blue-light: #5A7DEB;    /* Leicht aufgehellt für Hover-Effekte */
+  --brand-blue-dark: #3658B3;     /* Gedämpfter für aktive Elemente */
+  
+  /* Zusätzliche Akzente für Hinweise/Erfolge */
+  --accent-green: #00C853;        /* Frisches Grün für Erfolgsmeldungen */
+  --accent-yellow: #FFD60A;       /* Warmes Gelb als zusätzlicher Akzent */
+  --error-red: #DC2626;          /* Kräftiges, aber nicht grelles Rot */
+  --error-red-light: #EF4444;    /* Leicht aufgehellt für Hover-Effekte */
+  --sale-red: #FF3B30;          /* Lebendiges Rot mit leichtem Orangeton (Apple Red) */
+  --sale-red-light: #FF625C;    /* Aufgehellte Version für Hover-Effekte */
 
+  --brand-red: #ef4444;
+
+  /* Abstände */
   --global-x-padding: 20px;
   --md-x-padding: 44px;
-  --lg-x-padding: 64px
+  --lg-x-padding: 64px;
 }
 
 .dark {
-  --background-primary: #1D1D1F;
-  --background-secondary: #4b5563;
-  --text-primary: #FDFDFD;
-  --text-secondary: #94a3b8;
-  --apple-blue: #3A86FF;
-  --apple-orange: #FF7B22;
-  --apple-red: #FF4D4D;
-  --fresh-green: #00E676;
-  --neon-yellow: #FFCC00;
+  /* Dark Mode */
+  --background-primary: #1F2937;  /* Dunkler Hintergrund */
+  --background-secondary: #374151;  /* Etwas helleres Dunkel für Abgrenzungen */
+  --text-primary: #F9FAFB;        /* Sehr hell für guten Kontrast */
+  --text-secondary: #D1D5DB;      /* Helleres Grau für sekundären Text */
+  
+  /* Angepasste Akzente */
+  --accent-green: #4ADE80;
+  --accent-yellow: #FCD34D;
+  --error-red: #F87171;          /* Etwas heller für besseren Kontrast */
+  --error-red-light: #FCA5A5;    /* Noch hellere Variante für Effekte */
+  --sale-red: #FF6B66;          /* Etwas heller für besseren Kontrast im Dark Mode */
+  --sale-red-light: #FF8C88;    /* Noch hellere Variante für Effekte */
 }
+
 
 body {
   color: var(--text-primary);

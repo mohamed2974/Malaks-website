@@ -62,17 +62,17 @@ export default function ProduktDetail() {
         <div className="flex flex-col justify-center">
           {/* name & beschreibung */}
           <div>
-            <h1 className="text-4xl font-bold mb-4">{name}</h1>
-            <p className="text-gray-500 mb-6">{beschreibung}</p>
+            <h1 className="text-4xl text-BrandBlue font-bold mb-4">{name}</h1>
+            <p className="text-TextSec mb-6">{beschreibung}</p>
           </div>
           {/* preis */}
           <div className="mb-6 flex items-center space-x-4">
             {rabatt_prozent > 0 ? (
               <>
-              <span className="text-2xl font-semibold text-AppleRed">{endpreis}€</span>
-              <span className="text-sm ml-3 line-through text-gray-500">{preis}€</span>
-              <span className="hidden md:inline text-[12px] bg-red-100 text-AppleRed px-2 py-1 rounded">
-                -{rabatt_prozent.toFixed(0)}%
+              <span className="text-2xl font-semibold text-SaleRed">{endpreis}€</span>
+              <span className="text-sm ml-3 line-through text-TextSec">{preis}€</span>
+              <span className="text-[12px] bg-red-100 text-SaleRed font-bold px-2 py-1 rounded">
+                - {rabatt_prozent.toFixed(0)}%
               </span>
               </>
             ) : (
@@ -81,16 +81,16 @@ export default function ProduktDetail() {
           </div>
           {/* menge wählen */}
           <div className='flex flex-row mb-10'>
-            <button className='p-1 bg-slate-300 rounded-full' onClick={handleadd}><FaPlus /></button>
+            <button className='p-1 bg-BgSec rounded-full' onClick={handleadd}><FaPlus /></button>
             <p className='mx-4'>{gekaufteMenge}</p>
-            <button className='p-1 bg-slate-300 rounded-full' onClick={handlesub}><FaMinus /></button>
+            <button className='p-1 bg-BgSec rounded-full' onClick={handlesub}><FaMinus /></button>
           </div>
           {parseFloat(produkt.menge) === 0 && (
-          <div className="bg-red-100 border-l-4 border-red-500 p-4 rounded-lg mb-5">
-            <p className="text-red-800 font-semibold">
+          <div className="bg-red-100 border-l-4 border-ErrorRed p-4 rounded-lg mb-5">
+            <p className="text-ErrorRed font-semibold">
               <span className="mr-2">🚨</span> Nicht auf Lager
             </p>
-            <p className="text-red-700 text-sm">
+            <p className="text-ErrorRed text-sm">
               Dieses Produkt ist derzeit nicht verfügbar. Deine Bestellung wird angenommen, aber der Versand verzögert sich. Wir benachrichtigen dich, sobald es wieder auf Lager ist.
             </p>
           </div>

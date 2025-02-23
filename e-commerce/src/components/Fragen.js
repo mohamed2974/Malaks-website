@@ -3,7 +3,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
-import { LinearGradient } from 'react-text-gradients';
+import GradientTitel from "@/utils/GradientTitel";
 import { faqs } from '@/data/componente/fragen';
 
 export default function FAQ() {
@@ -15,21 +15,15 @@ export default function FAQ() {
 
     return (
         <section className="mx-auto xl:w-5/6 ">
-            <div className="text-center mb-10">
-                <h1 className="text-4xl font-bold">
-                    <LinearGradient gradient={["to right", "#374151, #c2410c ,#fb923c"]}>
-                    Meist gestellte Fragen
-                    </LinearGradient>
-                </h1>
-            </div>            
+            <GradientTitel text='Meist gestellte Fragen' className='mb-10 text-center' />           
             <div className="max-w-2xl mx-auto">
                 {faqs.map((faq, index) => (
                     <div key={index} className="mb-4">
                         <button
-                            className="w-full text-left flex justify-between items-center py-4 px-4 bg-gray-100 hover:bg-gray-200 rounded-lg transition duration-300"
+                            className="w-full text-left flex justify-between items-center py-4 px-4 bg-BgSec dark:hover:bg-gray-900 hover:bg-gray-300 rounded-lg transition duration-300"
                             onClick={() => toggleFAQ(index)}
                         >
-                            <span className="text-lg font-medium">{faq.question}</span>
+                            <span className="text-lg text-TextPrim font-medium">{faq.question}</span>
                             <FaChevronDown
                                 className={`text-gray-600 transition-transform duration-300 ${
                                     openIndex === index ? 'rotate-180' : ''
@@ -41,7 +35,7 @@ export default function FAQ() {
                                 openIndex === index ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'
                             }`}
                         >
-                            <div className="px-4 py-5 text-gray-600">{faq.answer}</div>
+                            <div className="px-4 py-5 text-TextSec">{faq.answer}</div>
                         </div>
                     </div>
                 ))}

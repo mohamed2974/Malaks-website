@@ -28,12 +28,6 @@ export default function Header({className}) {
             </Link>
             <label htmlFor="korb" className="text-sm">Mein Warenkorb</label>
         </div>
-        // <ThemeSwitch key={1} setTheme={setTheme} theme={theme}/>,
-        // <Link href='/shop/korb' key={2} className="flex items-center">
-        //     <HiOutlineShoppingCart className="text-3xl" /> 
-        //     <span>Warenkorb</span>
-        // </Link>
-
     ]
 
     useEffect(() => {

@@ -1,5 +1,7 @@
 'use client'
+import React from 'react';
 import { useState, useEffect } from 'react';
+import GradientTitel from '@/utils/GradientTitel';
 
 export default function Kontakt() {
     const [name, setName] = useState('');
@@ -53,13 +55,13 @@ export default function Kontakt() {
     };
 
     return (
-        <section className="flex justify-center flex-col items-center min-h-[50vh] bg-gray-100">
-            <h1 className="text-2xl w-full font-bold text-center mb-6">Kontaktformular</h1>
-            <div className="bg-white p-8 rounded-lg shadow-md w-full">
+        <section className="flex justify-center flex-col items-center min-h-[50vh]">
+            <GradientTitel text='Kontaktformular' className='mb-10' />
+            <div className="bg-BgSec p-8 rounded-lg shadow-md w-full">
                 <form onSubmit={handleSubmit} className="flex flex-wrap">
                     <div className='w-full lg:w-1/2 space-y-4 lg:pr-6'>
                         <div>
-                            <label htmlFor='name' className="block text-sm font-medium text-gray-700">Name:</label>
+                            <label htmlFor='name' className="block text-sm font-medium text-TextPrim">Name:</label>
                             <input
                                 id='name'
                                 type="text"
@@ -67,11 +69,11 @@ export default function Kontakt() {
                                 placeholder="Dein Vor- und Nachname"
                                 onChange={(e) => setName(e.target.value)}
                                 required
-                                className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="mt-1 p-2 w-full bg-BgPrim rounded-md focus:outline-none focus:ring-2 focus:ring-BrandBlueLight"
                             />
                         </div>
                         <div>
-                            <label htmlFor='email' className="block text-sm font-medium text-gray-700">E-Mail-Adresse:</label>
+                            <label htmlFor='email' className="block text-sm font-medium text-TextPrim">E-Mail-Adresse:</label>
                             <input
                                 id='email'
                                 type="email"
@@ -79,11 +81,11 @@ export default function Kontakt() {
                                 placeholder="deinname@email.de"
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
-                                className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="mt-1 p-2 w-full bg-BgPrim rounded-md focus:outline-none focus:ring-2 focus:ring-BrandBlueLight"
                             />
                         </div>
                         <div>
-                            <label htmlFor='titel' className="block text-sm font-medium text-gray-700">Wie kann ich dir helfen?:</label>
+                            <label htmlFor='titel' className="block text-sm font-medium text-TextPrim">Wie kann ich dir helfen?:</label>
                             <input
                                 id='titel'
                                 type="text"
@@ -91,11 +93,11 @@ export default function Kontakt() {
                                 placeholder="Beschreibe dein Anliegen in wenigen Worten."
                                 onChange={(e) => setTitel(e.target.value)}
                                 required
-                                className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="mt-1 p-2 w-full bg-BgPrim rounded-md focus:outline-none focus:ring-2 focus:ring-BrandBlueLight"
                             />
                         </div>
                         <div>
-                            <label htmlFor='nummer' className="block text-sm font-medium text-gray-700">Handynummer:</label>
+                            <label htmlFor='nummer' className="block text-sm font-medium text-TextPrim">Handynummer:</label>
                             <input
                                 id='nummer'
                                 type="tel"
@@ -103,12 +105,12 @@ export default function Kontakt() {
                                 placeholder="+49 170 1234567"
                                 value={tel}
                                 onChange={(e) => setTel(e.target.value)}
-                                className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="mt-1 p-2 w-full bg-BgPrim rounded-md focus:outline-none focus:ring-2 focus:ring-BrandBlueLight"
                             />
                         </div>
                     </div>
                     <div className='w-full lg:w-1/2 mt-5 lg:mt-0'>
-                        <label htmlFor='message' className="block text-sm font-medium text-gray-700">Nachricht:</label>
+                        <label htmlFor='message' className="block text-sm font-medium text-TextPrim">Nachricht:</label>
                         <textarea
                             rows="11"
                             placeholder="Deine Nachricht..."
@@ -117,7 +119,7 @@ export default function Kontakt() {
                             onChange={(e) => setMessage(e.target.value)}
                             required
                             minLength={20}
-                            className="max-h-screen mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="max-h-screen mt-1 p-2 w-full bg-BgPrim rounded-md focus:outline-none focus:ring-2 focus:ring-BrandBlueLight"
                         />
                     </div>
 
@@ -125,7 +127,7 @@ export default function Kontakt() {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 disabled:bg-gray-400 transition"
+                            className="bg-BrandBlue text-white px-3 py-1 rounded-md hover:bg-BrandBlueLight disabled:bg-gray-400 transition"
                         >
                             {isSubmitting ? 'Sende...' : 'Absenden'}
                         </button>
@@ -133,7 +135,7 @@ export default function Kontakt() {
                 </form>
 
                 {response && (
-                    <p className={`mt-4 text-center text-sm ${response.includes('Fehler') ? 'text-red-500' : 'text-green-500'}`}>
+                    <p className={`mt-4 text-center text-sm ${response.includes('Fehler') ? 'text-ErrorRed' : 'text-AccentGreen'}`}>
                         {response}
                     </p>
                 )}

@@ -7,16 +7,23 @@ const config = {
   theme: {
     extend: {
       colors: {
+        BrandWhite: 'var(--brandwhite)',
         BgPrim: "var(--background-primary)",
         BgSec: 'var( --background-secondary)',
-        BrandWhite: 'var(--brandwhite)',
         TextPrim: "var(--text-primary)",
         TextSec: 'var(--text-secondary)',
-        AppleBlue: 'var(--apple-blue)',
-        AppleOrange: 'var(--apple-orange)',
-        AppleRed: 'var(--apple-red)',
-        FreshGreen: 'var(--fresh-green)',
-        NeonYellow: 'var(--neon-yellow)',
+        // Markenfarben (Blautöne)
+        BrandBlue: 'var(--brand-blue)',
+        BrandBlueLight: 'var(--brand-blue-light)',
+        BrandBlueDark: 'var(--brand-blue-dark)',
+        /* Zusätzliche Akzente für Hinweise/Erfolge */
+        AccentGreen: 'var(--accent-green)',
+        AccentYellow: 'var(--accent-yellow)',
+        ErrorRed: 'var(--error-red)',
+        ErrorRedLight: 'var(--error-red-light)',
+        SaleRed: 'var(--sale-red)',
+        SaleRedLight: 'var(--sale-red-light)',
+        BrandRed: 'var(--brand-red)'
       },
       padding: {
         GlobalXPad: 'var(--global-x-padding)',

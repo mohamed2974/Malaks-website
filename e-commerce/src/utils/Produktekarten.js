@@ -78,7 +78,7 @@ export default function Produktekarten({sliceparam = '', behave = 'normal', filt
             </div>
             ) : produkte.length === 0 ? (
             <div className="flex justify-center col-span-4">
-                <p className="text-center text-gray-400">Keine Produkte verfügbar</p>
+                <p className="text-center text-TextSec">Keine Produkte verfügbar</p>
             </div>
             ) : (
             <div className="relative">

@@ -20,10 +20,10 @@ export default function ProductCard({produkt}) {
             statusStyle = 'bg-gray-100 text-gray-600 capitalize'
             break;
         case 'Neu':
-            statusStyle = 'bg-green-100 text-FreshGreen uppercase'
+            statusStyle = 'bg-green-100 text-AccentGreen uppercase'
             break;
         case 'Exklusiv':
-            statusStyle = 'bg-yellow-100 text-NeonYellow uppercase'
+            statusStyle = 'bg-yellow-100 text-AccentYellow uppercase'
             break;
         default:
             break;
@@ -51,7 +51,7 @@ export default function ProductCard({produkt}) {
             {/* Produktinformationen */}
             <div className="h-1/4 md:h-2/5 lg:h-1/3 px-4 py-1.5 md:py-2 flex flex-col justify-between relative">
                 <div>
-                    <h3 className="text-AppleBlue text-sm md:text-lg font-semibold truncate md:whitespace-normal">
+                    <h3 className="text-BrandBlueLight text-sm md:text-lg font-semibold truncate md:whitespace-normal">
                         {name}
                     </h3>
                 </div>
@@ -59,18 +59,18 @@ export default function ProductCard({produkt}) {
                 {/* Preis & Rabatt */}
                 {rabattiert ?
                 <div className="space-x-1.5 md:space-x-2 truncate">
-                    <span className="text-AppleRed font-bold text-[12px] md:text-lg">
+                    <span className="text-SaleRed font-bold text-[12px] md:text-lg">
                         {neuerPreis} €
                     </span>
-                    <span className="text-gray-500 text-[12px] line-through">{preis.toFixed(2)} €</span>
-                    <span className="hidden md:inline text-[12px] bg-red-100 text-AppleRed px-2 py-1 rounded">
-                        -{rabatt_prozent.toFixed(0)}%
+                    <span className="text-TextSec text-[12px] line-through">{preis.toFixed(2)} €</span>
+                    <span className="hidden font-bold md:inline text-[12px] bg-red-100 text-SaleRed px-2 py-1 rounded">
+                        - {rabatt_prozent.toFixed(0)}%
                     </span>
                 </div> :
                 // preis ohne rabatt
                 <div>
                     {!rabattiert &&
-                        <span className="text-black text-[12px]">{preis.toFixed(2)} €</span>
+                        <span className="text-TextPrim text-[12px]">{preis.toFixed(2)} €</span>
                     }
                 </div>
                 }

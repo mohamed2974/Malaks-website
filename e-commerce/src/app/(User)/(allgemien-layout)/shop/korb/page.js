@@ -2,8 +2,10 @@
 import { useCartStore } from '@/lib/store/cartStore';
 import CheckoutButton from '@/utils/CheckoutButton-component';
 import finalpreis from '@/utils/functions/finalpreis';
+import GradientTitel from '@/utils/GradientTitel';
 import Image from 'next/image';
 import { BsEmojiAstonished } from "react-icons/bs";
+import { HiOutlineShoppingCart } from 'react-icons/hi';
 
 export default function CartPage() {
     const { cart, removeFromCart, clearCart } = useCartStore();
@@ -11,14 +13,14 @@ export default function CartPage() {
     return (
         <section className=''>
             <div className="flex items-center gap-2 my-6">
-                <span className="text-5xl">🛒</span>
-                <h1 className="text-4xl font-bold">Warenkorb</h1>
+                <span className="text-5xl text-TextSec"><HiOutlineShoppingCart/></span>
+                <GradientTitel text='Warenkorb' />
             </div>
             {cart.length !== 0 ? (
                 <>
-                    <ul className="bg-white shadow-md rounded-lg p-4">
+                    <ul>
                         {cart.map((item, index) => (
-                            <li key={index} className="py-4 flex flex-col md:justify-between md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
+                            <li key={index} className="p-4 mt-3 bg-BgSec rounded-lg flex flex-col md:justify-between md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
                                 <div className='flex flex-row items-center'>
                                     <div className="flex-shrink-0">
                                         <Image 
@@ -30,13 +32,13 @@ export default function CartPage() {
                                         />
                                     </div>
                                     <div className="px-10 text-start">
-                                        <p className="w-full font-semibold mb-2 md:mb-1">{item.name}</p>
-                                        <p className="w-full text-gray-600">{finalpreis(item)} € • {item.gekaufteMenge}x</p>
+                                        <p className="w-full text-TextPrim font-semibold mb-2 md:mb-1">{item.name}</p>
+                                        <p className="w-full text-TextSec">{finalpreis(item)} € • {item.gekaufteMenge}x</p>
                                     </div>
                                 </div>
                                 <button
                                     onClick={() => removeFromCart(item.id)}
-                                    className="text-red-500 hover:text-red-700 transition duration-200 mx-auto md:mx-0"
+                                    className="text-SaleRed mx-auto md:mx-0"
                                 >
                                     🗑️ Entfernen
                                 </button>

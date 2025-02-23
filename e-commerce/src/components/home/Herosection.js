@@ -25,21 +25,9 @@ export default function HeroSec() {
     
 
     return (
-        <div className="px-GlobalXPad md:px-MdXPad lg:px-LgXPad pb-[5vh] flex flex-col h-[70vh] md:h-[60vh] lg:h-[90vh] bg-gradient-to-tl from-NeonYellow to-yellow-700">
+        <div className="px-GlobalXPad md:px-MdXPad lg:px-LgXPad pb-[5vh] flex flex-col h-[70vh] md:h-[60vh] lg:h-[90vh] bg-gradient-to-tl from-BrandBlue via-BrandBlueLight to-BrandBlueDark">
             <Header className='mb-5 py-5'/>
             <Header className={`${isSticky ? 'fixed left-0 top-0 px-GlobalXPad md:px-MdXPad lg:px-LgXPad bg-BgSec py-2' : 'fixed left-0 -top-[100px]'}`} />
-            {/* <div className="mx-auto md:mx-0 text-center md:text-start z-10 md:w-3/5">
-                <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight text-TextPrim">Dein Style. Dein Case. Dein Statement.</h1>
-                <p className="text-TextSec text-lg my-8 min-h-24 md:min-h-16"><Typing /></p>
-                <div className='flex flex-col md:flex-row gap-y-4 md:gap-x-4 md:justify-start '>
-                    <button className="bg-gradient-to-r from-AppleOrange to-orange-600 hover:from-orange-600 hover:to-orange-800 text-BrandWhite font-bold py-3 px-6 rounded shadow-lg">
-                        Jetzt entdecken
-                    </button>
-                    <button className="text-AppleOrange hover:text-BrandWhite border border-AppleOrange font-bold py-2 px-4 rounded hover:bg-AppleOrange transition-all duration-300">
-                        Mehr über uns
-                    </button>
-                </div>
-            </div> */}
             <div className='flex items-center justify-center h-full w-full z-10 bg-slate-200 rounded-2xl'>
                 bild
             </div>
