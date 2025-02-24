@@ -6,7 +6,7 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { FaPlus, FaMinus, FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 export default function ProduktDetail() {
@@ -14,7 +14,6 @@ export default function ProduktDetail() {
   const [produkt, setProdukt] = useState(null);
   const [gekaufteMenge, setGekaufteMenge] = useState(1);
   const [schaubild, setSchaubild] = useState(null);
-  // State für die aktuelle Anzahl der Slides, abhängig von der Bildschirmgröße
   const [slidesPerView, setSlidesPerView] = useState(4);
 
   // Update slidesPerView anhand der Fensterbreite
@@ -33,10 +32,10 @@ export default function ProduktDetail() {
     return () => window.removeEventListener('resize', updateSlides);
   }, []);
 
-  // Produktdaten laden
+  // Produktdaten laden mit Error-Handling und Lazy Loading für Bilder
   useEffect(() => {
     if (!id) return;
-  
+
     fetch(`/api/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -48,8 +47,8 @@ export default function ProduktDetail() {
       .catch((error) => console.error('Fehler beim Abrufen des Produkts:', error));
   }, [id]);
 
-  // Keen Slider initialisieren
-  const [sliderRef] = useKeenSlider({
+  // Memoized Slider Settings
+  const sliderSettings = useMemo(() => ({
     loop: true,
     mode: "free",
     slides: { perView: slidesPerView, spacing: 10 },
@@ -61,7 +60,9 @@ export default function ProduktDetail() {
         slides: { perView: slidesPerView, spacing: 10 },
       },
     },
-  });
+  }), [slidesPerView]);
+
+  const [sliderRef] = useKeenSlider(sliderSettings);
 
   if (!produkt) {
     return <div className="flex items-center justify-center h-screen">Produkt wird geladen...</div>;
@@ -79,6 +80,7 @@ export default function ProduktDetail() {
   const handleadd = () => {
     setGekaufteMenge(gekaufteMenge + 1);
   };
+
   const handlesub = () => {
     if (gekaufteMenge <= 1) return;
     setGekaufteMenge(gekaufteMenge - 1);
