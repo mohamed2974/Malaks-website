@@ -9,8 +9,8 @@ export default function Qualitaet() {
     return (
         <section className="mx-auto xl:w-5/6 ">
             <div className="text-center mb-10">
-                <GradientTitel text='Unsere Qualität' />
-                <p className="text-TextSec mt-2">Das ist unsere Qualität</p>
+                <GradientTitel text='Qualität für höchsten Anspruch' />
+                <p className="text-TextSec mt-2">Wir setzen auf Qualität, die du sehen und fühlen kannst.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                 {/* Bildbereich (Platzhalter) */}

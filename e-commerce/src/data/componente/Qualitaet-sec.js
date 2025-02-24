@@ -2,8 +2,8 @@ let content = {
     bild: null,
     textbereich: {
         titel: 'Hochwertige Materialien & Perfekte Verarbeitung',
-        firstp: 'Unsere AirPods Cases bestehen aus langlebigen und hochwertigen Materialien, die optimalen Schutz bieten. Durch präzise Verarbeitung sitzen sie perfekt und fühlen sich angenehm an.',
-        secp: 'Egal, ob du ein mattes, glänzendes oder personalisiertes Case suchst – wir legen Wert auf Qualität, die du sehen und spüren kannst!',
+        firstp: 'Unsere AirPods Cases werden aus langlebigen, sorgfältig ausgewählten Materialien gefertigt, die optimalen Schutz bieten. Dank präziser Verarbeitung sitzen sie passgenau und liegen angenehm in der Hand.',
+        secp: 'Ob matt, glänzend oder individuell personalisiert – jedes Case überzeugt durch exzellente Qualität und stilvolles Design.',
     }
 }
 

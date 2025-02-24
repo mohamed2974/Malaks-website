@@ -115,7 +115,7 @@ export default function ProduktDetail() {
                   <button 
                     key={index} 
                     onClick={() => handleImageClick(index)} 
-                    className={`border-2 keen-slider__slide flex items-center rounded-lg ${schaubild === bild ? "border-blue-500 scale-110 shadow-md" : "border-transparent"}`}
+                    className={`border-2 keen-slider__slide flex justify-center items-center rounded-lg ${schaubild === bild ? "border-blue-500 scale-110 shadow-md" : "border-transparent"}`}
                   >
                     <Image alt="Vorschaubild" src={bild} fill className="object-cover object-center rounded-md" />
                   </button>
