@@ -6,7 +6,7 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { FaPlus, FaMinus, FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 export default function ProduktDetail() {
@@ -14,28 +14,14 @@ export default function ProduktDetail() {
   const [produkt, setProdukt] = useState(null);
   const [gekaufteMenge, setGekaufteMenge] = useState(1);
   const [schaubild, setSchaubild] = useState(null);
-  const [slidesPerView, setSlidesPerView] = useState(4);
 
-  // Update slidesPerView anhand der Fensterbreite
-  useEffect(() => {
-    const updateSlides = () => {
-      if (window.innerWidth >= 1024) {
-        setSlidesPerView(6);
-      } else if (window.innerWidth >= 640) {
-        setSlidesPerView(5);
-      } else {
-        setSlidesPerView(4);
-      }
-    };
-    updateSlides();
-    window.addEventListener('resize', updateSlides);
-    return () => window.removeEventListener('resize', updateSlides);
-  }, []);
+  // Immer 5 Slides anzeigen
+  const slidesToShow = 5;
 
-  // Produktdaten laden mit Error-Handling und Lazy Loading für Bilder
+  // Produktdaten laden
   useEffect(() => {
     if (!id) return;
-
+  
     fetch(`/api/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -47,22 +33,12 @@ export default function ProduktDetail() {
       .catch((error) => console.error('Fehler beim Abrufen des Produkts:', error));
   }, [id]);
 
-  // Memoized Slider Settings
-  const sliderSettings = useMemo(() => ({
+  // Keen Slider initialisieren (nur wenn mindestens 5 Bilder vorhanden sind)
+  const [sliderRef] = useKeenSlider({
     loop: true,
     mode: "free",
-    slides: { perView: slidesPerView, spacing: 10 },
-    breakpoints: {
-      "(min-width: 640px)": {
-        slides: { perView: slidesPerView, spacing: 10 },
-      },
-      "(min-width: 1024px)": {
-        slides: { perView: slidesPerView, spacing: 10 },
-      },
-    },
-  }), [slidesPerView]);
-
-  const [sliderRef] = useKeenSlider(sliderSettings);
+    slides: { perView: slidesToShow, spacing: 10 },
+  });
 
   if (!produkt) {
     return <div className="flex items-center justify-center h-screen">Produkt wird geladen...</div>;
@@ -74,13 +50,12 @@ export default function ProduktDetail() {
   rabatt_prozent = parseFloat(rabatt_prozent || 0);
   const endpreis = finalpreis(produkt);
 
-  // Slider nur anzeigen, wenn genügend Bilder vorhanden sind
-  const showSlider = bild_urls.length >= slidesPerView;
+  // Slider nur anzeigen, wenn mindestens 5 Bilder vorhanden sind
+  const showSlider = bild_urls.length >= slidesToShow;
 
   const handleadd = () => {
     setGekaufteMenge(gekaufteMenge + 1);
   };
-
   const handlesub = () => {
     if (gekaufteMenge <= 1) return;
     setGekaufteMenge(gekaufteMenge - 1);
@@ -117,7 +92,7 @@ export default function ProduktDetail() {
                   <button 
                     key={index} 
                     onClick={() => handleImageClick(index)} 
-                    className={`border-2 keen-slider__slide flex justify-center items-center rounded-lg ${schaubild === bild ? "border-blue-500 scale-110 shadow-md" : "border-transparent"}`}
+                    className={`border-2 keen-slider__slide flex items-center rounded-lg ${schaubild === bild ? "border-blue-500 scale-110 shadow-md" : "border-transparent"}`}
                   >
                     <Image alt="Vorschaubild" src={bild} fill className="object-cover object-center rounded-md" />
                   </button>
