@@ -2,19 +2,16 @@
 
 import AddToCart from '@/components/store/AddToCart';
 import finalpreis from '@/utils/functions/finalpreis';
-import { useKeenSlider } from "keen-slider/react"
-import "keen-slider/keen-slider.min.css"
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { FaPlus, FaMinus, FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import { FaPlus, FaMinus } from "react-icons/fa6";
 
 export default function ProduktDetail() {
   const { id } = useParams();
   const [produkt, setProdukt] = useState(null);
   const [gekaufteMenge, setGekaufteMenge] = useState(1);
   const [schaubild, setSchaubild] = useState(null);
-  const [slider, setSlider] = useState(null); // Speichert die Slider-Instanz
 
   // Produktdaten laden
   useEffect(() => {
@@ -31,23 +28,6 @@ export default function ProduktDetail() {
       .catch((error) => console.error('Fehler beim Abrufen des Produkts:', error));
   }, [id]);
 
-  // Slider erst initialisieren, wenn Produktbilder da sind
-  const [sliderRef] = useKeenSlider(
-    {
-      loop: true,
-      mode: "free",
-      slides: {
-        perView: 5, // Standard für Mobile
-        spacing: 10
-      },
-      breakpoints: {
-        "(min-width: 640px)": { perView: 3 },
-        "(min-width: 1024px)": { perView: 5 }
-      },
-    },
-    [setSlider] // Speichert die Instanz in den State
-  );
-
   if (!produkt) {
     return <div className="flex items-center justify-center h-screen">Produkt wird geladen...</div>;
   }
@@ -56,7 +36,6 @@ export default function ProduktDetail() {
   preis = parseFloat(preis);
   rabatt_prozent = parseFloat(rabatt_prozent || 0);
   const endpreis = finalpreis(produkt);
-  const showSlider = bild_urls.length >= 2; // Zeigt Slider nur bei mindestens 2 Bildern
 
   const handleadd = () => setGekaufteMenge((prev) => prev + 1);
   const handlesub = () => setGekaufteMenge((prev) => Math.max(1, prev));
@@ -77,50 +56,20 @@ export default function ProduktDetail() {
               <Image loading="lazy" alt="Produktbild" src={schaubild} fill className="object-cover" />
             </div>
           </div>
-          <div className="mt-5">
-            
-            {/* Navigationspfeile mit echter Funktion */}
-            {showSlider && slider && (
-              <div className="flex justify-between mb-2">
-                <button onClick={() => slider.prev()} className="text-gray-600 bg-gray-200 p-2 text-2xl rounded-full">
-                  <FaArrowLeft />
-                </button>
-                <button onClick={() => slider.next()} className="text-gray-600 bg-gray-200 p-2 text-2xl rounded-full">
-                  <FaArrowRight />
-                </button>
-              </div>
-            )}
-
-            {/* Bild-Slider */}
-            {showSlider ? (
-              <div className="keen-slider h-[12vh] md:h-[10vh] overflow-hidden mt-2" ref={sliderRef}>
-                {bild_urls.map((bild, index) => (
-                  <button 
-                    key={index} 
-                    onClick={() => handleImageClick(index)} 
-                    className={`relative border-2 keen-slider__slide flex items-center rounded-lg ${
-                      schaubild === bild ? "border-blue-500 scale-110 shadow-md" : "border-transparent"
-                    }`}
-                  >
-                    <Image alt="Vorschaubild" src={bild} fill className="object-cover object-center rounded-md" />
-                  </button>
-                ))}
-              </div>
-            ) : (
-              <div className="flex gap-2 mt-2">
-                {bild_urls.map((bild, index) => (
-                  <button 
-                    key={index} 
-                    onClick={() => handleImageClick(index)} 
-                    className={`border-2 flex items-center rounded-lg transition-all ${
-                      schaubild === bild ? "border-blue-500 scale-110 shadow-md" : "border-transparent"
-                    }`}
-                  >
-                    <Image alt="Vorschaubild" src={bild} width={80} height={80} className="object-cover object-center rounded-md" />
-                  </button>
-                ))}
-              </div>
-            )}
+          
+          {/* Bild-Thumbnails als Wrap-Grid */}
+          <div className="mt-5 flex flex-wrap gap-2">
+            {bild_urls.map((bild, index) => (
+              <button 
+                key={index} 
+                onClick={() => handleImageClick(index)} 
+                className={`border-2 flex items-center rounded-lg transition-all ${
+                  schaubild === bild ? "border-blue-500 scale-110 shadow-md" : "border-transparent"
+                }`}
+              >
+                <Image alt="Vorschaubild" src={bild} width={80} height={80} className="object-cover object-center rounded-md" />
+              </button>
+            ))}
           </div>
         </div>
 
