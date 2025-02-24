@@ -14,6 +14,8 @@
   --brand-blue: #4169E1;          /* Royal Blue als Hauptakzent */
   --brand-blue-light: #5A7DEB;    /* Leicht aufgehellt für Hover-Effekte */
   --brand-blue-dark: #3658B3;     /* Gedämpfter für aktive Elemente */
+  --brand-red: #ef4444;
+  --brand-red-light: #ef5655;
   
   /* Zusätzliche Akzente für Hinweise/Erfolge */
   --accent-green: #00C853;        /* Frisches Grün für Erfolgsmeldungen */
@@ -22,8 +24,6 @@
   --error-red-light: #EF4444;    /* Leicht aufgehellt für Hover-Effekte */
   --sale-red: #FF3B30;          /* Lebendiges Rot mit leichtem Orangeton (Apple Red) */
   --sale-red-light: #FF625C;    /* Aufgehellte Version für Hover-Effekte */
-
-  --brand-red: #ef4444;
 
   /* Abstände */
   --global-x-padding: 20px;
@@ -41,8 +41,6 @@
   /* Angepasste Akzente */
   --accent-green: #4ADE80;
   --accent-yellow: #FCD34D;
-  --error-red: #F87171;          /* Etwas heller für besseren Kontrast */
-  --error-red-light: #FCA5A5;    /* Noch hellere Variante für Effekte */
   --sale-red: #FF6B66;          /* Etwas heller für besseren Kontrast im Dark Mode */
   --sale-red-light: #FF8C88;    /* Noch hellere Variante für Effekte */
 }
@@ -94,12 +92,10 @@ td {
 
 
 
-/* #
-Text: #1D1D1F (Fast-Schwarz, sehr edel)
-Primärfarbe: #0071E3 (Apple Blau)
-Hintergrund: #FDFDFD (Fast-Weiß, clean)
-Akzentfarbe: #FF9500 (Sanftes Orange für Call-to-Action) 
-Primärfarbe: #FF3B30 (Apple Rot, sehr auffällig)
-Akzentfarbe: #00C853 (Frisches Grün, als Kontrast)
-Sekundärfarbe: #FFD60A (Neongelb für ein cooles Design)
+/*
+Etwas heller für besseren Kontrast 
+--error-red: #F87171;       
+
+Noch hellere Variante für Effekte 
+--error-red-light: #FCA5A5;
 */

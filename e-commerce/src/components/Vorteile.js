@@ -7,8 +7,8 @@ export default function Vorteile() {
     return (
         <section className="mx-auto xl:w-5/6">
             <div className="text-center mb-10">
-                <GradientTitel text="Unsere Vorteile" />
-                <p className="text-TextSec mt-2">das sind unsere Vorteile</p>
+                <GradientTitel text="Dein perfektes AirPods Case" />
+                <p className="text-TextSec mt-2">Schütze deine AirPods mit CaseToon – hochwertigen und stylischen Cases, die perfekt passen und maximalen Schutz bieten!</p>
             </div>            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
                 {benefits.map((benefit, index) => (

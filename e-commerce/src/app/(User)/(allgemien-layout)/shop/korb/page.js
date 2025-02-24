@@ -38,7 +38,7 @@ export default function CartPage() {
                                 </div>
                                 <button
                                     onClick={() => removeFromCart(item.id)}
-                                    className="text-SaleRed mx-auto md:mx-0"
+                                    className="text-BrandRed mx-auto md:mx-0"
                                 >
                                     🗑️ Entfernen
                                 </button>
@@ -50,7 +50,7 @@ export default function CartPage() {
                         <CheckoutButton className={`w-full mb-5 md:w-fit`}/>
                         <button
                             onClick={clearCart}
-                            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded transition duration-200 w-full md:w-auto"
+                            className="bg-BrandRed hover:bg-BrandRedLight text-white px-4 py-2 rounded transition duration-200 w-full md:w-auto"
                         >
                             Warenkorb leeren
                         </button>

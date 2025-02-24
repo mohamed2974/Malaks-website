@@ -16,6 +16,8 @@ const config = {
         BrandBlue: 'var(--brand-blue)',
         BrandBlueLight: 'var(--brand-blue-light)',
         BrandBlueDark: 'var(--brand-blue-dark)',
+        BrandRed: 'var(--brand-red)',
+        BrandRedLight: 'var(--brand-red-light)',
         /* Zusätzliche Akzente für Hinweise/Erfolge */
         AccentGreen: 'var(--accent-green)',
         AccentYellow: 'var(--accent-yellow)',
@@ -23,7 +25,6 @@ const config = {
         ErrorRedLight: 'var(--error-red-light)',
         SaleRed: 'var(--sale-red)',
         SaleRedLight: 'var(--sale-red-light)',
-        BrandRed: 'var(--brand-red)'
       },
       padding: {
         GlobalXPad: 'var(--global-x-padding)',

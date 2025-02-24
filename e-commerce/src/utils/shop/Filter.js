@@ -56,7 +56,7 @@ export default function Filter({ selectedFilters, setSelectedFilters, reslength 
                 <div className="absolute left-0 bg-BgSec shadow-lg rounded-lg p-4 w-52 z-10 ">
                     <div className="flex justify-between items-center border-b pb-2 mb-2">
                         <h3 className="text-sm text-TextPrim font-semibold">Filter wählen</h3>
-                        <button onClick={toggleDropdown} className="text-TextSec hover:text-SaleRed">
+                        <button onClick={toggleDropdown} className="text-TextSec hover:text-BrandRed">
                             <IoClose className="text-xl" />
                         </button>
                     </div>
@@ -80,7 +80,7 @@ export default function Filter({ selectedFilters, setSelectedFilters, reslength 
                                 {kategorie}
                             </label>
                         ))}
-                        <button className="border-t pt-2.5 text-sm text-center w-full hover:text-SaleRed" onClick={allefilterslöschen}>
+                        <button className="border-t pt-2.5 text-sm text-center w-full hover:text-BrandRed" onClick={allefilterslöschen}>
                             Alles entfernen
                         </button>
                     </div>
