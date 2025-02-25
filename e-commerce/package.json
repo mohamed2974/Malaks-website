@@ -40,6 +40,7 @@
     "react-text-gradients": "^1.0.2",
     "react-type-animation": "^3.2.0",
     "stripe": "^17.6.0",
+    "swr": "^2.3.2",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
