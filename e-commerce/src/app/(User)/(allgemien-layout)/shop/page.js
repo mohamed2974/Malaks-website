@@ -12,7 +12,7 @@ export default function Shop() {
 
     return (
         <section >
-            <div className="flex flex-col items-center justify-center ">
+            <div className="flex flex-col items-center justify-center mb-8">
                 <GradientTitel text='Produkte' />
                 <p className="text-TextSec mt-2">Hier findest du alle produkte</p>
             </div>

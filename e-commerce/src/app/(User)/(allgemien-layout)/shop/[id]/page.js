@@ -13,24 +13,11 @@ import { FaPlus, FaMinus, FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 export default function ProduktDetail() {
   const { id } = useParams(); // Hole die dynamische ID aus den Routenparametern
   const [produkt, setProdukt] = useState(null);
+  const [gekaufteMenge, setGekaufteMenge] = useState(1)
   const [schaubild, setSchaubild] = useState()
   const schaubildRef = useRef(null);
 
   const previewNum = 5
-
-    // die menge an gekauften produkten bestimmen 
-    const mengeReducer = (state, action) => {
-      switch (action.type) {
-        case 'increment':
-          return state + 1;
-        case 'decrement':
-          return state > 1 ? state - 1 : 1;
-        default:
-          return state;
-      }
-    };
-    
-    const [gekaufteMenge, dispatch] = useReducer(mengeReducer, 1);
 
   // produkt mit id xy holen
   useEffect(() => {
@@ -63,6 +50,18 @@ export default function ProduktDetail() {
   preis = parseFloat(preis)
   rabatt_prozent = parseFloat(rabatt_prozent || 0)
   const endpreis = finalpreis(produkt);
+  
+  // die menge an gekauften produkten bestimmen 
+  const handleadd = () => {
+    setGekaufteMenge(gekaufteMenge + 1)
+  }
+  const handlesub = () => {
+    if (1 >= gekaufteMenge){
+      setGekaufteMenge(1)
+      return
+    }
+    setGekaufteMenge(gekaufteMenge - 1)
+  }
 
   // schaubild und bilder des produkts
   const handleImageClick = (index) => {
@@ -159,9 +158,9 @@ export default function ProduktDetail() {
           </div>
           {/* menge wählen */}
           <div className='flex flex-row mb-10'>
-            <button className='p-1 bg-BgSec rounded-full' onClick={() => dispatch({ type: 'increment' })}><FaPlus /></button>
+            <button className='p-1 bg-BgSec rounded-full' onClick={handleadd}><FaPlus /></button>
             <p className='mx-4'>{gekaufteMenge}</p>
-            <button className='p-1 bg-BgSec rounded-full' onClick={() => dispatch({ type: 'decrement' })}><FaMinus /></button>
+            <button className='p-1 bg-BgSec rounded-full' onClick={handlesub}><FaMinus /></button>
           </div>
           {parseFloat(produkt.menge) === 0 && (
           <div className="bg-red-100 border-l-4 border-ErrorRed p-4 rounded-lg mb-5">
