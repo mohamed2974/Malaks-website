@@ -65,7 +65,7 @@ export default function CheckoutButton({className}) {
         <button 
             onClick={handleCheckout} 
             disabled={loading}
-            className={`bg-BrandBlue hover:bg-BrandBlueLight text-white p-2 rounded ${className}`}
+            className={`bg-BrandBlue hover:bg-BrandBlueLight text-BrandWhite p-2 rounded ${className}`}
         >
             {loading ? 'Lädt...' : '💳 Bezahlen mit Stripe'}
         </button>

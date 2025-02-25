@@ -50,20 +50,20 @@ export default function CartPage() {
                         <CheckoutButton className={`w-full mb-5 md:w-fit`}/>
                         <button
                             onClick={clearCart}
-                            className="bg-BrandRed hover:bg-BrandRedLight text-white px-4 py-2 rounded transition duration-200 w-full md:w-auto"
+                            className="bg-BrandRed hover:bg-BrandRedLight text-BrandWhite px-4 py-2 rounded transition duration-200 w-full md:w-auto"
                         >
                             Warenkorb leeren
                         </button>
                     </div>
                 </>
             ) : (
-                <div className="h-[50vh] flex flex-col justify-center items-center text-gray-600">
+                <div className="h-[50vh] flex flex-col justify-center items-center ">
                     {cart.length === 0 && (
                         <div className="text-center space-y-4">
-                            <span className="flex justify-center text-7xl text-gray-500"><BsEmojiAstonished /></span>
-                            <p className="text-lg font-medium">Dein Warenkorb ist leer.</p>
+                            <span className="flex justify-center text-7xl text-TextPrim"><BsEmojiAstonished /></span>
+                            <p className="text-lg font-medium text-TextSec">Dein Warenkorb ist leer.</p>
                             <button 
-                                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md transition duration-200 shadow-md"
+                                className="bg-BrandBlue hover:bg-BrandBlueLight text-BrandWhite px-6 py-2 rounded-md transition duration-200 shadow-md"
                                 onClick={() => window.location.href = '/shop'} // Beispiel-Link zur Shop-Seite
                             >
                                 Produkte ansehen
