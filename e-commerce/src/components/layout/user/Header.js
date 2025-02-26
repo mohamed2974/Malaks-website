@@ -10,6 +10,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { nav } from "@/data/layout/header";
 import Uls from "@/utils/ULs-component";
 import MobileNav from '@/utils/MobileNav-component'
+import Image from "next/image";
 
 
 
@@ -42,8 +43,8 @@ export default function Header({className}) {
     return (
         <header className={`flex flex-row justify-between items-center w-full z-50 transition-all duration-300 ease-in-out text-xl ${className}`}>
             {/* Logo */}
-            <div className="w-1/6">
-                <h1>Logo</h1>
+            <div className="w-1/6 max-h-full overflow-hidden">
+                <Image alt="logo" width={70} height={70} src='/logo.svg' className="overflow-hidden scale-[1.7]" />
             </div>
 
             {/* nav bar */}
