@@ -31,7 +31,7 @@ export default function HeroSec() {
             <Header className={`${isSticky ? 'fixed left-0 top-0 px-GlobalXPad md:px-MdXPad lg:px-LgXPad bg-BgSec py-2' : 'fixed left-0 -top-[100px]'}`} />
             <div className='relative flex items-start justify-center max-h-full w-full z-10  overflow-hidden'>
                 <Image alt='Bild' width={999} height={200} src='/img/herosec.jpg' className='object-contain rounded-2xl hidden md:block'/>
-                <Image alt='Bild' width={999} height={200} src='/img/herosecmobile.png' className='object-cover rounded-2xl md:hidden'/>
+                <Image alt='Bild' width={999} height={200} src='/img/herosecmobile.PNG' className='object-cover rounded-2xl md:hidden'/>
 
             </div>
             <span id='stickyheader'></span>
