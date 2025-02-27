@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React from 'react';
 import GradientTitel from "@/utils/GradientTitel";
 import { content } from '@/data/componente/Qualitaet-sec';
+import Link from 'next/link';
 
 export default function Qualitaet() {
     return (
@@ -30,6 +31,9 @@ export default function Qualitaet() {
                     {content.textbereich.secp}
                     </p>
                 </div>
+            </div>
+            <div className='flex justify-center items-center pt-10'>
+                <Link className='bg-BrandBlue hover:bg-BrandBlueLight py-2 px-3 text-lg text-BrandWhite rounded-3xl' href='/katalog'>Bilder ansehen</Link>
             </div>
         </section>
     );
