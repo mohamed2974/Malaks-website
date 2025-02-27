@@ -11,7 +11,7 @@ export default function katalog(){
                 <GradientTitel text='Katalog' />
                 <p className="text-TextSec mt-2">Paar Bilder von unseren Produkten</p>
             </div>
-            <div className="grid grid-rows-3 grid-cols-3 md:grid-cols-4 gap-4 py-4">
+            <div className="grid grid-rows-3 grid-cols-3 md:grid-cols-4 gap-2 md:gap-4 py-4">
                 {bilder.map((bild, index) => (
                     <div key={index} className={`${bild.className} relative aspect-square bg-gray-200 rounded-lg overflow-hidden `}>
                         <Image
