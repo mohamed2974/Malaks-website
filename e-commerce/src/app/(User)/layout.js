@@ -2,13 +2,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
-import { Poppins } from '@next/font/google'
-
-const poppins = Poppins({
-    subsets: ['latin'],
-    weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-    variable: '--font-poppins',
-})
 
 const geistSans = Geist({
     variable: "--font-geist-sans",

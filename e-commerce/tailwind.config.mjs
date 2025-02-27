@@ -31,9 +31,6 @@ const config = {
         MdXPad: 'var(--md-x-padding)',
         LgXPad: 'var(--lg-x-padding)'
       },
-      fontFamily: {
-        caseToon: ['var(--font-poppins)', 'sans-serif'],
-      },
     },
   },
   plugins: [],

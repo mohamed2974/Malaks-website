@@ -26,7 +26,7 @@ export default function HeroSec() {
     
 
     return (
-        <div className="px-GlobalXPad md:px-MdXPad lg:px-LgXPad pb-[5vh] flex flex-col h-fit md:h-[60vh] lg:h-[90vh] bg-gradient-to-tl from-BrandBlue via-BrandBlueLight to-BrandBlueDark">
+        <div className="px-GlobalXPad md:px-MdXPad lg:px-LgXPad pb-[5vh] flex flex-col h-fit xl:h-[90vh] bg-gradient-to-tl from-BrandBlue via-BrandBlueLight to-BrandBlueDark">
             <Header className='mb-5 py-5'/>
             <Header className={`${isSticky ? 'fixed left-0 top-0 px-GlobalXPad md:px-MdXPad lg:px-LgXPad bg-BgSec py-2' : 'fixed left-0 -top-[100px]'}`} />
             <div className='relative flex items-start justify-center max-h-full w-full z-10  overflow-hidden'>
