@@ -88,7 +88,7 @@ function ThemeSwitch({setTheme, theme, id}){
 //supcom ################### Logo ################### //
 function Logo(){
     return (
-        <h1 className="text-lg font-caseToon lg:text-2xl font-extrabold bg-BrandWhite py-[1px] px-2 rounded-3xl ">
+        <h1 className="text-lg lg:text-2xl font-extrabold bg-BrandWhite py-[1px] px-2 rounded-3xl ">
             <LinearGradient gradient={["to right", "#5A7DEB,#1f2937"]}>
                 CaseToon
             </LinearGradient>
