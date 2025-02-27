@@ -1,18 +1,7 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import AnnouncementBar from "@/components/layout/user/AnnouncementBar";
 import Footer from "@/components/layout/user/Footer"
 import { Providers } from "@/utils/providers";
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
 
 //wichtig für SEO 
 export const metadata = {

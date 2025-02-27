@@ -30,7 +30,10 @@ const config = {
         GlobalXPad: 'var(--global-x-padding)',
         MdXPad: 'var(--md-x-padding)',
         LgXPad: 'var(--lg-x-padding)'
-      }
+      },
+      fontFamily: {
+        caseToon: ['var(--font-poppins)', 'sans-serif'],
+      },
     },
   },
   plugins: [],

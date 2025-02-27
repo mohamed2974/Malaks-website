@@ -11,6 +11,7 @@ import { nav } from "@/data/layout/header";
 import Uls from "@/utils/ULs-component";
 import MobileNav from '@/utils/MobileNav-component'
 import Image from "next/image";
+import { LinearGradient } from "react-text-gradients";
 
 
 
@@ -43,8 +44,8 @@ export default function Header({className}) {
     return (
         <header className={`flex flex-row justify-between items-center w-full z-50 transition-all duration-300 ease-in-out text-xl ${className}`}>
             {/* Logo */}
-            <div className="w-1/6 max-h-full overflow-hidden">
-                <Image alt="logo" width={70} height={70} src='/logo.svg' className="overflow-hidden scale-[1.7]" />
+            <div className="w-fit">
+                <Logo />
             </div>
 
             {/* nav bar */}
@@ -81,5 +82,16 @@ function ThemeSwitch({setTheme, theme, id}){
                 <MdNightlight className="text-white " />
             )}
         </button> 
+    )
+}
+
+//supcom ################### Logo ################### //
+function Logo(){
+    return (
+        <h1 className="text-lg font-caseToon lg:text-2xl font-extrabold bg-BrandWhite py-[1px] px-2 rounded-3xl ">
+            <LinearGradient gradient={["to right", "#5A7DEB,#1f2937"]}>
+                CaseToon
+            </LinearGradient>
+        </h1>
     )
 }

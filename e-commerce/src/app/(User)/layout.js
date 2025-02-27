@@ -2,6 +2,13 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
+import { Poppins } from '@next/font/google'
+
+const poppins = Poppins({
+    subsets: ['latin'],
+    weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+    variable: '--font-poppins',
+})
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -22,7 +29,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="de">
-            <body className={`${geistSans.variable} ${geistMono.variable} transition-all antialiased`}>
+            <body className={`${geistSans.variable} ${poppins.variable} ${geistMono.variable} transition-all antialiased`}>
                 <SpeedInsights />
                 <Analytics />
                 {children}
