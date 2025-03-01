@@ -54,7 +54,7 @@ export default function Header({className}) {
             </div>
 
             {/*######### pc #########*/}
-            <div className="hidden md:flex justify-end w-1/6 ">
+            <div className="hidden md:flex justify-end w-fit ">
                 {/* theme switcher */}
                 <ThemeSwitch setTheme={setTheme} theme={theme}/>
                 {/* warenkorb */}

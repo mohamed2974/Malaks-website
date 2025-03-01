@@ -1,5 +1,6 @@
 'use client';
 import { useCartStore } from '@/lib/store/cartStore';
+import StandardLinkButton from '@/utils/buttons/StandardLinkButton';
 import CheckoutButton from '@/utils/CheckoutButton-component';
 import finalpreis from '@/utils/functions/finalpreis';
 import GradientTitel from '@/utils/GradientTitel';
@@ -63,9 +64,7 @@ export default function CartPage() {
                         <div className="text-center space-y-4">
                             <span className="flex justify-center text-7xl text-TextPrim"><BsEmojiAstonished /></span>
                             <p className="text-lg font-medium text-TextSec">Dein Warenkorb ist leer.</p>
-                            <Link href='/shop' className="inline-block mt-4 bg-BrandBlue hover:bg-BrandBlueLight text-BrandWhite px-6 py-2 rounded-md transition duration-200 shadow-md">
-                                Produkte ansehen
-                            </Link>
+                            <StandardLinkButton link='/shop' text='Produkte ansehen' />
                         </div>
                     )}
                 </div>

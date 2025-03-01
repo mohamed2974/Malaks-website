@@ -12,7 +12,7 @@ import { FaPlus, FaMinus, FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 export default function ProduktDetail() {
   const { id } = useParams(); // Hole die dynamische ID aus den Routenparametern
-  const [produkt, setProdukt] = useState(null);
+  const [produkt, setProdukt] = useState();
   const [gekaufteMenge, setGekaufteMenge] = useState(1)
   const [schaubild, setSchaubild] = useState()
   const schaubildRef = useRef(null);
@@ -24,15 +24,27 @@ export default function ProduktDetail() {
     if (!id) return;
   
     fetch(`/api/products/${id}`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          return null; // Hier nicht werfen, sondern null zurückgeben
+        }
+        return res.json();
+      })
       .then((data) => {
+        if (!data) {
+          setProdukt(null);
+          return;
+        }
         setProdukt(data);
         if (data.bild_urls?.length > 0) {
-          setSchaubild(data.bild_urls[0]); // Erstes Bild setzen
+          setSchaubild(data.bild_urls[0]);
         }
       })
-      .catch((error) => console.error('Fehler beim Abrufen des Produkts:', error));
-  }, [id]);
+      .catch((error) => {
+        console.error('Fehler beim Abrufen des Produkts:', error);
+        setProdukt(null);
+      });
+  }, [id]);  
 
   // keen slider 
   const [sliderRef] = useKeenSlider({
@@ -41,10 +53,14 @@ export default function ProduktDetail() {
     slides: { perView: previewNum, spacing: 10 }, // Auto-Slide-Anpassung
   });
   
-  if (!produkt) {
-    return <div className="flex items-center justify-center h-screen">Produkt wird geladen...</div>;
-  }
 
+  if (!produkt && produkt !== null) {
+    return <div className="flex items-center justify-center h-[80vh]">Produkt wird geladen...</div>;
+  }
+  
+  if (produkt === null ) {
+    return <div className="flex items-center justify-center font-bold text-ErrorRed h-[80vh]">Produkt nicht gefunden</div>;
+  }  
   // variabeln bestimmen
   let { name, beschreibung, preis, rabatt_prozent, status, bild_urls } = produkt 
   preis = parseFloat(preis)
@@ -130,9 +146,7 @@ export default function ProduktDetail() {
                   />
                 </button>
               ))}
-            </div>
-            )
-            }
+            </div>)}
           </div>
         </div>
         {/* Detailbereich */}

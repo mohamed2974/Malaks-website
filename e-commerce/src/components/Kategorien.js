@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import GradientTitel from "@/utils/GradientTitel";
 import { categories } from '@/data/kategorieOptionen';
+import Link from 'next/link';
 
 export default function CategoryGrid() {
     return (
@@ -13,20 +14,19 @@ export default function CategoryGrid() {
             </div>
             <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-4 gap-y-4">
                 {categories.map((category) => (
-                    <div
-                    key={category.name}
-                    className={`relative flex items-center justify-center rounded-xl p-6 ${category.bgColor} text-white`}
-                    >
-                    <span className="absolute top-4 left-4 font-bold text-lg">{category.name}</span>
-                    {category.image && (
-                        <Image
-                        src={category.image}
-                        alt={category.name}
-                        width={100}
-                        height={100}
-                        className="object-contain"
-                        />
-                    )}
+                    <div key={category.name} className={`relative flex items-center justify-center aspect-square rounded-xl ${category.bgColor} text-white`}>
+                        <span className="absolute z-10 top-4 left-4 font-extrabold text-4xl">{category.value}</span>
+                        {category.image && (
+                            <Link href={`/shop/kategorien/${category.name}`} passHref>
+                                <Image
+                                src={category.image}
+                                alt={category.name}
+                                fill
+                                sizes="(max-width: 768px) 100vw, 50vw" 
+                                className="object-contain"
+                                />
+                            </Link>
+                        )}
                     </div>
                 ))}
             </div>
