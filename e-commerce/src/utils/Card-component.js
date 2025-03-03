@@ -30,16 +30,15 @@ export default function ProductCard({produkt}) {
     }
 
     return (
-        <div className={`rounded-lg transition-all ease-in-out hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-white/20 will-change-transform overflow-hidden bg-BrandWhite shadow-md dark:shadow-white/15 h-[70vw] md:h-[42vw] lg:h-[31vw]`}>
-            <div className="h-3/4 md:h-3/5 lg:h-2/3 overflow-hidden flex items-center">
+        <div className={`rounded-lg grid grid-rows-3 transition-all ease-in-out hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-white/20 will-change-transform overflow-hidden bg-BrandWhite shadow-md dark:shadow-white/15`}>
+            <div className="row-span-2 relative aspect-square overflow-hidden">
                 {/* Produktbild */}
                 {bild_urls.length > 0 ? (
                     <Image
                     src={bild_urls[0]}
-                    className="w-full h-full object-cover"
+                    className="object-cover"
                     alt={name}
-                    width={300}
-                    height={200}
+                    fill
                     />
                 ) : (
                 <div className="w-full h-full flex items-center justify-center bg-gray-200">
@@ -49,7 +48,7 @@ export default function ProductCard({produkt}) {
             </div>
 
             {/* Produktinformationen */}
-            <div className="h-1/4 md:h-2/5 lg:h-1/3 px-4 py-1.5 md:py-2 flex flex-col justify-between relative">
+            <div className="px-4 py-1.5 md:py-2 flex flex-col justify-between relative bg-BrandWhite">
                 <div>
                     <h3 className="text-BrandBlueLight text-sm md:text-lg font-semibold truncate md:whitespace-normal">
                         {name}
@@ -62,7 +61,7 @@ export default function ProductCard({produkt}) {
                     <span className="text-SaleRed font-bold text-[12px] md:text-lg">
                         {neuerPreis} €
                     </span>
-                    <span className="text-TextSec text-[12px] line-through">{preis.toFixed(2)} €</span>
+                    <span className="text-BrandDark text-[12px] line-through">{preis.toFixed(2)} €</span>
                     <span className="hidden font-bold md:inline text-[12px] bg-red-100 text-SaleRed px-2 py-1 rounded">
                         - {rabatt_prozent.toFixed(0)}%
                     </span>
@@ -70,7 +69,7 @@ export default function ProductCard({produkt}) {
                 // preis ohne rabatt
                 <div>
                     {!rabattiert &&
-                        <span className="text-TextPrim text-[12px]">{preis.toFixed(2)} €</span>
+                        <span className="text-BrandDark text-[12px]">{preis.toFixed(2)} €</span>
                     }
                 </div>
                 }

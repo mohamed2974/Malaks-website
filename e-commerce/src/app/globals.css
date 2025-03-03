@@ -5,6 +5,7 @@
 :root {
   /* Light Mode */
   --brand-white: #FFFFFF;
+  --brand-dark: #1F2937;
   --background-primary: #F9FAFB;  /* sehr helles Grau/Weiß */
   --background-secondary: #E2E8F0;  /* kühles, helles Blau-Grau */
   --text-primary: #1F2937;        /* dunkel, aber nicht rein schwarz */

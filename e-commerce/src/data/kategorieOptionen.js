@@ -1,48 +1,66 @@
-const categories = [
-    { 
-        name: 'gaming', 
-        value: "Gaming", 
-        label: "Gaming",
-        bgColor: 'bg-blue-500', 
-        image: '/img/kategorien/gaming.PNG',
-        beschreibung: 'Perfekt für Gamer – inspiriert von ikonischen Spielen und Pixel-Art.'
-    },
-    { 
-        name: 'snack', 
-        value: "Snack", 
-        label: "Snack",
-        bgColor: 'bg-yellow-500', 
-        image: '/img/kategorien/snack.PNG',
-        beschreibung: 'Leckere Motive, die dein Case zum Hingucker machen.'
-    },
-    { 
-        name: 'animation', 
-        value: "Animation", 
-        label: "Animation",
-        bgColor: 'bg-pink-500', 
-        image: '/img/kategorien/animation.PNG',
-        beschreibung: 'Inspiriert von deinen Lieblingscharakteren und animierten Welten.'
-    },
-    { 
-        name: 'drip', 
-        value: "Drip", 
-        label: "Drip",
-        bgColor: 'bg-pink-500', 
-        image: '/img/kategorien/drip.PNG',
-        beschreibung: 'Stylische Designs für einen einzigartigen und trendigen Look.'
-    },
-];
+const categories = {
+    kategorie: [
+        {
+            name: 'gaming', 
+            value: "Gaming", 
+            label: "Gaming",
+            image: '/img/kategorien/gaming.webp',
+            beschreibung: 'Perfekt für Gamer – inspiriert von ikonischen Spielen und Pixel-Art.'
+        },
+        {
+            name: 'snack', 
+            value: "Snack", 
+            label: "Snack",
+            image: '/img/kategorien/snack.webp',
+            beschreibung: 'Leckere Motive, die dein Case zum Hingucker machen.'
+        },
+        {
+            name: 'animation', 
+            value: "Animation", 
+            label: "Animation",
+            image: '/img/kategorien/animation.webp',
+            beschreibung: 'Inspiriert von deinen Lieblingscharakteren und animierten Welten.'
+        },
+        {
+            name: 'drip', 
+            value: "Drip", 
+            label: "Drip",
+            image: '/img/kategorien/drip.webp',
+            beschreibung: 'Stylische Designs für einen einzigartigen und trendigen Look.'
+        }
+    ],
+    modell: [
+        { 
+            name: 'pro', 
+            value: "Airpods Pro", 
+            label: "Airpods Pro"
+        },
+        { 
+            name: '2gen', 
+            value: "Airpods (2. Gen)", 
+            label: "Airpods (2. Gen)"
+        },
+        { 
+            name: '3gen', 
+            value: "Airpods (3. Gen)", 
+            label: "Airpods (3. Gen)"
+        },
+    ]
+};
 
-const kategorieOptionen = categories.map((element) => ({
+// **Alle Kategorien und Modelle in ein einziges Array umwandeln**
+const categoriesArray = Object.values(categories).flat();
+
+// **Dropdown-Optionen für ein Select-Feld**
+const kategorieOptionen = categoriesArray.map((element) => ({
     value: element.value,
     label: element.label
-}))
+}));
 
-const kategorieOptionenArray = []
-categories.forEach((element) => kategorieOptionenArray.push(element.value))
+// **Array mit allen Values**
+const kategorieOptionenArray = categoriesArray.map((element) => element.value);
 
-const kategorieFilterArry = []
-categories.forEach((element) => kategorieFilterArry.push(element.name))
+// **Array mit allen Namen**
+const kategorieFilterArray = categoriesArray.map((element) => element.name);
 
-
-export {kategorieOptionen, kategorieOptionenArray, kategorieFilterArry, categories}
+export { kategorieOptionen, kategorieOptionenArray, kategorieFilterArray, categories };

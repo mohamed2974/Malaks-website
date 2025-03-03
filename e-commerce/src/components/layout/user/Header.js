@@ -10,7 +10,6 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { nav } from "@/data/layout/header";
 import Uls from "@/utils/ULs-component";
 import MobileNav from '@/utils/MobileNav-component'
-import Image from "next/image";
 import { LinearGradient } from "react-text-gradients";
 
 
@@ -44,17 +43,17 @@ export default function Header({className}) {
     return (
         <header className={`flex flex-row justify-between items-center w-full z-50 transition-all duration-300 ease-in-out text-xl ${className}`}>
             {/* Logo */}
-            <div className="w-fit">
+            <div className="w-2/6">
                 <Logo />
             </div>
 
             {/* nav bar */}
-            <div className="w-4/6 text-center text-lg hidden md:inline-block">
+            <div className="w-fit text-center text-lg hidden md:inline-block">
                 <Uls array={nav} row={true} style='justify-center' listItemStyle='mx-6 py-2'/>
             </div>
 
             {/*######### pc #########*/}
-            <div className="hidden md:flex justify-end w-fit ">
+            <div className="hidden md:flex justify-end w-2/6 ">
                 {/* theme switcher */}
                 <ThemeSwitch setTheme={setTheme} theme={theme}/>
                 {/* warenkorb */}
@@ -88,7 +87,7 @@ function ThemeSwitch({setTheme, theme, id}){
 //supcom ################### Logo ################### //
 function Logo(){
     return (
-        <h1 className="text-xl lg:text-2xl font-extrabold bg-BrandWhite py-[1px] px-2 rounded-3xl ">
+        <h1 className="text-xl lg:text-2xl font-extrabold bg-BrandWhite py-[1px] px-2 rounded-3xl w-fit ">
             <LinearGradient gradient={["to right", "#5A7DEB,#1f2937"]}>
                 CaseToon
             </LinearGradient>

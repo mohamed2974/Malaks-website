@@ -8,6 +8,7 @@ const config = {
     extend: {
       colors: {
         BrandWhite: 'var(--brand-white)',
+        BrandDark: 'var(--brand-dark)',
         BgPrim: "var(--background-primary)",
         BgSec: 'var( --background-secondary)',
         TextPrim: "var(--text-primary)",

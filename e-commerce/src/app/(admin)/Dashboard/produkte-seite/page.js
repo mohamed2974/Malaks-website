@@ -237,11 +237,11 @@ function Tabelle({produkte = []}){
         {produkte.map((produkt, index) => (
           <tr key={index}>
             <td>{produkt.id}</td>
-            <td>{produkt.name}</td>
+            <td className='truncate'>{produkt.name}</td>
             <td>{produkt.beschreibung.substring(0, 100)}...</td>
             <td>{produkt.preis}</td>
             <td>{produkt.menge}</td>
-            <td>{produkt.kategorie}</td>
+            <td className='space-y-1'>{produkt.kategorie.split(',').map((text, index)=> <span className='bg-BgSec inline-block px-3 rounded-full' key={index}>{text + ' '} </span>)}</td>
             <td>{produkt.lagerort}</td>
             <td>{produkt.status}</td>
             <td>{produkt.hersteller}</td>

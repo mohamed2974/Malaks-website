@@ -13,8 +13,9 @@ export default function CategoryGrid() {
                 <p className="text-TextSec mt-2">Finde dein perfektes AirPods Case in unseren vielfältigen Kategorien.</p>
             </div>
             <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-4 gap-y-4">
-                {categories.map((category) => (
-                    <div key={category.name} className={`relative flex items-center justify-center aspect-square rounded-xl ${category.bgColor} text-white`}>
+                {categories.kategorie.map((category) => (
+                    category.image && (
+                        <div key={category.name} className={`relative flex items-center justify-center aspect-square rounded-xl text-white`}>
                         <span className="absolute z-10 top-4 left-4 font-extrabold text-4xl">{category.value}</span>
                         {category.image && (
                             <Link href={`/shop/kategorien/${category.name}`} passHref>
@@ -28,6 +29,7 @@ export default function CategoryGrid() {
                             </Link>
                         )}
                     </div>
+                    )
                 ))}
             </div>
         </section>

@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { useParams } from 'next/navigation'; // Verwende useParams statt useRouter
 import { useEffect, useState, useRef, useReducer  } from 'react';
 import { FaPlus, FaMinus, FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import ModellMassen from '@/components/store/ModellMassen';
 
 export default function ProduktDetail() {
   const { id } = useParams(); // Hole die dynamische ID aus den Routenparametern
@@ -62,7 +63,7 @@ export default function ProduktDetail() {
     return <div className="flex items-center justify-center font-bold text-ErrorRed h-[80vh]">Produkt nicht gefunden</div>;
   }  
   // variabeln bestimmen
-  let { name, beschreibung, preis, rabatt_prozent, status, bild_urls } = produkt 
+  let { name, beschreibung, preis, rabatt_prozent, bild_urls, menge, kategorie } = produkt 
   preis = parseFloat(preis)
   rabatt_prozent = parseFloat(rabatt_prozent || 0)
   const endpreis = finalpreis(produkt);
@@ -88,18 +89,18 @@ export default function ProduktDetail() {
   };
   
   return (
+    <>
     <section className="py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Bildbereich */}
         <div>
           <div className='flex justify-center'>
-            <div className="relative h-[50vh] lg:h-[70vh] w-full lg:w-fit flex justify-center items-center overflow-hidden rounded-lg shadow-lg">
+            <div className="aspect-square relative w-full h-fit overflow-hidden rounded-lg shadow-lg">
               <Image
                 alt="Produktbild"
                 src={schaubild}
-                height={500}
-                width={500}
-                className="object-contain"
+                fill
+                className="object-cover md:hover:scale-105 transition-transform"
               />
             </div>
           </div>
@@ -110,13 +111,13 @@ export default function ProduktDetail() {
                 <FaArrowLeft className="text-gray-600 bg-gray-200 p-2 text-2xl rounded-full" />
                 <FaArrowRight className="text-gray-600 bg-gray-200 p-2 text-2xl rounded-full" />
             </div>
-            <div className="keen-slider h-[10vh] overflow-hidden mt-2" ref={sliderRef}>
+            <div className="keen-slider overflow-hidden mt-2" ref={sliderRef}>
               {bild_urls.map((bild, index) => (
                 <button 
                   key={index} 
                   onClick={() => handleImageClick(index)} 
-                  className={`border-2 keen-slider__slide flex items-center rounded-lg ${
-                    schaubild === bild ? "border-BrandBlue scale-105" : "border-transparent"
+                  className={`border-2  keen-slider__slide relative aspect-square rounded-lg ${
+                    schaubild === bild ? "border-BrandBlue" : "border-transparent"
                   }`}
                 >
                   <Image 
@@ -128,20 +129,19 @@ export default function ProduktDetail() {
                 </button>
               ))}
             </div></>) : (
-              <div className="h-[10vh] mt-5 flex flex-row space-x-2" ref={sliderRef}>
+              <div className="mt-5 flex flex-row space-x-2" ref={sliderRef}>
               {bild_urls.map((bild, index) => (
                 <button 
                   key={index} 
                   onClick={() => handleImageClick(index)} 
-                  className={`border-2 relative flex items-center h-full rounded-lg overflow-hidden ${
-                    schaubild === bild ? "border-BrandBlue scale-105" : "border-transparent"
+                  className={`border-2 relative aspect-square w-1/5 rounded-lg overflow-hidden ${
+                    schaubild === bild ? "border-BrandBlue" : "border-transparent"
                   }`}
                 >
                   <Image 
                     alt="Vorschaubild"
                     src={bild}
-                    width={75}
-                    height={50}
+                    fill
                     className="object-cover object-center"
                   />
                 </button>
@@ -149,15 +149,13 @@ export default function ProduktDetail() {
             </div>)}
           </div>
         </div>
-        {/* Detailbereich */}
         <div className="flex flex-col justify-center">
-          {/* name & beschreibung */}
-          <div>
-            <h1 className="text-4xl text-BrandBlue font-bold mb-4">{name}</h1>
-            <p className="text-TextSec mb-6">{beschreibung}</p>
+          {/* name */}
+          <div className='mb-4'>
+            <h1 className="text-4xl text-BrandBlue font-bold">{name}</h1>
           </div>
           {/* preis */}
-          <div className="mb-6 flex items-center space-x-4">
+          <div className="my-3 flex items-center space-x-4">
             {rabatt_prozent > 0 ? (
               <>
               <span className="text-2xl font-semibold text-SaleRed">{endpreis}€</span>
@@ -170,11 +168,22 @@ export default function ProduktDetail() {
               <span className="text-lg font-semibold text-TextSec">{endpreis}€</span>
             )}
           </div>
+          {/* kategorie */}
+          <div className='flex space-x-3 my-3'>
+            {kategorie.split(',').map((kategorie, index) => (
+              <p className="text-TextSec bg-BgSec rounded-full px-3 py-0.5 text-sm font-light" key={index}>{kategorie}</p>
+            ))}
+          </div>
+          {/* beschreibung */}
+          <div className='my-3'>
+            <p className="text-TextSec">{beschreibung}</p>
+          </div>
           {/* menge wählen */}
-          <div className='flex flex-row mb-10'>
+          <div className='flex flex-row my-10'>
             <button className='p-1 bg-BgSec rounded-full' onClick={handleadd}><FaPlus /></button>
             <p className='mx-4'>{gekaufteMenge}</p>
             <button className='p-1 bg-BgSec rounded-full' onClick={handlesub}><FaMinus /></button>
+            <p className='ml-4 text-TextSec text-sm font-light'>Im Lager: {menge}</p>
           </div>
           {parseFloat(produkt.menge) === 0 && (
           <div className="bg-red-100 border-l-4 border-ErrorRed p-4 rounded-lg mb-5">
@@ -190,5 +199,7 @@ export default function ProduktDetail() {
         </div>
       </div>
     </section>
+    <ModellMassen />
+    </>
   );
 }
