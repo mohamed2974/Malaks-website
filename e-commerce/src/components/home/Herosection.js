@@ -36,12 +36,13 @@ export default function HeroSec() {
                 </div>
 
                 {/* Bild mit Schatten und sanften Rundungen */}
-                <div className="relative w-[600px] h-[270px]">
+                <div className="relative aspect-auto">
                     <Image
                         alt="Bild"
                         src="/img/herosec.webp"
-                        fill
-                        className="object-cover rounded-3xl shadow-2xl"
+                        width={600}
+                        height={100}
+                        className="object-contain rounded-3xl shadow-2xl"
                     />
                 </div>
             </div>

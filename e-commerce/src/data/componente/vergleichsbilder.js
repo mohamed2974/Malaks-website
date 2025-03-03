@@ -1,6 +1,6 @@
 const vergleichsbilder = {
-    FIRST_IMAGE: 'https://ungrxmlu9usc52eq.public.blob.vercel-storage.com/wichtig/vergleichsbilder/1-nqpe9laB239I11l9wEf3CSFmPXw8Pw.png',
-    SECOND_IMAGE: 'https://ungrxmlu9usc52eq.public.blob.vercel-storage.com/wichtig/vergleichsbilder/2-K4kztG0FAxUc0me9EAxLwyJ4Qvfa9X.png'
+    FIRST_IMAGE: 'https://ungrxmlu9usc52eq.public.blob.vercel-storage.com/wichtig/vergleichsbilder/tinywow_1_76235582-p3Wt44UmMXWh0Lp0b9cK6XFmeP9nPo.webp',
+    SECOND_IMAGE: 'https://ungrxmlu9usc52eq.public.blob.vercel-storage.com/wichtig/vergleichsbilder/tinywow_2_76235582-0FR4ZvOfQFYqW0BM118525lHAMnzQn.webp'
 }
 
 export {vergleichsbilder}
