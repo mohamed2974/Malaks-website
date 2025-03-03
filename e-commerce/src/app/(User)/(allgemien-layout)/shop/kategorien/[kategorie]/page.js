@@ -2,7 +2,7 @@
 import GradientTitel from "@/utils/GradientTitel";
 import { useParams, useRouter } from "next/navigation";  // useRouter wird hier benötigt
 import { useEffect, useState } from "react";
-import { kategorieFilterArry, categories } from "@/data/kategorieOptionen";
+import { kategorieFilterArray, categories } from "@/data/kategorieOptionen";
 import Produktekarten from "@/utils/Produktekarten";
 
 export default function Kategorie() {
