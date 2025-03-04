@@ -98,6 +98,11 @@ export default function Produktekarten({sliceparam = '', behave = 'normal', filt
                                 </Link>
                             </div>
                         ))}
+                    {filtrierteProdukte.length === 0 && (
+                        <div className="flex justify-center col-span-4">
+                            <p className="text-center text-gray-400 h-[40vh]">Keine Produkte gefunden</p>
+                        </div>
+                    )}
                 </div>
             </div>
         )}  

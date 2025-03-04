@@ -1,3 +1,4 @@
+// ! unbenuzt 
 import sql from '@/lib/neon-DB';  // Importiere die Neon-Verbindung
 
 export async function GET(request, context) {
