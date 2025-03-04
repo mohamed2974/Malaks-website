@@ -20,7 +20,7 @@ export default function Qualitaet() {
                     <Image className='w-full object-cover' src={content.bild} alt='bild' height={100} width={100}/> : 
                     content.video ?
                     <video autoPlay loop muted playsInline className="object-contain">
-                        <source src={content.video} type="video/mp4" />
+                        <source src={content.video} type="video/webm" />
                         Your browser does not support the video tag.
                     </video> :
                     <span className="text-gray-500 text-lg">Hier kommt dein Produktbild</span>}
