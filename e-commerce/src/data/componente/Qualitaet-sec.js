@@ -1,6 +1,7 @@
 let content = {
     bild: null,
-    video: '/video/qualitaetsec.webm',
+    video: '/video/qualitaetsec.MP4',
+    video_webm: '/video/qualitaetsec.webm',
     textbereich: {
         titel: 'Hochwertige Materialien & Perfekte Verarbeitung',
         firstp: 'Unsere AirPods Cases werden aus langlebigen, sorgfältig ausgewählten Materialien gefertigt, die optimalen Schutz bieten. Dank präziser Verarbeitung sitzen sie passgenau und liegen angenehm in der Hand.',

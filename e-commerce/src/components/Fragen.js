@@ -32,7 +32,7 @@ export default function FAQ() {
                         </button>
                         <div
                             className={`overflow-hidden transition-all duration-300  ${
-                                openIndex === index ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'
+                                openIndex === index ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
                             }`}
                         >
                             <div className="px-4 py-5 text-TextSec">{faq.answer}</div>
