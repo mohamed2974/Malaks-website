@@ -24,7 +24,6 @@ export default function katalog(){
                     </div>
                 ))}
                 <video autoPlay loop muted playsInline className='aspect-square row-start-2 row-end-4 col-start-2 col-end-4 rounded-3xl'>
-                    <source src="/katalog/katalogvideo.webm" type="video/webm"/>
                     <source src="/katalog/katalogvideo.MP4" type="video/mp4"/>
                 </video>
             </div>
