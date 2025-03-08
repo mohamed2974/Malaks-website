@@ -16,19 +16,19 @@ export default function CategoryGrid() {
                 {categories.kategorie.map((category) => (
                     category.image && (
                         <div key={category.name} className={`relative flex items-center justify-center aspect-square rounded-xl text-white`}>
-                        <span className="absolute z-10 top-4 left-4 font-extrabold text-4xl">{category.value}</span>
-                        {category.image && (
-                            <Link href={`/shop/kategorien/${category.name}`} passHref>
-                                <Image
-                                src={category.image}
-                                alt={category.name}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 50vw" 
-                                className="object-contain"
-                                />
-                            </Link>
-                        )}
-                    </div>
+                            <span className="absolute z-10 top-4 left-4 font-extrabold text-4xl">{category.value}</span>
+                            {category.image && (
+                                <Link href={`/shop/kategorien/${category.name}`} className='relative' passHref>
+                                    <Image
+                                    src={category.image}
+                                    alt={category.name}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, 50vw" 
+                                    className="object-contain"
+                                    />
+                                </Link>
+                            )}
+                        </div>
                     )
                 ))}
             </div>
