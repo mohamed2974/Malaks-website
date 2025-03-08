@@ -18,7 +18,7 @@ export default function CategoryGrid() {
                         <div key={category.name} className={`relative flex items-center justify-center aspect-square rounded-xl text-white`}>
                             <span className="absolute z-10 top-4 left-4 font-extrabold text-4xl">{category.value}</span>
                             {category.image && (
-                                <Link href={`/shop/kategorien/${category.name}`} className='relative' passHref>
+                                <Link href={`/shop/kategorien/${category.name}`} passHref>
                                     <Image
                                     src={category.image}
                                     alt={category.name}
