@@ -48,7 +48,7 @@ export default function HeroSec() {
             </div>
             <div className='relative flex md:hidden justify-center min-h-[70vh] w-full z-10  overflow-hidden'>
                 <video autoPlay loop muted playsInline className="object-cover rounded-2xl  w-full h-auto">
-                    <source src="/video/herosecmobile.webm" type="video/webm"/>
+                    <source src="/video/herosecmobile.mp4" type="video/mp4"/>
                 </video>
             </div>
             <span id='stickyheader'></span>
