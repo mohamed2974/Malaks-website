@@ -12,14 +12,14 @@ export default function ModellMassen() {
 
             <div className="md:hidden">
                 <div className="aspect-square relative shadow-lg rounded-lg overflow-hidden"> 
-                    <Image src='/img/modelle/alle.webp' alt="AirPods Modelle" fill className="object-cover"/>
+                    <Image src='/img/modelle/alle.JPG' alt="AirPods Modelle" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover"/>
                 </div>
             </div>
             <div className=" md:grid grid-cols-3 gap-6 hidden">
                 {modelle.map((modell, index) => (
                     <div key={index} className="bg-BgSec shadow-md rounded-lg md:p-3 lg:p-6 text-center transition hover:-translate-y-2">
                         <div className="aspect-square relative rounded-md overflow-hidden"> 
-                            <Image src={modell.img} alt="AirPods Modelle" fill className="object-cover"/>
+                            <Image src={modell.img} alt="AirPods Modelle" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover"/>
                         </div>
                         <h3 className="lg:text-xl text-TextPrim font-semibold mt-4">{modell.name}</h3>
                         <p className="md:text-sm lg:text-lg text-AccentYellow bg-yellow-100 w-fit mx-auto px-2 rounded-md mt-2">{modell.erschienen}</p>

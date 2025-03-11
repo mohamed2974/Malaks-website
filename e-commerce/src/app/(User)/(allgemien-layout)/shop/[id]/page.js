@@ -100,6 +100,7 @@ export default function ProduktDetail() {
                 alt="Produktbild"
                 src={schaubild}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw" 
                 className="object-cover md:hover:scale-105 transition-transform"
               />
             </div>
@@ -124,6 +125,7 @@ export default function ProduktDetail() {
                     alt="Vorschaubild"
                     src={bild}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw" 
                     className="object-cover object-center"
                   />
                 </button>
@@ -142,6 +144,7 @@ export default function ProduktDetail() {
                     alt="Vorschaubild"
                     src={bild}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw" 
                     className="object-cover object-center"
                   />
                 </button>

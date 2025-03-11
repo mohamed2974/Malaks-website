@@ -4,28 +4,28 @@ const categories = {
             name: 'gaming', 
             value: "Gaming", 
             label: "Gaming",
-            image: '/img/kategorien/gaming.webp',
+            image: '/img/kategorien/gaming.jpg',
             beschreibung: 'Perfekt für Gamer – inspiriert von ikonischen Spielen und Pixel-Art.'
         },
         {
             name: 'snack', 
             value: "Snack", 
             label: "Snack",
-            image: '/img/kategorien/snack.webp',
+            image: '/img/kategorien/snack.jpg',
             beschreibung: 'Leckere Motive, die dein Case zum Hingucker machen.'
         },
         {
             name: 'animation', 
             value: "Animation", 
             label: "Animation",
-            image: '/img/kategorien/animation.webp',
+            image: '/img/kategorien/animation.jpg',
             beschreibung: 'Inspiriert von deinen Lieblingscharakteren und animierten Welten.'
         },
         {
             name: 'drip', 
             value: "Drip", 
             label: "Drip",
-            image: '/img/kategorien/drip.webp',
+            image: '/img/kategorien/drip.jpg',
             beschreibung: 'Stylische Designs für einen einzigartigen und trendigen Look.'
         }
     ],
