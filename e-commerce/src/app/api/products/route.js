@@ -22,47 +22,48 @@ export async function POST(request) {
   const name = formData.get('name');
   const beschreibung = formData.get('beschreibung');
   const preis = parseFloat(formData.get('preis'));
-  const menge = parseInt(formData.get('menge'), 10);
   const kategorie = formData.get('kategorie');
   const lagerort = formData.get('lagerort') || null;
   const status = formData.get('status') || 'verfügbar';
   const hersteller = formData.get('hersteller') || null;
   const gewicht = formData.get('gewicht') ? parseFloat(formData.get('gewicht')) : null;
   const rabatt_prozent = formData.get('rabatt_prozent') ? parseFloat(formData.get('rabatt_prozent')) : 0;
+  const mengeAirpodsPro = parseInt(formData.get('mengeAirpodsPro'), 10);
+  const menge2Generation = parseInt(formData.get('menge2Generation'), 10);
+  const menge3Generation = parseInt(formData.get('menge3Generation'), 10);
+
+  const modelQuantities = {
+    airpodsPro: mengeAirpodsPro || 0,
+    generation2: menge2Generation || 0,
+    generation3: menge3Generation || 0
+  };
+  
+
+  const menge = Object.values(modelQuantities).reduce((acc, menge) => acc + menge, 0);
 
   // Mehrere Bild-URLs als JSON-Array empfangen
   let bildUrls = formData.get('bildUrls');
   bildUrls = bildUrls ? JSON.parse(bildUrls) : [];
-
-  console.log('Formulardaten:', { name, beschreibung, preis, menge, kategorie, lagerort, status, hersteller, gewicht, rabatt_prozent, bildUrls });
 
   if (!bildUrls.length) {
     return new Response('Keine Bilder hochgeladen', { status: 400 });
   }
   
   // Validierung der numerischen Werte
-  if (isNaN(preis)) {
-    return new Response('Ungültiger Preis', { status: 400 });
-  }
+  if (Object.values(modelQuantities).some(isNaN)) {
+    return new Response('Ungültige Mengenangaben für eines der Modelle', { status: 400 });
+  }  
 
-  if (isNaN(menge)) {
-    return new Response('Ungültige Menge', { status: 400 });
-  }
-
-  if (isNaN(gewicht)) {
-    return new Response('Ungültiges Gewicht', { status: 400 });
-  }
-
-  if (isNaN(rabatt_prozent)) {
-    return new Response('Ungültiger Rabatt-Prozentwert', { status: 400 });
-  }
+  if ([preis, menge, gewicht, rabatt_prozent].some(isNaN)) {
+  return new Response('Ungültige Eingabewerte für Preis, Menge, Gewicht oder Rabatt-Prozentwert', { status: 400 });
+}
 
   try {
     await sql`
       INSERT INTO produkte 
-        (name, beschreibung, preis, menge, kategorie, lagerort, status, hersteller, gewicht, rabatt_prozent, bild_urls) 
+        (name, beschreibung, preis, menge, kategorie, lagerort, status, hersteller, gewicht, rabatt_prozent, bild_urls, model_mengen) 
       VALUES 
-        (${name}, ${beschreibung}, ${preis}, ${menge}, ${kategorie}, ${lagerort}, ${status}, ${hersteller}, ${gewicht}, ${rabatt_prozent}, ${JSON.stringify(bildUrls)})
+        (${name}, ${beschreibung}, ${preis}, ${menge}, ${kategorie}, ${lagerort}, ${status}, ${hersteller}, ${gewicht}, ${rabatt_prozent}, ${JSON.stringify(bildUrls)}, ${JSON.stringify(modelQuantities)})
     `;
 
     return new Response('Produkt hinzugefügt', { status: 200 });

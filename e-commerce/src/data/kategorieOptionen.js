@@ -32,17 +32,17 @@ const categories = {
     modell: [
         { 
             name: 'pro', 
-            value: "Airpods Pro", 
+            value: "airpodsPro", 
             label: "Airpods Pro"
         },
         { 
             name: '2gen', 
-            value: "Airpods (2. Gen)", 
+            value: "generation2", 
             label: "Airpods (2. Gen)"
         },
         { 
             name: '3gen', 
-            value: "Airpods (3. Gen)", 
+            value: "generation3", 
             label: "Airpods (3. Gen)"
         },
     ]

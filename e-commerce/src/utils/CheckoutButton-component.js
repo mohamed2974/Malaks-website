@@ -11,7 +11,7 @@ export default function CheckoutButton({className}) {
     const sanitizeCartItems = (items) => {
         return items.map(item => {
             // Nur die relevanten Felder extrahieren
-            const { id, name, preis, rabatt_prozent, gekaufteMenge } = item;
+            const { id, name, preis, rabatt_prozent, gekaufteMenge, modell } = item;
 
             const sanitizedItem = {
                 id: parseFloat(id),  // Produkt-ID (wichtig)
@@ -19,7 +19,7 @@ export default function CheckoutButton({className}) {
                 preis: parseFloat(preis) || 0,  // Preis als Zahl
                 rabatt_prozent: parseFloat(rabatt_prozent) || 0, // Rabatt als Zahl
                 gekaufteMenge: parseInt(gekaufteMenge) || 1, // Menge sicherstellen
-
+                modell: modell,  // Modell (wichtig)
             };
             
             console.log("Sanitized Item:", sanitizedItem);  // Debugging

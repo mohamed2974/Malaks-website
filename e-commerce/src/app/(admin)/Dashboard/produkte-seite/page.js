@@ -19,13 +19,16 @@ export default function Page() {
   const [name, setName] = useState('');
   const [beschreibung, setBeschreibung] = useState('');
   const [preis, setPreis] = useState('');
-  const [menge, setMenge] = useState('');
   const [kategorie, setKategorie] = useState('');
   const [lagerort, setLagerort] = useState('');
   const [status, setStatus] = useState('');
   const [hersteller, setHersteller] = useState('');
   const [gewicht, setGewicht] = useState('');
   const [rabatt_prozent, setRabatt_prozent] = useState('');
+  const [mengeAirpodsPro, setMengeAirpodsPro] = useState('');
+  const [menge2Generation, setMenge2Generation] = useState('');
+  const [menge3Generation, setMenge3Generation] = useState('');
+
 
   //* Produkte abrufen ####################################################
   const [produkte, setProdukte] = useState([]);
@@ -96,7 +99,6 @@ export default function Page() {
     formData.append('name', name);
     formData.append('beschreibung', beschreibung);
     formData.append('preis', preis);
-    formData.append('menge', menge);
     formData.append('kategorie', kategorie);
     formData.append('lagerort', lagerort);
     formData.append('status', status);
@@ -104,6 +106,10 @@ export default function Page() {
     formData.append('gewicht', gewicht);
     formData.append('rabatt_prozent', rabatt_prozent);
     formData.append('bildUrls', JSON.stringify(uploadedUrls)); // Speichert als JSON-String
+    formData.append('mengeAirpodsPro', mengeAirpodsPro);
+    formData.append('menge2Generation', menge2Generation);
+    formData.append('menge3Generation', menge3Generation);
+
 
     try {
       const response = await fetch('/api/products', {
@@ -139,15 +145,11 @@ export default function Page() {
             <input className="p-3 rounded-md bg-BgSec" id='preis' type="number" step="0.01" value={preis} onChange={handleChange(setPreis)} required />
           </div>
           <div className='flex flex-col'>
-            <label htmlFor='menge' className='mb-2'>Menge</label>
-            <input className="p-3 rounded-md bg-BgSec" id='menge' type="number" value={menge} onChange={handleChange(setMenge)} required />
-          </div>
-          <div className='flex flex-col'>
             <label htmlFor='kategorie' className='mb-2'>Kategorie</label>
             <Select
               isMulti
               options={kategorieOptionen}
-              className="basic-multi-select p-1.5 rounded-md bg-BgSec" 
+              className="basic-multi-select p-1.5 rounded-md bg-BgSec text-BrandDark" 
               id='kategorie'
               classNamePrefix="select"
               value={kategorieOptionen.filter(option => kategorie.includes(option.value))}
@@ -188,10 +190,44 @@ export default function Page() {
             <label htmlFor='bilder' className='mb-2'>Weitere Bilder</label>
             <input className="p-3 rounded-md w-full" id='bilder' type="file" ref={inputFileRef} required multiple accept="image/*" onChange={handleChange(setBildUrl)} />
           </div>
+          <div className='flex flex-col'>
+            <label htmlFor='menge-airpods-pro' className='mb-2'>AirPods Pro Menge</label>
+            <input
+              className="p-3 rounded-md bg-BgSec"
+              id='menge-airpods-pro'
+              type="number"
+              value={mengeAirpodsPro}
+              onChange={handleChange(setMengeAirpodsPro)}
+              required
+            />
+          </div>
+          <div className='flex flex-col'>
+            <label htmlFor='menge-2-generation' className='mb-2'>2. Generation Menge</label>
+            <input
+              className="p-3 rounded-md bg-BgSec"
+              id='menge-2-generation'
+              type="number"
+              value={menge2Generation}
+              onChange={handleChange(setMenge2Generation)}
+              required
+            />
+          </div>
+          <div className='flex flex-col'>
+            <label htmlFor='menge-3-generation' className='mb-2'>3. Generation Menge</label>
+            <input
+              className="p-3 rounded-md bg-BgSec"
+              id='menge-3-generation'
+              type="number"
+              value={menge3Generation}
+              onChange={handleChange(setMenge3Generation)}
+              required
+            />
+          </div>
+
 
           {/* produkt hochladen */}
           <div className='flex col-span-4 justify-center items-center mt-5'>
-            <button className=' bg-AppleBlue transition-all hover:bg-blue-700 active:bg-blue-900 text-BrandWhite font-bold py-2 px-2 rounded-md' type="submit">Produkt hinzufügen</button>
+            <button className=' bg-BrandBlue transition-all hover:bg-BrandBlueLight active:bg-BrandBlueDark text-BrandWhite font-bold py-2 px-2 rounded-md' type="submit">Produkt hinzufügen</button>
           </div>
         </form>         
       </div>
@@ -215,6 +251,7 @@ function Tabelle({produkte = []}){
       </div>
     )
   }
+
   return (
     <table className='bg-BgPrim text-TextPrim w-full border-collapse table-fixed '>
       <thead className='bg-BgSec'>
@@ -240,7 +277,7 @@ function Tabelle({produkte = []}){
             <td className='truncate'>{produkt.name}</td>
             <td>{produkt.beschreibung.substring(0, 100)}...</td>
             <td>{produkt.preis}</td>
-            <td>{produkt.menge}</td>
+            <td>{produkt.model_mengen}</td>
             <td className='space-y-1'>{produkt.kategorie.split(',').map((text, index)=> <span className='bg-BgSec inline-block px-3 rounded-full' key={index}>{text + ' '} </span>)}</td>
             <td>{produkt.lagerort}</td>
             <td>{produkt.status}</td>

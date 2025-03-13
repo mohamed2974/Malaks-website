@@ -34,12 +34,14 @@ export default function CartPage() {
                                         />
                                     </div>
                                     <div className="px-10 text-start">
-                                        <p className="w-full text-TextPrim font-semibold mb-2 md:mb-1">{item.name}</p>
-                                        <p className="w-full text-TextSec">{finalpreis(item)} € • {item.gekaufteMenge}x</p>
+                                        <Link href={`/shop/${item.id}`} passHref>
+                                            <p className="w-full underline hover:text-BrandBlue text-TextPrim font-semibold mb-2 md:mb-1">{item.name}</p>
+                                        </Link>
+                                        <p className="text-TextSec">{finalpreis(item)} € • {item.gekaufteMenge}x • {item.modell}</p>
                                     </div>
                                 </div>
                                 <button
-                                    onClick={() => removeFromCart(item.id)}
+                                    onClick={() => removeFromCart(item.id, item.modell)}
                                     className="text-BrandRed mx-auto md:mx-0"
                                 >
                                     🗑️ Entfernen
