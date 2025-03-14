@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
     title: "CaseToon",  //* Titel im Browser, SEO-freundlicher
     description: "CaseToon bietet eine große Auswahl an einzigartigen AirPods Cases mit kreativen und trendigen Designs. Schütze deine AirPods stilvoll und entdecke unsere exklusiven Kollektionen.",  //* Beschreibung für SEO
-    keywords: "AirPods Cases, AirPods Hüllen, stylische AirPods Cases, einzigartige Designs, kreative Hüllen für AirPods, Airpods, Apple Hüllen, iphone cases, iphone hüllen",  //* Keywords für SEO
+    keywords: "AirPods Cases, AirPods Hüllen, stylische AirPods Cases, einzigartige Designs, kreative Hüllen für AirPods, Airpods, Apple Hüllen, iphone cases, iphone hüllen, CaseToon, casetoon, case toon",  //* Keywords für SEO
     author: "CaseToon",  //* Autor der Seite
     og: {
         title: "CaseToon – Einzigartige AirPods Cases mit kreativen Designs",  //* Titel für Open Graph
