@@ -2,7 +2,7 @@ export default function RabattTabelle() {
     const rabatte = [
         { menge: "2", rabatt: "-10% Rabatt 🔥" },
         { menge: "3", rabatt: "-15% Rabatt 😍" },
-        { menge: "5", rabatt: "-40% Rabatt 😱" },
+        { menge: "4", rabatt: "-30% Rabatt 😱" },
     ];
 
     return (

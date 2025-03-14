@@ -38,7 +38,7 @@ const categories = {
         { 
             name: '2gen', 
             value: "generation2", 
-            label: "Airpods (2. Gen)"
+            label: "Airpods (1/2. Gen)"
         },
         { 
             name: '3gen', 

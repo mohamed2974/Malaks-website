@@ -16,8 +16,8 @@ export async function POST(req) {
             MengenRabatt = 0.9;
         } else if (totalQuantity === 3) {
             MengenRabatt = 0.85;
-        } else if (totalQuantity >= 5) {
-            MengenRabatt = 0.6;
+        } else if (totalQuantity >= 4) {
+            MengenRabatt = 0.7;
         }
 
         const sanitizedItems = items.map(item => {
