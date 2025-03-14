@@ -218,7 +218,7 @@ export default function ProduktDetail() {
               <button className='p-1 bg-BgSec rounded-full' onClick={handleadd}><FaPlus /></button>
               <p className='mx-4'>{gekaufteMenge}</p>
               <button className='p-1 bg-BgSec rounded-full' onClick={handlesub}><FaMinus /></button>
-              <p className='ml-4 text-TextSec text-sm font-light'>Im Lager: {menge}</p>
+              <p className='ml-4 text-TextSec text-sm font-light'>Noch {menge} auf Lager</p>
           </div>
           </div>
           {/* modell wählen */}
