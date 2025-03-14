@@ -131,102 +131,112 @@ export default function Page() {
     <div className='pb-40 px-GlobalXPad md:px-MdXPad lg:px-LgXPad'>
       <div>
         <h2 className='text-3xl pb-8 underline underline-offset-8'>Produkte Hochladen</h2>
-        <form onSubmit={handleSubmit} className='grid grid-cols-4 gap-4'>
-          <div className='flex flex-col'>
-            <label htmlFor='name' className='mb-2'>Produkt Name</label>
-            <input className="p-3 rounded-md bg-BgSec" id='name' type="text" value={name} onChange={handleChange(setName)} required />
+        <form onSubmit={handleSubmit} >
+          <h3 className='text-2xl pb-4'>Informationen</h3>
+          <div className='grid grid-cols-3 gap-4'>
+            <div className='flex flex-col'>
+              <label htmlFor='name' className='mb-2'>Produkt Name</label>
+              <input className="p-3 rounded-md bg-BgSec" id='name' type="text" value={name} onChange={handleChange(setName)} required />
+            </div>
+            <div className='flex flex-col'>
+              <label htmlFor='beschreibung' className='mb-2'>Beschreibung</label>
+              <input className="p-3 rounded-md bg-BgSec" id='beschreibung' type="text" value={beschreibung} onChange={handleChange(setBeschreibung)} />          
+            </div>
+            <div className='flex flex-col'>
+              <label htmlFor='preis' className='mb-2'>Preis</label>
+              <input className="p-3 rounded-md bg-BgSec" id='preis' type="number" step="0.01" value={preis} onChange={handleChange(setPreis)} required />
+            </div>
+            <div className='flex flex-col col-span-2'>
+              <label htmlFor='kategorie' className='mb-2'>Kategorie</label>
+              <Select
+                isMulti
+                options={kategorieOptionen}
+                className="basic-multi-select p-1.5 rounded-md bg-BgSec text-BrandDark " 
+                id='kategorie'
+                classNamePrefix="select"
+                value={kategorieOptionen.filter(option => kategorie.includes(option.value))}
+                onChange={(selectedOptions) => setKategorie(selectedOptions.map(option => option.value))}
+              />
+            </div>
           </div>
-          <div className='flex flex-col'>
-            <label htmlFor='beschreibung' className='mb-2'>Beschreibung</label>
-            <input className="p-3 rounded-md bg-BgSec" id='beschreibung' type="text" value={beschreibung} onChange={handleChange(setBeschreibung)} />          
+          <h3 className='text-2xl pb-4 mt-10'>Details</h3>
+          <div className='grid grid-cols-3 gap-4'>
+            <div className='flex flex-col'>
+              <label htmlFor='status' className='mb-2'>Status</label>
+              <select id='status' value={status} name="options" onChange={handleChange(setStatus)} className="p-3 rounded-md bg-BgSec" required >
+                <option value="Verfügbar">Verfügbar</option>
+                <option value="Nicht Verfügbar">Nicht Verfügbar</option>
+                <option value="Neu">Neu</option>
+                <option value="Exklusiv">Exklusiv</option>
+              </select>
+            </div>
+            <div className='flex flex-col'>
+              <label htmlFor='lagerort' className='mb-2'>Lagerort</label>
+              <input className="p-3 rounded-md bg-BgSec" id='lagerort' type="text" value={lagerort} onChange={handleChange(setLagerort)} required/>
+            </div>
+            <div className='flex flex-col'>
+              <label htmlFor='hersteller' className='mb-2'>Hersteller</label>
+              <input className="p-3 rounded-md bg-BgSec" id='hersteller' type="text" value={hersteller} onChange={handleChange(setHersteller)} />
+            </div>
+            <div className='flex flex-col'>
+              <label htmlFor='gewicht' className='mb-2'>Gewicht (kg)</label>
+              <input className="p-3 rounded-md bg-BgSec" id='gewicht' type="number" step="0.01" value={gewicht} onChange={handleChange(setGewicht)} />
+            </div>
+            <div className='flex flex-col'>
+              <label htmlFor='rabatt_prozent' className='mb-2'>Rabatt (%)</label>
+              <input className="p-3 rounded-md bg-BgSec" id='rabatt_prozent' type="number" step="0.01" value={rabatt_prozent} onChange={handleChange(setRabatt_prozent)} />         
+            </div>
           </div>
-          <div className='flex flex-col'>
-            <label htmlFor='preis' className='mb-2'>Preis</label>
-            <input className="p-3 rounded-md bg-BgSec" id='preis' type="number" step="0.01" value={preis} onChange={handleChange(setPreis)} required />
-          </div>
-          <div className='flex flex-col'>
-            <label htmlFor='kategorie' className='mb-2'>Kategorie</label>
-            <Select
-              isMulti
-              options={kategorieOptionen}
-              className="basic-multi-select p-1.5 rounded-md bg-BgSec text-BrandDark" 
-              id='kategorie'
-              classNamePrefix="select"
-              value={kategorieOptionen.filter(option => kategorie.includes(option.value))}
-              onChange={(selectedOptions) => setKategorie(selectedOptions.map(option => option.value))}
-            />
-          </div>
-          <div className='flex flex-col'>
-            <label htmlFor='lagerort' className='mb-2'>Lagerort</label>
-            <input className="p-3 rounded-md bg-BgSec" id='lagerort' type="text" value={lagerort} onChange={handleChange(setLagerort)} required/>
-          </div>
-          <div className='flex flex-col'>
-            <label htmlFor='status' className='mb-2'>Status</label>
-            <select id='status' value={status} name="options" onChange={handleChange(setStatus)} className="p-3 rounded-md bg-BgSec" required >
-              <option value="Verfügbar">Verfügbar</option>
-              <option value="Nicht Verfügbar">Nicht Verfügbar</option>
-              <option value="Neu">Neu</option>
-              <option value="Exklusiv">Exklusiv</option>
-            </select>
-          </div>
-          <div className='flex flex-col'>
-            <label htmlFor='hersteller' className='mb-2'>Hersteller</label>
-            <input className="p-3 rounded-md bg-BgSec" id='hersteller' type="text" value={hersteller} onChange={handleChange(setHersteller)} />
-          </div>
-          <div className='flex flex-col'>
-            <label htmlFor='gewicht' className='mb-2'>Gewicht (kg)</label>
-            <input className="p-3 rounded-md bg-BgSec" id='gewicht' type="number" step="0.01" value={gewicht} onChange={handleChange(setGewicht)} />
-          </div>
-          <div className='flex flex-col'>
-            <label htmlFor='rabatt_prozent' className='mb-2'>Rabatt (%)</label>
-            <input className="p-3 rounded-md bg-BgSec" id='rabatt_prozent' type="number" step="0.01" value={rabatt_prozent} onChange={handleChange(setRabatt_prozent)} />         
+          <h3 className='text-2xl pb-4 mt-10'>Mengen</h3>
+          <div className='grid grid-cols-3 gap-4'>
+            <div className='flex flex-col'>
+              <label htmlFor='menge-airpods-pro' className='mb-2'>AirPods Pro Menge</label>
+              <input
+                className="p-3 rounded-md bg-BgSec"
+                id='menge-airpods-pro'
+                type="number"
+                value={mengeAirpodsPro}
+                onChange={handleChange(setMengeAirpodsPro)}
+                required
+              />
+            </div>
+            <div className='flex flex-col'>
+              <label htmlFor='menge-2-generation' className='mb-2'>2. Generation Menge</label>
+              <input
+                className="p-3 rounded-md bg-BgSec"
+                id='menge-2-generation'
+                type="number"
+                value={menge2Generation}
+                onChange={handleChange(setMenge2Generation)}
+                required
+              />
+            </div>
+            <div className='flex flex-col'>
+              <label htmlFor='menge-3-generation' className='mb-2'>3. Generation Menge</label>
+              <input
+                className="p-3 rounded-md bg-BgSec"
+                id='menge-3-generation'
+                type="number"
+                value={menge3Generation}
+                onChange={handleChange(setMenge3Generation)}
+                required
+              />
+            </div>
           </div>
           {/* bilder */}
-          <div className='flex flex-col'>
-            <label htmlFor='bilder' className='mb-2'>Titelbild </label>
-            <input className="p-3 rounded-md w-full" id='titelbild' type="file" ref={inputFileRefTitelbild}  required accept="image/*" onChange={handleChange(setBildUrl)} />
+          <h3 className='text-2xl pb-4 mt-10'>Bilder</h3>
+          <div className='grid grid-cols-2 gap-4'>
+            <div className='flex flex-col'>
+              <label htmlFor='bilder' className='mb-2'>Titelbild </label>
+              <input className="p-3 rounded-md w-full" id='titelbild' type="file" ref={inputFileRefTitelbild}  required accept="image/*" onChange={handleChange(setBildUrl)} />
+            </div>
+            <div className='flex flex-col'>
+              <label htmlFor='bilder' className='mb-2'>Weitere Bilder</label>
+              <input className="p-3 rounded-md w-full" id='bilder' type="file" ref={inputFileRef} required multiple accept="image/*" onChange={handleChange(setBildUrl)} />
+            </div>
           </div>
-          <div className='flex flex-col'>
-            <label htmlFor='bilder' className='mb-2'>Weitere Bilder</label>
-            <input className="p-3 rounded-md w-full" id='bilder' type="file" ref={inputFileRef} required multiple accept="image/*" onChange={handleChange(setBildUrl)} />
-          </div>
-          <div className='flex flex-col'>
-            <label htmlFor='menge-airpods-pro' className='mb-2'>AirPods Pro Menge</label>
-            <input
-              className="p-3 rounded-md bg-BgSec"
-              id='menge-airpods-pro'
-              type="number"
-              value={mengeAirpodsPro}
-              onChange={handleChange(setMengeAirpodsPro)}
-              required
-            />
-          </div>
-          <div className='flex flex-col'>
-            <label htmlFor='menge-2-generation' className='mb-2'>2. Generation Menge</label>
-            <input
-              className="p-3 rounded-md bg-BgSec"
-              id='menge-2-generation'
-              type="number"
-              value={menge2Generation}
-              onChange={handleChange(setMenge2Generation)}
-              required
-            />
-          </div>
-          <div className='flex flex-col'>
-            <label htmlFor='menge-3-generation' className='mb-2'>3. Generation Menge</label>
-            <input
-              className="p-3 rounded-md bg-BgSec"
-              id='menge-3-generation'
-              type="number"
-              value={menge3Generation}
-              onChange={handleChange(setMenge3Generation)}
-              required
-            />
-          </div>
-
-
           {/* produkt hochladen */}
-          <div className='flex col-span-4 justify-center items-center mt-5'>
+          <div className='flex col-span-4 justify-center items-center mt-14'>
             <button className=' bg-BrandBlue transition-all hover:bg-BrandBlueLight active:bg-BrandBlueDark text-BrandWhite font-bold py-2 px-2 rounded-md' type="submit">Produkt hinzufügen</button>
           </div>
         </form>         

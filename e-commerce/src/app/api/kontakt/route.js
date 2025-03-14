@@ -16,11 +16,11 @@ export async function POST(req) {
   });
 
   const mailOptions = {
-    from: email,  // Absender ist die E-Mail-Adresse des Nutzers
-    to: process.env.EMAIL_USER,  // Deine E-Mail-Adresse
+    from: process.env.EMAIL_USER, // Verwende die authentifizierte E-Mail-Adresse als Absender
+    to: process.env.EMAIL_ADRESSAT,
     subject: 'Neue Kontaktanfrage airpods store',
     text: emailContent,
-  };
+  };  
 
   try {
     // Sende die E-Mail

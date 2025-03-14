@@ -13,6 +13,8 @@ import ModellMassen from '@/components/store/ModellMassen';
 import { categories } from '@/data/kategorieOptionen';
 import RabattTabelle from '@/utils/shop/RabattTabelle';
 import { versandpreis } from '@/data/shop/festepreise';
+import { FaCircleExclamation } from "react-icons/fa6";
+import { Tooltip } from 'react-tooltip';
 
 export default function ProduktDetail() {
   const { id } = useParams(); // Hole die dynamische ID aus den Routenparametern
@@ -164,40 +166,45 @@ export default function ProduktDetail() {
           {/* kategorie */}
           <div className='flex space-x-1 md:space-x-3 mb-4'>
             {kategorie.split(',').map((kategorie, index) => (
-              categories.modell.some(item => item.label === kategorie) ? '' :
+              categories.modell.some(item => item.value === kategorie) ? '' :
                 <p className="text-TextSec bg-BgSec rounded-full px-3 py-0.5 text-sm font-light" key={index}>{kategorie}</p>
             ))}
           </div>
           {/* preis */}
-          <div className="my-4 flex items-center space-x-4 group relative">
+          <div className="my-4 flex items-center relative">
             {rabatt_prozent > 0 ? (
-              <>
-                <span className="text-2xl font-semibold text-SaleRed relative cursor-pointer">
+              <div className='flex items-center space-x-4'>
+                <span className="text-2xl font-semibold text-SaleRed relative">
                   {endpreis}€
-                  <sup className="text-xs font-normal text-TextSec ml-1">+{versandpreis}€ Versand</sup>
-
-                  {/* Tooltip */}
-                  <span className="absolute left-0 top-[-30px] w-max bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                    Versandkosten werden nur einmal pro Bestellung berechnet.
-                  </span>
                 </span>
-
                 <span className="text-sm ml-3 line-through text-TextSec">{preis}€</span>
                 <span className="text-[12px] bg-red-100 text-SaleRed font-bold px-2 py-1 rounded">
                   - {rabatt_prozent.toFixed(0)}%
                 </span>
-              </>
+              </div>
             ) : (
-              <span className="text-lg font-semibold text-TextSec relative cursor-pointer">
+              <span className="text-lg font-semibold text-TextSec relative">
                 {endpreis}€
-                <sup className="text-xs font-normal text-TextSec ml-1">+{versandpreis}€ Versand</sup>
-
-                {/* Tooltip */}
-                <span className="absolute left-0 top-[-30px] w-max bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                  Versandkosten werden nur einmal pro Bestellung berechnet.
-                </span>
               </span>
             )}
+            {endpreis >= 50 ? (
+                  <sup className="text-xs font-normal text-green-600 ml-2">
+                    🚚 Kostenloser Versand
+                    <span className="flex items-center">
+                      <FaCircleExclamation id='tooltip-preis' className="inline-block ml-1 cursor-pointer outline-none" />          
+                    </span>
+                  </sup>
+                ) : (
+                  <sup className="text-xs font-normal text-TextSec ml-2 flex items-center">
+                    +{versandpreis}€ Versand
+                    <span className="flex items-center">
+                      <FaCircleExclamation id='tooltip-preis' className="inline-block ml-1 cursor-pointer outline-none" />          
+                    </span>
+                  </sup>
+            )}
+            <Tooltip anchorSelect='#tooltip-preis' style={{maxWidth: '300px', backgroundColor: 'var(--background-secondary)', color: 'var(--text-primary)'}} place='right' >
+              Versandkosten werden nur einmal pro Bestellung berechnet. Kostenloser Versand für Bestellungen ab 50€.
+            </Tooltip>
           </div>
           {/* beschreibung */}
           <div className='my-4'>

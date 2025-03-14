@@ -67,7 +67,7 @@ export default function CheckoutButton({className}) {
             disabled={loading}
             className={`bg-BrandBlue hover:bg-BrandBlueLight text-BrandWhite p-2 rounded ${className}`}
         >
-            {loading ? 'Lädt...' : '💳 Bezahlen mit Stripe'}
+            {loading ? 'Lädt...' : '💳 Dein Case ist fast da!'}
         </button>
     );
 }

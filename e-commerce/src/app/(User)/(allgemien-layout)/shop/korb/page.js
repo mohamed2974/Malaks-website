@@ -1,7 +1,7 @@
 'use client';
 import { useCartStore } from '@/lib/store/cartStore';
 import StandardLinkButton from '@/utils/buttons/StandardLinkButton';
-import CheckoutButton from '@/utils/CheckoutButton-component';
+import CheckoutButton from '@/utils/buttons/CheckoutButton-component';
 import finalpreis from '@/utils/functions/finalpreis';
 import GradientTitel from '@/utils/GradientTitel';
 import Image from 'next/image';

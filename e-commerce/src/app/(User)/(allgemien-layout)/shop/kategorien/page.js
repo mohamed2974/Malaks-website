@@ -1,8 +1,9 @@
+import CategoryGrid from "@/components/Kategorien";
 
 export default function AlleKategorien(){
     return (
-        <section>
-            
+        <section className="p-0">
+            <CategoryGrid />
         </section>
     )
 }
