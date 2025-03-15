@@ -3,7 +3,7 @@ import Produktekarten from '../../utils/Produktekarten';
 
 export default function Produkte() {
     return (
-        <section className="min-h-[80vh]">
+        <section className="min-h-[40vh]">
             {/* Header */}
             <div className="text-center mb-10">
                 <GradientTitel text="Unsere Produkte" />
