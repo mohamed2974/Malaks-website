@@ -51,7 +51,7 @@ export default function ProductCard({produkt}) {
             {/* Produktinformationen */}
             <div className="px-4 py-1.5 md:py-2 flex flex-col justify-between relative bg-BrandWhite">
                 <div>
-                    <h3 className="text-BrandBlueLight text-sm md:text-lg font-semibold truncate md:whitespace-normal">
+                    <h3 className="text-BrandBlueLight text-sm md:text-lg font-semibold truncate md:whitespace-normal text-wrap">
                         {name}
                     </h3>
                 </div>
