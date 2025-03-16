@@ -47,10 +47,8 @@ export default function HeroSec() {
                     />
                 </div>
             </div>
-            <div className='relative flex md:hidden justify-center min-h-[70vh] w-full z-10  overflow-hidden'>
-                <video autoPlay loop muted playsInline className="object-cover rounded-2xl  w-full h-auto">
-                    <source src="/video/herosecmobile.mp4" type="video/mp4"/>
-                </video>
+            <div className='relative aspect-auto md:hidden overflow-hidden rounded-2xl'>
+                <Image alt='Bild' src='/img/herosecmobile.jpg' width={999} height={100} sizes="(max-width: 768px) 100vw, 50vw"  className='object-cover' />
             </div>
             <span id='stickyheader'></span>
         </div>
