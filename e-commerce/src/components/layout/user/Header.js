@@ -41,7 +41,7 @@ export default function Header({className}) {
 
     // Nur wenn mounted, dann rendern
     return (
-        <header className={`flex flex-row justify-between items-center w-full z-50 transition-all duration-300 ease-in-out text-xl ${className}`}>
+        <header id="header" className={`flex flex-row justify-between items-center w-full z-50 transition-all duration-300 ease-in-out text-xl ${className}`}>
             {/* Logo */}
             <div className="w-2/6">
                 <Logo />
