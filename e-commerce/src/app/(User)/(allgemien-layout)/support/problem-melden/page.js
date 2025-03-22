@@ -23,7 +23,7 @@ export default function Kontakt() {
             if (label) {
                 if (!label.querySelector('.required-star')) {
                     const star = document.createElement('span');
-                    star.style.color = 'red';
+                    star.style.color = 'var(--brand-red)';
                     star.textContent = ' *';
                     star.classList.add('required-star');  // Eine Klasse hinzufügen, um es später zu identifizieren
                     label.appendChild(star);
@@ -64,7 +64,10 @@ export default function Kontakt() {
 
     return (
         <section className="flex justify-center flex-col items-center min-h-[50vh]">
-            <GradientTitel text='Kontaktformular' className='mb-10' />
+            <div className="text-center mb-10">
+                <GradientTitel text='Problem melden' />
+                <p className="text-TextSec mt-2">Wir möchten sicherstellen, dass du die bestmögliche Erfahrung mit unseren Produkten und Dienstleistungen hast. Wenn du ein Problem hast, fülle bitte das Formular aus und teile uns alle relevanten Details mit. Wir werden uns schnellstmöglich um dein Anliegen kümmern!</p>
+            </div>
             <div className="bg-BgSec p-4 md:p-8 rounded-lg shadow-md w-full">
                 <form onSubmit={handleSubmit} className="flex flex-wrap">
                     <div className='w-full lg:w-1/2 space-y-4 lg:pr-6'>
@@ -81,12 +84,13 @@ export default function Kontakt() {
                             />
                         </div>
                         <div>
-                            <label htmlFor='titel' className="block text-sm font-medium text-TextPrim">Wie kann ich dir helfen?:</label>
+                            <label htmlFor='titel' className="block text-sm font-medium text-TextPrim">Wie können wir dir helfen?:</label>
                             <Select
                                 options={problemOption}
                                 className="basic-single mt-1 w-full bg-BgPrim rounded-md focus:outline-none focus:ring-2 focus:ring-BrandBlueLight text-BrandDark" 
                                 id='titel'
                                 classNamePrefix="select"
+                                required
                                 value={problemOption.find(option => option.value === titel) || null}
                                 onChange={(selectedOptions) => setTitel(selectedOptions.value)}
                             />
@@ -104,11 +108,10 @@ export default function Kontakt() {
                             />
                         </div>
                         <div>
-                            <label htmlFor='img' className="block text-sm font-medium text-TextPrim">Bilder:</label>
+                            <label htmlFor='img' className="block text-sm font-medium text-TextPrim">Füge Bilder hinzu:</label>
                             <input
                                 id='img'
                                 type="file"
-                                multiple
                                 onChange={(e) => setImg(e.target.files[0])}  // Setze die ausgewählte Datei
                                 className="mt-1 p-2 w-full bg-BgPrim rounded-md focus:outline-none focus:ring-2 focus:ring-BrandBlueLight"
                             />
@@ -131,7 +134,7 @@ export default function Kontakt() {
                     <div className="flex justify-center w-full mt-6">
                         <button
                             type="submit"
-                            disabled={isSubmitting}
+                            disabled={isSubmitting || response.includes('gesendet')}
                             className="bg-BrandBlue text-white px-3 py-1 rounded-md hover:bg-BrandBlueLight disabled:bg-gray-400 transition"
                         >
                             {isSubmitting ? 'Sende...' : 'Absenden'}

@@ -21,7 +21,7 @@ export default function Kontakt() {
             if (label) {
                 if (!label.querySelector('.required-star')) {
                     const star = document.createElement('span');
-                    star.style.color = 'red';
+                    star.style.color = 'var(--brand-red)';
                     star.textContent = ' *';
                     star.classList.add('required-star');  // Eine Klasse hinzufügen, um es später zu identifizieren
                     label.appendChild(star);
@@ -85,7 +85,7 @@ export default function Kontakt() {
                             />
                         </div>
                         <div>
-                            <label htmlFor='titel' className="block text-sm font-medium text-TextPrim">Wie kann ich dir helfen?:</label>
+                            <label htmlFor='titel' className="block text-sm font-medium text-TextPrim">Wie können wir dir helfen?:</label>
                             <input
                                 id='titel'
                                 type="text"
@@ -126,7 +126,7 @@ export default function Kontakt() {
                     <div className="flex justify-center w-full mt-6">
                         <button
                             type="submit"
-                            disabled={isSubmitting}
+                            disabled={isSubmitting || response.includes('gesendet')}
                             className="bg-BrandBlue text-white px-3 py-1 rounded-md hover:bg-BrandBlueLight disabled:bg-gray-400 transition"
                         >
                             {isSubmitting ? 'Sende...' : 'Absenden'}
