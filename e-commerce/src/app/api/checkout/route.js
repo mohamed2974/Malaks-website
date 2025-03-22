@@ -91,6 +91,7 @@ export async function POST(req) {
             },
             line_items: line_items, // Hier wird das bereits berechnete `line_items` übergeben
             mode: 'payment',
+            allow_promotion_codes: true,
             success_url: `${process.env.NEXT_PUBLIC_URL}/home`,
             cancel_url: `${process.env.NEXT_PUBLIC_URL}/shop/korb`,
         });
