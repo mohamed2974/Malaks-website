@@ -15,7 +15,7 @@ export default function Home() {
       <Beforafterimg />
       <Vorteile />
       <Qualitaet />
-      <FAQ />
+      <FAQ start={0} end={4}/>
     </>
   );
 }
