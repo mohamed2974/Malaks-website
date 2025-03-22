@@ -37,7 +37,7 @@ export default function Kontakt() {
         const formData = { name, email, titel, tel, message };
 
         try {
-            const res = await fetch('/api/kontakt', {
+            const res = await fetch('/api/kontakt/shopanfragen', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export default function Kontakt() {
     return (
         <section className="flex justify-center flex-col items-center min-h-[50vh]">
             <GradientTitel text='Kontaktformular' className='mb-10' />
-            <div className="bg-BgSec p-8 rounded-lg shadow-md w-full">
+            <div className="bg-BgSec p-4 md:p-8 rounded-lg shadow-md w-full">
                 <form onSubmit={handleSubmit} className="flex flex-wrap">
                     <div className='w-full lg:w-1/2 space-y-4 lg:pr-6'>
                         <div>
