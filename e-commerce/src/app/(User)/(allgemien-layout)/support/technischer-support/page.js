@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import GradientTitel from '@/utils/GradientTitel';
 import Select from "react-select";
 import { technikOption, browserOption, geraetOption } from '@/data/support/technik';
+import Link from 'next/link';
 
 export default function Kontakt() {
     const [email, setEmail] = useState('');
@@ -145,6 +146,17 @@ export default function Kontakt() {
                                 onChange={(e) => setImg(e.target.files[0])}  // Setze die ausgewählte Datei
                                 className="mt-1 p-2 w-full bg-BgPrim rounded-md focus:outline-none focus:ring-2 focus:ring-BrandBlueLight"
                             />
+                        </div>
+                        <div className="flex">
+                            <input
+                                id='datenschutz-checkbox'
+                                type="checkbox"
+                                className="h-4 w-4 text-BrandBlue focus:ring-0"
+                                required // Optional: Kann entfernt werden, falls die Checkbox nicht zwingend ist
+                            />
+                            <label htmlFor="datenschutz-checkbox" className="ml-2 text-xs text-TextPrim">
+                                Mit dem Absenden dieses Formulars erklärst du dich damit einverstanden, dass wir deine angegebenen Daten zur Bearbeitung deiner Anfrage verwenden. Weitere Informationen findest du in unserer <Link href="/rechtliches/datenschutzerklaerung" className="text-BrandBlue hover:underline">Datenschutzerklärung</Link>.
+                            </label>
                         </div>
                     </div>
                     <div className='w-full lg:w-1/2 mt-5 lg:mt-0'>
