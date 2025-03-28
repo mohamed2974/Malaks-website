@@ -85,10 +85,11 @@ export async function POST(req) {
         }
 
         const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
+            payment_method_types: ['card', 'klarna'], //  'paypal' hinzufügen, wenn PayPal aktiviert ist
             shipping_address_collection: {
                 allowed_countries: ['DE'],
             },
+            billing_address_collection: 'required', // Für Klarna notwendig
             line_items: line_items, // Hier wird das bereits berechnete `line_items` übergeben
             mode: 'payment',
             allow_promotion_codes: true,
